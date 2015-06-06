@@ -2,6 +2,8 @@
 
 namespace OGetIt\Http;
 
+use OGetIt\Exception\OGetIt_cURL_Exception;
+
 class OGetIt_HttpRequest {
 	
 	private static $STATE_OPEN = 0, $STATE_CLOSED = 1;
@@ -78,7 +80,7 @@ class OGetIt_HttpRequest {
 	}
 	
 	/**
-	 * @return boolea|mixed
+	 * @return boolean|mixed
 	 */
 	public function send($finish = false) {
 		
@@ -86,6 +88,11 @@ class OGetIt_HttpRequest {
 		$this->setOption(CURLOPT_URL, $this->_url);
 		
 		$this->_response = curl_exec($this->_resource);
+		
+		//If the request fails, save the last error
+		if ($this->_response === false) {
+			throw new OGetIt_cURL_Exception(curl_error($this->_resource), curl_errno($this->_resource));
+		}
 		
 		if ($finish === true) $this->close();
 		
