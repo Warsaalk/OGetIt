@@ -3,6 +3,7 @@
 namespace OGetIt;
 
 use OGetIt\Http\OGetIt_HttpRequest;
+use OGetIt\Exception\OGetIt_API_Exception;
 
 class OGetIt_Api { 
 	
@@ -17,13 +18,13 @@ class OGetIt_Api {
 	 */
 	private static function processError($error) {
 	
-		throw new OGetIt_Exception($error);
+		throw new OGetIt_API_Exception($error);
 	
 	}
 	
 	/**
 	 * @param string $url
-	 * @return mixed
+	 * @return mixed|boolean
 	 * @throws OGetIt_Exception
 	 */
 	public static function getData($url, $username = false, $password = false) {
@@ -36,13 +37,20 @@ class OGetIt_Api {
 		
 		$reponse = $request->send(true);
 		
-		$reponseData = json_decode($reponse, true);
 		
-		if ($reponseData['RESULT_CODE'] === 1000) {
-			return $reponseData['RESULT_DATA'];
-		} else {
-			self::processError($reponseData['RESULT_CODE']);
+		if ($reponse !== false) {
+		
+			$reponseData = json_decode($reponse, true);
+			
+			if ($reponseData['RESULT_CODE'] === 1000) {
+				return $reponseData['RESULT_DATA'];
+			} else {
+				self::processError($reponseData['RESULT_CODE']);
+			}
+			
 		}
+		
+		return false;
 		
 	}
 	
