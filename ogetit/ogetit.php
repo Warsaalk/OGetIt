@@ -68,7 +68,7 @@ class OGetIt {
 		
 		$data = OGetIt_Api::getData($url, $username, $password);
 				
-		return OGetIt_CombatReport::createCombatReport($data);
+		return $data === false ? $data : OGetIt_CombatReport::createCombatReport($data);
 		
 	}
 	
