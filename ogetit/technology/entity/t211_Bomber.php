@@ -1,12 +1,14 @@
 <?php
 
-namespace OGetIt\Technology;
+namespace OGetIt\Technology\Entity; 
 
-class t206_Cruiser extends OGetIt_Technology_Combat {
+use OGetIt\Technology\OGetIt_Technology_Combat;
 
-	const TYPE = 206;
+class t211_Bomber extends OGetIt_Technology_Combat {
+
+	const TYPE = 211;
 	
-	const METAL = 20000, CRYSTAL = 7000, DEUTERIUM = 2000;
+	const METAL = 50000, CRYSTAL = 25000, DEUTERIUM = 15000;
 	
 	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
 	

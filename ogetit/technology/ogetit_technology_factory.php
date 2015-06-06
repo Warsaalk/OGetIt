@@ -1,6 +1,29 @@
 <?php
 namespace OGetIt\Technology;
 
+use OGetIt\Technology\Entity\t202_Small_Cargo;
+use OGetIt\Technology\Entity\t203_Large_Cargo;
+use OGetIt\Technology\Entity\t408_Large_Shield_Dome;
+use OGetIt\Technology\Entity\t407_Small_Shield_Dome;
+use OGetIt\Technology\Entity\t406_Plasma_Turret;
+use OGetIt\Technology\Entity\t405_Ion_Cannon;
+use OGetIt\Technology\Entity\t404_Gauss_Cannon;
+use OGetIt\Technology\Entity\t403_Heavy_Laser;
+use OGetIt\Technology\Entity\t402_Light_Laser;
+use OGetIt\Technology\Entity\t401_Rocket_Launcher;
+use OGetIt\Technology\Entity\t215_Battlecruiser;
+use OGetIt\Technology\Entity\t214_Deathstar;
+use OGetIt\Technology\Entity\t213_Destroyer;
+use OGetIt\Technology\Entity\t212_Solar_Satellite;
+use OGetIt\Technology\Entity\t211_Bomber;
+use OGetIt\Technology\Entity\t210_Espionage_Probe;
+use OGetIt\Technology\Entity\t209_Recycler;
+use OGetIt\Technology\Entity\t208_Colony_Ship;
+use OGetIt\Technology\Entity\t207_Battleship;
+use OGetIt\Technology\Entity\t206_Cruiser;
+use OGetIt\Technology\Entity\t205_Heavy_Fighter;
+use OGetIt\Technology\Entity\t204_Light_Fighter;
+
 class OGetIt_Technology_Factory {
 	
 	/**
@@ -12,7 +35,7 @@ class OGetIt_Technology_Factory {
 		$technology = null;
 		
 		switch ($type) {
-			//Ships
+			//Ships			
 			case 202: $technology = new t202_Small_Cargo();
 			case 203: $technology = new t203_Large_Cargo();
 			case 204: $technology = new t204_Light_Fighter();

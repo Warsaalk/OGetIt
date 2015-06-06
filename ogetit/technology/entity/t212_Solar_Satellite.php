@@ -1,12 +1,14 @@
 <?php
 
-namespace OGetIt\Technology;
+namespace OGetIt\Technology\Entity; 
 
-class t214_Deathstar extends OGetIt_Technology_Combat {
+use OGetIt\Technology\OGetIt_Technology_Combat;
 
-	const TYPE = 214;
+class t212_Solar_Satellite extends OGetIt_Technology_Combat {
+
+	const TYPE = 212;
 	
-	const METAL = 5000000, CRYSTAL = 4000000, DEUTERIUM = 1000000;
+	const METAL = 0, CRYSTAL = 2000, DEUTERIUM = 500;
 	
 	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
 	

@@ -1,12 +1,14 @@
 <?php
 
-namespace OGetIt\Technology;
+namespace OGetIt\Technology\Entity; 
 
-class t402_Light_Laser extends OGetIt_Technology_Combat {
+use OGetIt\Technology\OGetIt_Technology_Combat;
 
-	const TYPE = 402;
+class t204_Light_Fighter extends OGetIt_Technology_Combat {
+
+	const TYPE = 204;
 	
-	const METAL = 1500, CRYSTAL = 500, DEUTERIUM = 0;
+	const METAL = 3000, CRYSTAL = 1000, DEUTERIUM = 0;
 	
 	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
 	

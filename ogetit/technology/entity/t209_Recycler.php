@@ -1,12 +1,14 @@
 <?php
 
-namespace OGetIt\Technology;
+namespace OGetIt\Technology\Entity; 
 
-class t207_Battleship extends OGetIt_Technology_Combat {
+use OGetIt\Technology\OGetIt_Technology_Combat;
 
-	const TYPE = 207;
+class t209_Recycler extends OGetIt_Technology_Combat {
+
+	const TYPE = 209;
 	
-	const METAL = 45000, CRYSTAL = 15000, DEUTERIUM = 0;
+	const METAL = 10000, CRYSTAL = 6000, DEUTERIUM = 2000;
 	
 	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
 	

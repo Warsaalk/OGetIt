@@ -1,12 +1,14 @@
 <?php
 
-namespace OGetIt\Technology;
+namespace OGetIt\Technology\Entity; 
 
-class t210_Espionage_Probe extends OGetIt_Technology_Combat {
+use OGetIt\Technology\OGetIt_Technology_Combat;
 
-	const TYPE = 210;
+class t215_Battlecruiser extends OGetIt_Technology_Combat {
+
+	const TYPE = 215;
 	
-	const METAL = 0, CRYSTAL = 1000, DEUTERIUM = 0;
+	const METAL = 30000, CRYSTAL = 40000, DEUTERIUM = 15000;
 	
 	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
 	

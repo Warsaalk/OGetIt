@@ -1,6 +1,8 @@
 <?php
 
-namespace OGetIt\Technology;
+namespace OGetIt\Technology\Entity; 
+
+use OGetIt\Technology\OGetIt_Technology_Combat;
 
 class t408_Large_Shield_Dome extends OGetIt_Technology_Combat {
 
