@@ -29,6 +29,16 @@ class OGetIt_CombatReport {
 	private $_loot_percentage;
 	
 	/**
+	 * @var \stdClass
+	 */
+	private $_loot;
+
+	/**
+	 * @var \stdClass
+	 */
+	private $_debris;
+	
+	/**
 	 * @var string
 	 */
 	private $_winner;
@@ -60,7 +70,12 @@ class OGetIt_CombatReport {
 			$generic['units_lost_attackers'],
 			$generic['attacker_count'],
 			$generic['units_lost_defenders'],
-			$generic['defender_count']
+			$generic['defender_count'],
+			0,//$generic['loot_metal'],
+			0,//$generic['loot_crystal'],
+			0,//$generic['loot_deuterium'],
+			0,//$generic['debris_metal'],
+			0//$generic['debris_crystal']
 		);
 
 		$attackers = $api_data['attackers'];
@@ -85,8 +100,13 @@ class OGetIt_CombatReport {
 	 * @param integer $attacker_count
 	 * @param integer $defender_losses
 	 * @param integer $defender_count
+	 * @param integer $loot_metal
+	 * @param integer $loot_crystal
+	 * @param integer $loot_deuterium
+	 * @param integer $debris_metal
+	 * @param integer $debris_crystal
 	 */
-	public function __construct($id, $coordinates, $planet_type, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count) {
+	public function __construct($id, $coordinates, $planet_type, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
 		
 		$this->_id = $id;
 		$this->_loot_percentage = $loot_percentage;
@@ -95,6 +115,15 @@ class OGetIt_CombatReport {
 		
 		$this->_attacker_party = new OGetIt_CombatParty($attacker_count, $attacker_losses);
 		$this->_defender_party = new OGetIt_CombatParty($defender_count, $defender_losses);
+		
+		$this->_loot = new \stdClass();
+		$this->_loot->metal = $loot_metal;
+		$this->_loot->crystal = $loot_crystal;
+		$this->_loot->deuterium = $loot_deuterium;
+		
+		$this->_debris = new \stdClass();
+		$this->_debris->metal = $debris_metal;
+		$this->_debris->crystal = $debris_crystal;
 		
 	}
 	
