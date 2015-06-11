@@ -67,7 +67,7 @@ class OGetIt_CombatParty {
 		
 		foreach ($this->_players as $player) {
 			
-			if ($player->getCombatIndex() === $combat_index) return $player;
+			if ($player->getFleetByCombatIndex($combat_index) !== null) return $player;
 			
 		}
 		

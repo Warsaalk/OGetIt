@@ -61,6 +61,22 @@ class OGetIt_Player {
 		$this->_fleet[] = $fleet;
 		
 	}
+
+	/**
+	 * @param integer $combat_index
+	 * @return OGetIt_Fleet|NULL
+	 */
+	public function getFleetByCombatIndex($combat_index) {
+		
+		foreach ($this->_fleet as $fleet) {
+				
+			if ($fleet->getCombatIndex() === $combat_index) return $fleet;
+				
+		}
+		
+		return null;
+		
+	}
 	
 	/**
 	 * @return string
