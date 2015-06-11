@@ -6,6 +6,7 @@ use OGetIt\Common\OGetIt_Planet;
 use OGetIt\Common\OGetIt_Player;
 use OGetIt\Common\OGetIt_Fleet;
 use OGetIt\Technology\OGetIt_Technology_Factory;
+use OGetIt\CombatReport\Round\OGetIt_CombatRound;
 
 class OGetIt_CombatReport {
 	
@@ -167,7 +168,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @param array $players
+	 * @param array $rawPlayers
 	 */
 	private function loadParty($rawPlayers) {
 		
@@ -211,6 +212,9 @@ class OGetIt_CombatReport {
 		
 	}
 	
+	/**
+	 * @param array $rawRounds
+	 */
 	private function loadRounds($rawRounds) {
 		
 		foreach ($rawRounds as $rawRound) {

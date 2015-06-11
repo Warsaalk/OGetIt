@@ -1,6 +1,6 @@
 <?php
 
-namespace OGetIt\CombatReport;
+namespace OGetIt\CombatReport\Round;
 
 class OGetIt_CombatRound_Stats {
 		
