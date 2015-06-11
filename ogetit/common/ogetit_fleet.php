@@ -17,11 +17,18 @@ class OGetIt_Fleet {
 	private $_technologies = array();
 	
 	/**
-	 * @param OGetIt_Planet $planet
+	 * @var integer
 	 */
-	public function __construct($planet) {
+	private $_combat_index;
+	
+	/**
+	 * @param OGetIt_Planet $planet
+	 * @parem integer $combat_index
+	 */
+	public function __construct($planet, $combat_index) {
 		
 		$this->_planet = $planet;
+		$this->_combat_index = $combat_index;
 		
 	}
 	
@@ -44,6 +51,15 @@ class OGetIt_Fleet {
 	public function getPlanet() {
 		
 		return $this->_planet;
+		
+	}
+	
+	/**
+	 * @return integer
+	 */
+	public function getCombatIndex() {
+		
+		return $this->_combat_index;
 		
 	}
 	

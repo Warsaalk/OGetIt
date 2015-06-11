@@ -14,11 +14,6 @@ class OGetIt_Player {
 	/**
 	 * @var integer
 	 */
-	private $_combat_index;
-	
-	/**
-	 * @var integer
-	 */
 	private $_armor;
 
 	/**
@@ -38,12 +33,10 @@ class OGetIt_Player {
 	
 	/**
 	 * @param string $name
-	 * @param integer $combat_index
 	 */
-	public function __construct($name, $combat_index) {
+	public function __construct($name) {
 		
 		$this->_name = $name;
-		$this->_combat_index = $combat_index;
 		
 	}
 	
@@ -75,15 +68,6 @@ class OGetIt_Player {
 	public function getName() {
 		
 		return $this->_name;
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getCombatIndex() {
-		
-		return $this->_combat_index;
 		
 	}
 	
