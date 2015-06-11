@@ -168,13 +168,13 @@ class OGetIt_CombatReport {
 		
 		$players = array();
 		
-		foreach ($rawPlayers as $fleetData) {
+		foreach ($rawPlayers as $combat_index => $fleetData) {
 			
 			$rawPlayer = $fleetData['fleet_owner'];
 			
 			//Check if player already exists, if not create it & add it
 			if (!isset($players[$rawPlayer])) {
-				$players[$rawPlayer] = new OGetIt_Player($rawPlayer);
+				$players[$rawPlayer] = new OGetIt_Player($rawPlayer, $combat_index);
 				$players[$rawPlayer]->setCombatTechnologies(
 					$fleetData['fleet_armor_percentage'], 
 					$fleetData['fleet_shield_percentage'], 
