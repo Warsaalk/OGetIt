@@ -31,7 +31,7 @@ class OGetIt_CombatReport {
 	/**
 	 * @var integer
 	 */
-	private $_combat_rounds;
+	private $_combat_rounds_count;
 	
 	/**
 	 * @var \stdClass
@@ -57,6 +57,11 @@ class OGetIt_CombatReport {
 	 * @var OGetIt_CombatParty
 	 */
 	private $_defender_party;
+	
+	/**
+	 * @var OGetIt_CombatRound
+	 */
+	private $_combat_rounds;
 	
 	/**
 	 * @param string $api_data
@@ -121,7 +126,7 @@ class OGetIt_CombatReport {
 		
 		$this->_id = $id;
 		$this->_loot_percentage = $loot_percentage;
-		$this->_combat_rounds = $combat_rounds;
+		$this->_combat_rounds_count = $combat_rounds;
 		$this->_winner = $winner;
 		$this->_planet = new OGetIt_Planet($planet_type, $coordinates);
 		
@@ -208,7 +213,14 @@ class OGetIt_CombatReport {
 	
 	private function loadRounds($rawRounds) {
 		
-		
+		foreach ($rawRounds as $rawRound) {
+			
+			$this->_combat_rounds[] = new OGetIt_CombatRound(
+				$rawRound['round_number'], 
+				$rawRound['statistics']
+			);
+			
+		}		
 		
 	}
 	
