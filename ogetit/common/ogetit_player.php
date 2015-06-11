@@ -81,6 +81,15 @@ class OGetIt_Player {
 	/**
 	 * @return integer
 	 */
+	public function getCombatIndex() {
+		
+		return $this->_combat_index;
+		
+	}
+	
+	/**
+	 * @return integer
+	 */
 	public function getArmor() {
 		
 		return $this->_armor;
