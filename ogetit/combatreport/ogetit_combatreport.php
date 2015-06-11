@@ -71,11 +71,11 @@ class OGetIt_CombatReport {
 			$generic['attacker_count'],
 			$generic['units_lost_defenders'],
 			$generic['defender_count'],
-			0,//$generic['loot_metal'],
-			0,//$generic['loot_crystal'],
-			0,//$generic['loot_deuterium'],
-			0,//$generic['debris_metal'],
-			0//$generic['debris_crystal']
+			$generic['loot_metal'],
+			$generic['loot_crystal'],
+			$generic['loot_deuterium'],
+			$generic['debris_metal'],
+			$generic['debris_crystal']
 		);
 
 		$attackers = $api_data['attackers'];
