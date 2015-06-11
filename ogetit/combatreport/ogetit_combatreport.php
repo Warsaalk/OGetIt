@@ -92,6 +92,10 @@ class OGetIt_CombatReport {
 		
 		$combatreport->loadDefenders($defenders);
 		
+		$rounds = $api_data['rounds'];
+		
+		$combatreport->loadRounds($rounds);
+		
 		return $combatreport;
 		
 	}
@@ -199,6 +203,12 @@ class OGetIt_CombatReport {
 		}
 		
 		return array_values($players);
+		
+	}
+	
+	private function loadRounds($rawRounds) {
+		
+		
 		
 	}
 	
