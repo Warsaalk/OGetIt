@@ -59,4 +59,20 @@ class OGetIt_CombatParty {
 		
 	}
 	
+	/**
+	 * @param integer $combat_index
+	 * @return OGetIt_Player|NULL
+	 */
+	public function getPlayerByCombatIndex($combat_index) {
+		
+		foreach ($this->_players as $player) {
+			
+			if ($player->getCombatIndex() === $combat_index) return $player;
+			
+		}
+		
+		return null;
+		
+	}
+	
 }
