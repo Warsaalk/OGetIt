@@ -29,6 +29,11 @@ class OGetIt_CombatReport {
 	private $_loot_percentage;
 	
 	/**
+	 * @var integer
+	 */
+	private $_combat_rounds;
+	
+	/**
 	 * @var \stdClass
 	 */
 	private $_loot;
@@ -65,6 +70,7 @@ class OGetIt_CombatReport {
 			$generic['cr_id'], 
 			$generic['combat_coordinates'], 
 			$generic['combat_planet_type'],
+			$generic['combat_rounds'],
 			$generic['loot_percentage'],
 			$generic['winner'],
 			$generic['units_lost_attackers'],
@@ -94,6 +100,7 @@ class OGetIt_CombatReport {
 	 * @param string $id
 	 * @param string $coordinates
 	 * @param integer $planet_type
+	 * @param integer $combat_rounds
 	 * @param integer $loot_percentage
 	 * @param string $winner
 	 * @param integer $attacker_losses
@@ -106,10 +113,11 @@ class OGetIt_CombatReport {
 	 * @param integer $debris_metal
 	 * @param integer $debris_crystal
 	 */
-	public function __construct($id, $coordinates, $planet_type, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
+	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
 		
 		$this->_id = $id;
 		$this->_loot_percentage = $loot_percentage;
+		$this->_combat_rounds = $combat_rounds;
 		$this->_winner = $winner;
 		$this->_planet = new OGetIt_Planet($planet_type, $coordinates);
 		
