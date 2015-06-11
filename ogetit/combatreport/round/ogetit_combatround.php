@@ -21,5 +21,23 @@ class OGetIt_CombatRound {
 		$this->_statistics = OGetIt_CombatRound_Stats::createInstance($statistics);
 
 	}
+	
+	/**
+	 * @return integer
+	 */
+	public function getNumber() {
+		
+		return $this->_number;
+		
+	}
+	
+	/**
+	 * @return OGetIt_CombatRound_Stats
+	 */
+	public function getStatistics() {
+		
+		return $this->_statistics;
+		
+	}
 		
 }
