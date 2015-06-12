@@ -60,7 +60,7 @@ class OGetIt_CombatReport {
 	private $_defender_party;
 	
 	/**
-	 * @var OGetIt_CombatRound
+	 * @var OGetIt_CombatRound[]
 	 */
 	private $_combat_rounds;
 	
@@ -229,6 +229,98 @@ class OGetIt_CombatReport {
 			);
 			
 		}		
+		
+	}
+	
+	/**
+	 * @return stdClass Properties: {metal} & {crystal} & {deuterium}
+	 */
+	public function getLoot() {
+		
+		return $this->_loot;
+		
+	}
+	
+	/**
+	 * @return stdClass Properties: {metal} & {crystal}
+	 */
+	public function getDebris() {
+		
+		return $this->_debris;
+		
+	}
+
+	/**
+	 * @return OGetIt_CombatParty
+	 */
+	public function getAttackerParty() {
+		
+		return $this->_attacker_party;
+		
+	}
+	
+	/**
+	 * @return OGetIt_CombatParty
+	 */
+	public function getDefenderParty() {
+		
+		return $this->_defender_party;
+		
+	}
+	
+	/**
+	 * @param OGetIt_CombatParty $party
+	 * @param array $roundDetails
+	 * @return StdClass Properties: {metal} & {crystal} & {deuterium}
+	 */
+	public function getDetailedLossesForParty($party, $roundDetails) {
+		
+		$losses = (object)array('metal'=>0,'crystal'=>0,'deuterium'=>0);
+		
+		foreach ($party->getPlayers() as $player) {
+				
+			foreach ($player->getFleets() as $fleet) {
+		
+				$attackerDetail = $roundDetails[$fleet->getCombatIndex()];
+		
+				foreach ($fleet->getTechnologies() as $techData) {
+						
+					$technology = $techData->technology;
+					$startCount = $techData->count;
+					$endCount = isset($attackerDetail[$technology->getType()]) ? $attackerDetail[$technology->getType()]->ships : 0;
+						
+					$difference = $startCount - $endCount;
+						
+					$costs = $technology->getCosts($difference);
+					
+					$losses->metal += $costs->metal;
+					$losses->crystal += $costs->crystal;
+					$losses->deuterium += $costs->deuterium;
+						
+				}
+		
+			}
+				
+		}
+		
+		$losses->total = $losses->metal + $losses->crystal + $losses->deuterium;
+		
+		return $losses;
+		
+	}
+	
+	/**
+	 * @return \stdClass Properties: {metal} & {crystal} & {deuterium}
+	 */
+	public function getDetailedLosses() {
+		
+		$last_round = $this->_combat_rounds[$this->_combat_rounds_count-1];
+		
+		$losses = new \stdClass();
+		$losses->attackers = $this->getDetailedLossesForParty($this->_attacker_party, $last_round->getAttackersDetails());
+		$losses->defenders = $this->getDetailedLossesForParty($this->_defender_party, $last_round->getDefendersDetails());;
+				
+		return $losses; 
 		
 	}
 	
