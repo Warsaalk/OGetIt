@@ -41,7 +41,26 @@ class OGetIt_Fleet {
 		$techData->technology = $technology;
 		$techData->count = $count;
 		
-		$this->_technologies[] = $techData;
+		$this->_technologies[$technology->getType()] = $techData;
+		
+	}
+	
+	/**
+	 * @param integer $type
+	 * @return \stdClass|NULL
+	 */
+	public function getTechnology($type) {
+		
+		return isset($this->_technologies[$type]) ? $this->_technologies[$type] : null;
+		
+	}
+	
+	/**
+	 * @return \stdClass
+	 */
+	public function getTechnologies() {
+		
+		return $this->_technologies;
 		
 	}
 	
