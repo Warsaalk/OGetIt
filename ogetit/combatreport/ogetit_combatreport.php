@@ -221,7 +221,11 @@ class OGetIt_CombatReport {
 			
 			$this->_combat_rounds[] = new OGetIt_CombatRound(
 				$rawRound['round_number'], 
-				$rawRound['statistics']
+				$rawRound['statistics'],
+				$rawRound['attacker_ships'],
+				$rawRound['attacker_ship_losses'],
+				$rawRound['defender_ships'],
+				$rawRound['defender_ship_losses']
 			);
 			
 		}		

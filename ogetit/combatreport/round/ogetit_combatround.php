@@ -13,13 +13,64 @@ class OGetIt_CombatRound {
 	 * @var OGetIt_CombatRound_Stats
 	 */
 	private $_statistics;
+	
+	/** 
+	 * @var array
+	 */
+	private $_attacker_fleet_details;
 
-	public function __construct($number, $statistics) {
+	/**
+	 * @var array
+	 */
+	private $_defender_fleet_details;
+
+	/**
+	 * @param integer $number
+	 * @param array $statistics
+	 * @param array $attacker_ships
+	 * @param array $attacker_ship_losses
+	 * @param array $defender_ships
+	 * @param array $defender_ship_losses
+	 */
+	public function __construct($number, $statistics, $attacker_ships, $attacker_ship_losses, $defender_ships, $defender_ship_losses) {
 		
 		$this->_number = $number;
 		
 		$this->_statistics = OGetIt_CombatRound_Stats::createInstance($statistics);
 
+		$this->_attacker_fleet_details = $this->loadFleetDetails($attacker_ships, $attacker_ship_losses);
+		$this->_defender_fleet_details = $this->loadFleetDetails($defender_ships, $defender_ship_losses);
+		
+	}
+	
+	/**
+	 * @param array $ships
+	 * @param array $ship_losses
+	 * @return NULL
+	 */
+	private function loadFleetDetails($ships, $ship_losses) {
+		
+		$details = array();
+		
+		foreach ($ships as $data) {
+			
+			$combat_index = $data['owner'];
+			
+			if (!isset($details[$combat_index])) $details[$combat_index] = array();
+			
+			$details[$combat_index][$data['ship_type']] = new \stdClass();
+			$details[$combat_index][$data['ship_type']]->ships = $data['count'];
+			
+		}
+		
+		foreach ($ship_losses as $data) {
+												
+			$details[$data['owner']][$data['ship_type']]->lost = (int)$data['count'];
+				
+		}
+		
+		return $details;
+		
 	}
 	
 	/**
