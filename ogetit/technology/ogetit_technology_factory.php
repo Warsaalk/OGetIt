@@ -36,30 +36,30 @@ class OGetIt_Technology_Factory {
 		
 		switch ($type) {
 			//Ships			
-			case 202: $technology = new t202_Small_Cargo();
-			case 203: $technology = new t203_Large_Cargo();
-			case 204: $technology = new t204_Light_Fighter();
-			case 205: $technology = new t205_Heavy_Fighter();
-			case 206: $technology = new t206_Cruiser();
-			case 207: $technology = new t207_Battleship();
-			case 208: $technology = new t208_Colony_Ship();
-			case 209: $technology = new t209_Recycler();
-			case 210: $technology = new t210_Espionage_Probe();
-			case 211: $technology = new t211_Bomber();
-			case 212: $technology = new t212_Solar_Satellite();
-			case 213: $technology = new t213_Destroyer();
-			case 214: $technology = new t214_Deathstar();
-			case 215: $technology = new t215_Battlecruiser();
+			case 202: $technology = new t202_Small_Cargo(); break;
+			case 203: $technology = new t203_Large_Cargo(); break;
+			case 204: $technology = new t204_Light_Fighter(); break;
+			case 205: $technology = new t205_Heavy_Fighter(); break;
+			case 206: $technology = new t206_Cruiser(); break;
+			case 207: $technology = new t207_Battleship(); break;
+			case 208: $technology = new t208_Colony_Ship(); break;
+			case 209: $technology = new t209_Recycler(); break;
+			case 210: $technology = new t210_Espionage_Probe(); break;
+			case 211: $technology = new t211_Bomber(); break;
+			case 212: $technology = new t212_Solar_Satellite(); break;
+			case 213: $technology = new t213_Destroyer(); break;
+			case 214: $technology = new t214_Deathstar(); break;
+			case 215: $technology = new t215_Battlecruiser(); break;
 			
 			//Defence
-			case 401: $technology = new t401_Rocket_Launcher();
-			case 402: $technology = new t402_Light_Laser();
-			case 403: $technology = new t403_Heavy_Laser();
-			case 404: $technology = new t404_Gauss_Cannon();
-			case 405: $technology = new t405_Ion_Cannon();
-			case 406: $technology = new t406_Plasma_Turret();
-			case 407: $technology = new t407_Small_Shield_Dome();
-			case 408: $technology = new t408_Large_Shield_Dome();
+			case 401: $technology = new t401_Rocket_Launcher(); break;
+			case 402: $technology = new t402_Light_Laser(); break;
+			case 403: $technology = new t403_Heavy_Laser(); break;
+			case 404: $technology = new t404_Gauss_Cannon(); break;
+			case 405: $technology = new t405_Ion_Cannon(); break;
+			case 406: $technology = new t406_Plasma_Turret(); break;
+			case 407: $technology = new t407_Small_Shield_Dome(); break;
+			case 408: $technology = new t408_Large_Shield_Dome(); break;
 			
 			/*
 			 * default: throws new OGetIt_Exception('test');
