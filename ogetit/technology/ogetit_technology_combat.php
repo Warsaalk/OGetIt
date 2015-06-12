@@ -61,4 +61,18 @@ abstract class OGetIt_Technology_Combat extends OGetIt_Technology {
 		
 	}
 	
+	/**
+	 * @param integer $count
+	 * @return StdClass Properties: {metal} & {crystal} & {deuterium}
+	 */
+	public function getCosts($count) {
+		
+		return (object) array(
+			'metal' => $this->getMetal() * $count,
+			'crystal' => $this->getCrystal() * $count,
+			'deuterium' => $this->getDeuterium() * $count	
+		);
+		
+	}
+	
 }
