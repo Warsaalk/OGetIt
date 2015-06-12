@@ -46,7 +46,7 @@ class OGetIt_CombatRound {
 	/**
 	 * @param array $ships
 	 * @param array $ship_losses
-	 * @return NULL
+	 * @return array
 	 */
 	private function loadFleetDetails($ships, $ship_losses) {
 		
