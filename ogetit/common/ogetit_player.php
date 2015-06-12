@@ -114,4 +114,13 @@ class OGetIt_Player {
 		
 	}
 	
+	/**
+	 * @return OGetIt_Fleet[]
+	 */
+	public function getFleets() {
+		
+		return $this->_fleet;
+		
+	}
+	
 }
