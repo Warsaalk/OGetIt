@@ -60,6 +60,15 @@ class OGetIt_CombatParty {
 	}
 	
 	/**
+	 * @return OGetIt_Player[]
+	 */
+	public function getPlayers() {
+		
+		return $this->_players;
+		
+	}
+	
+	/**
 	 * @param integer $combat_index
 	 * @return OGetIt_Player|NULL
 	 */
@@ -69,6 +78,22 @@ class OGetIt_CombatParty {
 			
 			if ($player->getFleetByCombatIndex($combat_index) !== null) return $player;
 			
+		}
+		
+		return null;
+		
+	}
+	
+	/**
+	 * @param integer $combat_index
+	 * @return OGetIt_Fleet\NULL
+	 */
+	public function getFleetByCombatIndex($combat_index) {
+		
+		foreach ($this->_players as $player) {
+				
+			if (($fleet = $player->getFleetByCombatIndex($combat_index)) !== null) return $fleet;
+				
 		}
 		
 		return null;
