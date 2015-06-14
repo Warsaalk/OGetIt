@@ -1,8 +1,9 @@
 <?php
 
-namespace OGetIt\Common;
+namespace OGetIt\CombatReport\Fleet;
 
 use OGetIt\Technology\OGetIt_Technology;
+use OGetIt\Common\OGetIt_Planet;
 
 class OGetIt_Fleet {
 	
@@ -12,9 +13,9 @@ class OGetIt_Fleet {
 	private $_planet;
 	
 	/**
-	 * @var OGetIt_Technology[]
+	 * @var OGetIt_Technology_State[] 
 	 */
-	private $_technologies = array();
+	private $_state = array();
 	
 	/**
 	 * @var integer
@@ -34,14 +35,18 @@ class OGetIt_Fleet {
 	
 	/**
 	 * @param OGetIt_Technology $technology
+	 * @param integer $count
+	 * @param integer $lost
 	 */
-	public function addTechnology($technology, $count) {
+	public function addTechnologyState($technology, $count, $lost = false) {
 		
-		$techData = new \stdClass();
-		$techData->technology = $technology;
-		$techData->count = $count;
+		$techState = new OGetIt_Technology_State(
+			$technology, 
+			$count, 
+			$lost
+		);
 		
-		$this->_technologies[$technology->getType()] = $techData;
+		$this->_state[$technology->getType()] = $techState;
 		
 	}
 	
@@ -49,9 +54,9 @@ class OGetIt_Fleet {
 	 * @param integer $type
 	 * @return \stdClass|NULL
 	 */
-	public function getTechnology($type) {
+	public function getTechnologyState($type) {
 		
-		return isset($this->_technologies[$type]) ? $this->_technologies[$type] : null;
+		return isset($this->_state[$type]) ? $this->_state[$type] : null;
 		
 	}
 	
@@ -60,7 +65,7 @@ class OGetIt_Fleet {
 	 */
 	public function getTechnologies() {
 		
-		return $this->_technologies;
+		return $this->_state;
 		
 	}
 	
@@ -80,6 +85,13 @@ class OGetIt_Fleet {
 		
 		return $this->_combat_index;
 		
+	}
+	
+
+	public function __clone() {
+	
+		$this->_state = array(); //Clear state
+	
 	}
 	
 }

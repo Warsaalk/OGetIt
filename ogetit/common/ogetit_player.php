@@ -2,7 +2,7 @@
 
 namespace OGetIt\Common;
 
-use OGetIt\Common\OGetIt_Fleet;
+use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
 
 class OGetIt_Player {
 
@@ -29,7 +29,7 @@ class OGetIt_Player {
 	/**
 	 * @var OGetIt_Fleet[]
 	 */
-	private $_fleet = array();
+	private $_fleets = array();
 	
 	/**
 	 * @param string $name
@@ -58,7 +58,7 @@ class OGetIt_Player {
 	 */
 	public function addFleet(OGetIt_Fleet $fleet) {
 		
-		$this->_fleet[] = $fleet;
+		$this->_fleets[] = $fleet;
 		
 	}
 
@@ -68,7 +68,7 @@ class OGetIt_Player {
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 		
-		foreach ($this->_fleet as $fleet) {
+		foreach ($this->_fleets as $fleet) {
 				
 			if ($fleet->getCombatIndex() === $combat_index) return $fleet;
 				
@@ -119,7 +119,19 @@ class OGetIt_Player {
 	 */
 	public function getFleets() {
 		
-		return $this->_fleet;
+		return $this->_fleets;
+		
+	}
+	
+	public function __clone() {
+		
+		$fleets = array();
+		
+		foreach ($this->_fleets as $fleet) {
+			$fleets[] = clone $fleet;
+		}
+		
+		$this->_fleets = $fleets; //Clone the fleets
 		
 	}
 	
