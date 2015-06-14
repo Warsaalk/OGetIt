@@ -157,7 +157,7 @@ class OGetIt_CombatRound {
 	}
 	
 	/**
-	 * @return array
+	 * @return OGetIt_Player[]
 	 */
 	public function getAttackersDetails() {
 		
@@ -187,7 +187,7 @@ class OGetIt_CombatRound {
 	}
 	
 	/**
-	 * @return array
+	 * @return OGetIt_Player[]
 	 */
 	public function getDefendersDetails() {
 		
