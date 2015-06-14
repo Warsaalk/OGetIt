@@ -65,6 +65,11 @@ class OGetIt_CombatReport {
 	private $_combat_rounds;
 	
 	/**
+	 * @var OGetIt_CombatReport_Result
+	 */
+	private $_combatreport_result;
+	
+	/**
 	 * @param string $api_data
 	 * @return OGetIt_CombatReport
 	 */
@@ -142,6 +147,8 @@ class OGetIt_CombatReport {
 		$this->_debris = new \stdClass();
 		$this->_debris->metal = $debris_metal;
 		$this->_debris->crystal = $debris_crystal;
+		
+		$this->_combatreport_result = new OGetIt_CombatReport_Result($this);
 		
 	}
 	
@@ -271,6 +278,15 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
+	 * @return integer
+	 */
+	public function getRoundCount() {
+		
+		return $this->_combat_rounds_count;
+		
+	}
+	
+	/**
 	 * @return OGetIt_CombatRound[]
 	 */
 	public function getRounds() {
@@ -286,6 +302,15 @@ class OGetIt_CombatReport {
 	public function getRound($number) {
 		
 		return isset($this->_combat_rounds[$number]) ? $this->_combat_rounds[$number] : null;
+		
+	}
+	
+	/**
+	 * @return OGetIt_CombatReport_Result
+	 */
+	public function getResult() {
+		
+		return $this->_combatreport_result;
 		
 	}
 	
