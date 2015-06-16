@@ -5,6 +5,8 @@ namespace OGetIt\CombatReport\Fleet;
 use OGetIt\Technology\OGetIt_Technology;
 use OGetIt\Common\OGetIt_Planet;
 use OGetIt\Common\OGetIt_Resources;
+use OGetIt\Common\OGetIt_Player;
+use OGetIt;
 
 class OGetIt_Fleet {
 	
@@ -12,6 +14,11 @@ class OGetIt_Fleet {
 	 * @var OGetIt_Planet
 	 */
 	private $_planet;
+	
+	/**
+	 * @var OGetIt_Player
+	 */
+	private $_player;
 	
 	/**
 	 * @var OGetIt_Technology_State[] 
@@ -67,6 +74,24 @@ class OGetIt_Fleet {
 	public function getTechnologyStates() {
 		
 		return $this->_state;
+		
+	}
+	
+	/**
+	 * @param OGetIt_Player $player
+	 */
+	public function setPlayer(OGetIt_Player $player) {
+		
+		$this->_player = $player;
+		
+	}
+	
+	/**
+	 * @return OGetIt_Player
+	 */
+	public function getPlayer() {
+		
+		return $this->_player;
 		
 	}
 	

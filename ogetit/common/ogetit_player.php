@@ -58,6 +58,7 @@ class OGetIt_Player {
 	 */
 	public function addFleet(OGetIt_Fleet $fleet) {
 		
+		$fleet->setPlayer($this);
 		$this->_fleets[] = $fleet;
 		
 	}
@@ -128,7 +129,9 @@ class OGetIt_Player {
 		$fleets = array();
 		
 		foreach ($this->_fleets as $fleet) {
-			$fleets[] = clone $fleet;
+			$clone = clone $fleet;
+			$clone->setPlayer($this);
+			$fleets[] = $clone;
 		}
 		
 		$this->_fleets = $fleets; //Clone the fleets
