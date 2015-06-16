@@ -7,6 +7,11 @@ use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
 class OGetIt_Player {
 
 	/**
+	 * @var integer
+	 */
+	private $_id;
+	
+	/**
 	 * @var string
 	 */
 	private $_name;
@@ -33,10 +38,12 @@ class OGetIt_Player {
 	
 	/**
 	 * @param string $name
+	 * @param integer $id
 	 */
-	public function __construct($name) {
+	public function __construct($name, $id = null) {
 		
 		$this->_name = $name;
+		$this->_id = $id;
 		
 	}
 	
@@ -76,6 +83,15 @@ class OGetIt_Player {
 		}
 		
 		return null;
+		
+	}
+	
+	/**
+	 * @return integer
+	 */
+	public function getId() {
+		
+		return $this->_id;
 		
 	}
 	

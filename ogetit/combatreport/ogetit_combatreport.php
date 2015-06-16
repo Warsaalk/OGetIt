@@ -70,6 +70,11 @@ class OGetIt_CombatReport {
 	private $_combatreport_calculator;
 	
 	/**
+	 * @var integer
+	 */
+	private $_player_id_count = 0;
+	
+	/**
 	 * @param string $api_data
 	 * @return OGetIt_CombatReport
 	 */
@@ -179,23 +184,27 @@ class OGetIt_CombatReport {
 	 */
 	private function loadParty($rawPlayers) {
 		
+		$playerIdMapping = array();
 		$players = array();
 		
 		foreach ($rawPlayers as $combat_index => $fleetData) {
 			
 			$rawPlayer = $fleetData['fleet_owner'];
-			
+			$playerId = isset($playerIdMapping[$rawPlayer]) ? $playerIdMapping[$rawPlayer] : false;
+
 			//Check if player already exists, if not create it & add it
-			if (!isset($players[$rawPlayer])) {
-				$players[$rawPlayer] = new OGetIt_Player($rawPlayer);
-				$players[$rawPlayer]->setCombatTechnologies(
+			if ($playerId === false) {
+				$playerId = $this->_player_id_count++;
+				$playerIdMapping[$rawPlayer] = $playerId;
+				$players[$playerId] = new OGetIt_Player($rawPlayer, $playerId);
+				$players[$playerId]->setCombatTechnologies(
 					$fleetData['fleet_armor_percentage'], 
 					$fleetData['fleet_shield_percentage'], 
 					$fleetData['fleet_weapon_percentage']
 				);
 			}
 			
-			$player = $players[$rawPlayer];
+			$player = $players[$playerId];
 			$planet = new OGetIt_Planet(
 				$fleetData['fleet_owner_planet_type'], 
 				$fleetData['fleet_owner_coordinates'], 
