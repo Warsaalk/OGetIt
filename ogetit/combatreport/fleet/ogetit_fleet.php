@@ -60,7 +60,7 @@ class OGetIt_Fleet {
 	
 	/**
 	 * @param integer $type
-	 * @return \stdClass|NULL
+	 * @return OGetIt_Technology_State|NULL
 	 */
 	public function getTechnologyState($type) {
 		
@@ -132,6 +132,27 @@ class OGetIt_Fleet {
 		}
 		
 		return $value;
+		
+	}
+	
+	/**
+	 * @param OGetIt_Fleet $other
+	 * @return OGetIt_Fleet
+	 */
+	public function difference(OGetIt_Fleet $other) {
+		
+		$fleet = clone $other;
+		
+		foreach ($this->_state as $type => $techState) {
+			
+			$count = $other->getTechnologyState($type) !== null ? $other->getTechnologyState($type)->getCount() : 0;
+			$lost = $techState->getCount() - $count;
+			
+			$fleet->addTechnologyState($techState->getTechnology(), $count, $lost);
+			
+		}
+		
+		return $fleet;
 		
 	}
 	
