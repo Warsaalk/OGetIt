@@ -1,6 +1,8 @@
 <?php
 namespace OGetIt\Technology;
 
+use OGetIt\Common\OGetIt_Resources;
+
 abstract class OGetIt_Technology {
 	
 	/**
@@ -72,6 +74,20 @@ abstract class OGetIt_Technology {
 	public function getDeuterium() {
 		
 		return $this->DEUTERIUM;
+		
+	}
+	
+	/**
+	 * @param integer $count
+	 * @return OGetIt_Resources
+	 */
+	public function getCosts($count = 1) {
+		
+		return new OGetIt_Resources(
+			$this->getMetal() * $count,
+			$this->getCrystal() * $count,
+			$this->getDeuterium() * $count	
+		);
 		
 	}
 	
