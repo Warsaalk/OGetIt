@@ -1,6 +1,7 @@
 <?php
 namespace OGetIt\Technology;
 
+use OGetIt\Common\OGetIt_Resources;
 abstract class OGetIt_Technology_Combat extends OGetIt_Technology {
 
 	/**
@@ -63,14 +64,14 @@ abstract class OGetIt_Technology_Combat extends OGetIt_Technology {
 	
 	/**
 	 * @param integer $count
-	 * @return StdClass Properties: {metal} & {crystal} & {deuterium}
+	 * @return OGetIt_Resources
 	 */
 	public function getCosts($count) {
 		
-		return (object) array(
-			'metal' => $this->getMetal() * $count,
-			'crystal' => $this->getCrystal() * $count,
-			'deuterium' => $this->getDeuterium() * $count	
+		return new OGetIt_Resources(
+			$this->getMetal() * $count,
+			$this->getCrystal() * $count,
+			$this->getDeuterium() * $count	
 		);
 		
 	}
