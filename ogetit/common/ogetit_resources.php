@@ -1,7 +1,7 @@
 <?php
 namespace OGetIt\Common;
 
-class Resources {
+class OGetIt_Resources {
 	
 	/**
 	 * @var integer
