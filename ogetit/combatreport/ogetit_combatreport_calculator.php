@@ -1,7 +1,7 @@
 <?php
 namespace OGetIt\CombatReport;
 
-class OGetIt_CombatReport_Result {
+class OGetIt_CombatReport_Calculator {
 	
 	/**
 	 * @var OGetIt_CombatReport

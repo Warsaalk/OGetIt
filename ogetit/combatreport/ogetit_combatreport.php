@@ -65,9 +65,9 @@ class OGetIt_CombatReport {
 	private $_combat_rounds;
 	
 	/**
-	 * @var OGetIt_CombatReport_Result
+	 * @var OGetIt_CombatReport_Calculator
 	 */
-	private $_combatreport_result;
+	private $_combatreport_calculator;
 	
 	/**
 	 * @param string $api_data
@@ -148,7 +148,7 @@ class OGetIt_CombatReport {
 		$this->_debris->metal = $debris_metal;
 		$this->_debris->crystal = $debris_crystal;
 		
-		$this->_combatreport_result = new OGetIt_CombatReport_Result($this);
+		$this->_combatreport_calculator = new OGetIt_CombatReport_Calculator($this);
 		
 	}
 	
@@ -306,11 +306,11 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_CombatReport_Result
+	 * @return OGetIt_CombatReport_Calculator
 	 */
-	public function getResult() {
+	public function getCalculator() {
 		
-		return $this->_combatreport_result;
+		return $this->_combatreport_calculator;
 		
 	}
 	
