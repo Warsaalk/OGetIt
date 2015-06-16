@@ -109,7 +109,7 @@ class OGetIt_CombatRound {
 				
 			}
 			
-			$players[] = $clone;
+			$players[$player->getId()] = $clone;
 			
 		}
 		

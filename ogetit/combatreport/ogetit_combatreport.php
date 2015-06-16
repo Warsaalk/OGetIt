@@ -224,7 +224,7 @@ class OGetIt_CombatReport {
 			
 		}
 		
-		return array_values($players);
+		return $players;
 		
 	}
 	
