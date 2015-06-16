@@ -11,19 +11,9 @@ abstract class OGetIt_Technology {
 	private $_type;
 	
 	/**
-	 * @var integer
+	 * @var OGetIt_Resources
 	 */
-	private $METAL;
-
-	/**
-	 * @var integer
-	 */
-	private $CRYSTAL;
-
-	/**
-	 * @var integer
-	 */
-	private $DEUTERIUM;
+	private $_resources;
 	
 	/**
 	 * @param integer $type
@@ -34,10 +24,7 @@ abstract class OGetIt_Technology {
 	protected function __construct($type, $metal, $crystal, $deuterium) {
 		
 		$this->_type = $type;
-		
-		$this->METAL = $metal;
-		$this->CRYSTAL = $crystal;
-		$this->DEUTERIUM = $deuterium;
+		$this->_resources = new OGetIt_Resources($metal, $crystal, $deuterium);
 		
 	}
 	
@@ -51,29 +38,11 @@ abstract class OGetIt_Technology {
 	}
 	
 	/**
-	 * @return integer
+	 * @return OGetIt_Resources
 	 */
-	public function getMetal() {
+	public function getResources() {
 		
-		return $this->METAL;
-		
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getCrystal() {
-		
-		return $this->CRYSTAL;
-		
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getDeuterium() {
-		
-		return $this->DEUTERIUM;
+		return $this->_resources;
 		
 	}
 	
@@ -84,9 +53,9 @@ abstract class OGetIt_Technology {
 	public function getCosts($count = 1) {
 		
 		return new OGetIt_Resources(
-			$this->getMetal() * $count,
-			$this->getCrystal() * $count,
-			$this->getDeuterium() * $count	
+			$this->_resources->getMetal() * $count,
+			$this->_resources->getCrystal() * $count,
+			$this->_resources->getDeuterium() * $count	
 		);
 		
 	}
