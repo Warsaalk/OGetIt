@@ -4,6 +4,7 @@ namespace OGetIt\CombatReport\Fleet;
 
 use OGetIt\Technology\OGetIt_Technology;
 use OGetIt\Common\OGetIt_Planet;
+use OGetIt\Common\OGetIt_Resources;
 
 class OGetIt_Fleet {
 	
@@ -63,7 +64,7 @@ class OGetIt_Fleet {
 	/**
 	 * @return \stdClass
 	 */
-	public function getTechnologies() {
+	public function getTechnologyStates() {
 		
 		return $this->_state;
 		
@@ -92,6 +93,21 @@ class OGetIt_Fleet {
 	
 		$this->_state = array(); //Clear state
 	
+	}
+	
+	/**
+	 * @return OGetIt_Resources
+	 */
+	public function getValue() {
+		
+		$value = new OGetIt_Resources(0, 0, 0);
+		
+		foreach ($this->_state as $techState) {
+			$value->add($techState->getValue());
+		}
+		
+		return $value;
+		
 	}
 	
 }

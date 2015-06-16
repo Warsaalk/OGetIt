@@ -2,11 +2,13 @@
 namespace OGetIt\CombatReport\Fleet;
 
 use OGetIt\Technology\OGetIt_Technology;
+use OGetIt\Technology\OGetIt_Technology_Combat;
+use OGetIt\Common\OGetIt_Resources;
 
 class OGetIt_Technology_State {
 	
 	/**
-	 * @var OGetIt_Technology
+	 * @var OGetIt_Technology_Combat
 	 */
 	private $_technology;
 	
@@ -21,7 +23,7 @@ class OGetIt_Technology_State {
 	private $_lost;	
 	
 	/**
-	 * @param OGetIt_Technology $technology
+	 * @param OGetIt_Technology_Combat $technology
 	 * @param integer $count
 	 * @param integer $lost
 	 */
@@ -57,6 +59,15 @@ class OGetIt_Technology_State {
 	public function getLost() {
 		
 		return $this->_lost;
+		
+	}
+	
+	/**
+	 * @return OGetIt_Resources
+	 */
+	public function getValue() {
+		
+		return $this->_technology->getCosts($this->_count);
 		
 	}
 	
