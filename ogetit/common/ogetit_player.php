@@ -69,6 +69,20 @@ class OGetIt_Player {
 		$this->_fleets[] = $fleet;
 		
 	}
+	
+	/**
+	 * @param OGetIt_Fleet $updatedFleet
+	 */
+	public function updateFleet(OGetIt_Fleet $updatedFleet) {
+		
+		foreach ($this->_fleets as $i => $fleet) {
+			if ($fleet->getCombatIndex() === $updatedFleet->getCombatIndex()) {
+				$this->_fleets[$i] = $updatedFleet;
+				break;
+			}
+		}
+		
+	}
 
 	/**
 	 * @param integer $combat_index
