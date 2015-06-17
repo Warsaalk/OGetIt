@@ -7,6 +7,8 @@ use OGetIt\Common\OGetIt_Player;
 use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
 use OGetIt\Technology\OGetIt_Technology_Factory;
 use OGetIt\CombatReport\Round\OGetIt_CombatRound;
+use OGetIt\Common\OGetIt_Resources;
+use OGetIt\Common\OGetIt\Common;
 
 class OGetIt_CombatReport {
 	
@@ -35,7 +37,7 @@ class OGetIt_CombatReport {
 	private $_combat_rounds_count;
 	
 	/**
-	 * @var \stdClass
+	 * @var OGetIt_Resources
 	 */
 	private $_loot;
 
@@ -144,10 +146,7 @@ class OGetIt_CombatReport {
 		$this->_attacker_party = new OGetIt_CombatParty($attacker_count, $attacker_losses);
 		$this->_defender_party = new OGetIt_CombatParty($defender_count, $defender_losses);
 		
-		$this->_loot = new \stdClass();
-		$this->_loot->metal = $loot_metal;
-		$this->_loot->crystal = $loot_crystal;
-		$this->_loot->deuterium = $loot_deuterium;
+		$this->_loot = new OGetIt_Resources($loot_metal, $loot_crystal, $loot_deuterium);
 		
 		$this->_debris = new \stdClass();
 		$this->_debris->metal = $debris_metal;
@@ -251,7 +250,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return stdClass Properties: {metal} & {crystal} & {deuterium}
+	 * @return OGetIt_Resources
 	 */
 	public function getLoot() {
 		
