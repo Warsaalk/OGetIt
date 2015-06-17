@@ -100,4 +100,16 @@ class OGetIt_CombatParty {
 		
 	}
 	
+	public function __clone() {
+		
+		$players = array();
+		
+		foreach($this->_players as $id => $player) {
+			$players[$id] = clone $player;
+		}
+		
+		$this->setPlayers($players);
+		
+	}
+	
 }
