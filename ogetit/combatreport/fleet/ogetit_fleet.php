@@ -7,8 +7,12 @@ use OGetIt\Common\OGetIt_Planet;
 use OGetIt\Common\OGetIt_Resources;
 use OGetIt\Common\OGetIt_Player;
 use OGetIt;
+use OGetIt\Common\OGetIt_Value;
+use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
 
-class OGetIt_Fleet {
+class OGetIt_Fleet implements OGetIt_Value {
+	
+	use OGetIt_Combat_ChildValue;
 	
 	/**
 	 * @var OGetIt_Planet
@@ -126,13 +130,7 @@ class OGetIt_Fleet {
 	 */
 	public function getValue($byLosses = false) {
 		
-		$value = new OGetIt_Resources(0, 0, 0);
-		
-		foreach ($this->_state as $techState) {
-			$value->add($techState->getValue($byLosses));
-		}
-		
-		return $value;
+		return $this->getChildrenValue($this->_state, $byLosses);
 		
 	}
 	

@@ -4,8 +4,9 @@ namespace OGetIt\CombatReport\Fleet;
 use OGetIt\Technology\OGetIt_Technology;
 use OGetIt\Technology\OGetIt_Technology_Combat;
 use OGetIt\Common\OGetIt_Resources;
+use OGetIt\Common\OGetIt_Value;
 
-class OGetIt_Technology_State {
+class OGetIt_Technology_State implements OGetIt_Value {
 	
 	/**
 	 * @var OGetIt_Technology_Combat

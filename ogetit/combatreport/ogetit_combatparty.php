@@ -3,9 +3,13 @@
 namespace OGetIt\CombatReport;
 
 use OGetIt\Common\OGetIt_Player;
+use OGetIt\Common\OGetIt_Value;
+use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
 
-class OGetIt_CombatParty {
+class OGetIt_CombatParty implements OGetIt_Value {
 
+	use OGetIt_Combat_ChildValue;
+	
 	/**
 	 * @var integer
 	 */
@@ -97,6 +101,16 @@ class OGetIt_CombatParty {
 		}
 		
 		return null;
+		
+	}
+	
+	/**
+	 * @param boolean $byLosses
+	 * @return OGetIt_Resources
+	 */
+	public function getValue($byLosses = false) {
+		
+		return $this->getChildrenValue($this->_players, $byLosses);
 		
 	}
 	
