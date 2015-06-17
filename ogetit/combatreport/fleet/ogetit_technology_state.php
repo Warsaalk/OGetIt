@@ -54,7 +54,7 @@ class OGetIt_Technology_State {
 	}
 	
 	/**
-	 * @return Ambigous <number, boolean>
+	 * @return integer|boolean
 	 */
 	public function getLost() {
 		
@@ -63,11 +63,14 @@ class OGetIt_Technology_State {
 	}
 	
 	/**
+	 * @param boolean $byLosses
 	 * @return OGetIt_Resources
 	 */
-	public function getValue() {
+	public function getValue($byLosses = false) {
 		
-		return $this->_technology->getCosts($this->_count);
+		$count = $byLosses === true ? $this->_lost : $this->_count;
+		
+		return $this->_technology->getCosts($count);
 		
 	}
 	

@@ -121,14 +121,15 @@ class OGetIt_Fleet {
 	}
 	
 	/**
+	 * @param boolean $byLosses
 	 * @return OGetIt_Resources
 	 */
-	public function getValue() {
+	public function getValue($byLosses = false) {
 		
 		$value = new OGetIt_Resources(0, 0, 0);
 		
 		foreach ($this->_state as $techState) {
-			$value->add($techState->getValue());
+			$value->add($techState->getValue($byLosses));
 		}
 		
 		return $value;
