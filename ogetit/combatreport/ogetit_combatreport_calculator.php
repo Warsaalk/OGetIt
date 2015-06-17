@@ -34,4 +34,13 @@ class OGetIt_CombatReport_Calculator {
 		
 	}
 	
+	/**
+	 * @return OGetIt_CombatParty[]
+	 */
+	public function getFinalResult() {
+		
+		return $this->getRoundDifference(0, $this->_combatreport->getRoundCount());
+		
+	}
+	
 }
