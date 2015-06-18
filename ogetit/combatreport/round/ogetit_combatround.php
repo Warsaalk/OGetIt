@@ -153,54 +153,12 @@ class OGetIt_CombatRound {
 	}
 	
 	/**
-	 * @param integer $combat_index
-	 * @param integer $ship_type
-	 * @return array
-	 */
-	public function getAttackerShipsDetails($combat_index, $ship_type) {
-		
-		return isset($this->_attacker_fleet_details[$combat_index][$ship_type]) ? $this->_attacker_fleet_details[$combat_index][$ship_type] : null;
-		
-	}
-	
-	/**
-	 * @param integer $combat_index
-	 * @return array
-	 */
-	public function getAttackerFleetDetails($combat_index) {
-		
-		return isset($this->_attacker_fleet_details[$combat_index]) ? $this->_attacker_fleet_details[$combat_index] : null;
-		
-	}
-	
-	/**
 	 * @return OGetIt_Player[]
 	 */
 	public function getAttackersDetails() {
 		
 		return $this->_attacker_fleet_details;
 		
-	}
-	
-	/**
-	 * @param integer $combat_index
-	 * @param integer $ship_type
-	 * @return array
-	 */
-	public function getDefenderShipsDetails($combat_index, $ship_type) {
-		
-		return isset($this->_defender_fleet_details[$combat_index][$ship_type]) ? $this->_defender_fleet_details[$combat_index][$ship_type] : null;
-		
-	}
-	
-	/**
-	 * @param integer $combat_index
-	 * @return array
-	 */
-	public function getDefenderFleetDetails($combat_index) {
-		
-		return isset($this->_defender_fleet_details[$combat_index]) ? $this->_defender_fleet_details[$combat_index] : null;
-				
 	}
 	
 	/**
