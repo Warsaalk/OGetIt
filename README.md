@@ -36,7 +36,12 @@ http://curl.haxx.se/libcurl/c/libcurl-errors.html
 	INVALID_PATH = 4004;
 	INTERNAL_ERROR = 5000;
 	INVALID_CR_ID = 6000;
-	
+
+##Contributing
+
+If you want to contribute code please fork this repository and create a pull request to merge your changes.
+Your changes will be reviewed and merged afterwards if approved by the repository maintainers.
+
 ##License
 
 GNU Lesser General Public License, Version 3
