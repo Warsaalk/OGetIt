@@ -90,7 +90,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return \stdClass
+	 * @return OGetIt_Technology_State[]
 	 */
 	public function getTechnologyStates() {
 		
