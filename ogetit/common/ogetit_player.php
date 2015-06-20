@@ -21,6 +21,7 @@ namespace OGetIt\Common;
 
 use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
 use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
+use OGetIt\CombatReport\Fleet\OGetIt\CombatReport\Fleet;
 
 class OGetIt_Player implements OGetIt_Value {
 
@@ -121,6 +122,30 @@ class OGetIt_Player implements OGetIt_Value {
 	}
 	
 	/**
+	 * @return OGetIt_Fleet[]
+	 */
+	public function getFleets() {
+		
+		return $this->_fleets;
+		
+	}
+	
+	/**
+	 * @return OGetIt_Fleet
+	 */
+	public function getFleetsMerged() {
+		
+		$merged = new OGetIt_Fleet();
+		
+		foreach ($this->_fleets as $fleet) {
+			$merged->merge($fleet);
+		}
+		
+		return $merged;
+		
+	}
+	
+	/**
 	 * @param boolean $byLosses
 	 * @return OGetIt_Resources
 	 */
@@ -172,15 +197,6 @@ class OGetIt_Player implements OGetIt_Value {
 	public function getWeapon() {
 		
 		return $this->_weapon;
-		
-	}
-	
-	/**
-	 * @return OGetIt_Fleet[]
-	 */
-	public function getFleets() {
-		
-		return $this->_fleets;
 		
 	}
 	

@@ -61,7 +61,7 @@ class OGetIt_Technology_State implements OGetIt_Value {
 		
 		return $this->_technology;
 		
-	}	
+	}
 	
 	/**
 	 * @return integer
@@ -73,11 +73,29 @@ class OGetIt_Technology_State implements OGetIt_Value {
 	}
 	
 	/**
+	 * @param integer $count
+	 */
+	public function addCount($count) {
+		
+		$this->_count += $count;
+		
+	}
+	
+	/**
 	 * @return integer|boolean
 	 */
 	public function getLost() {
 		
 		return $this->_lost;
+		
+	}
+	
+	/**
+	 * @param integer $lost
+	 */
+	public function addLost($lost) {
+		
+		$this->_lost += $lost;
 		
 	}
 	

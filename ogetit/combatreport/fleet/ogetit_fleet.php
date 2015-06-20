@@ -55,7 +55,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	 * @param OGetIt_Planet $planet
 	 * @parem integer $combat_index
 	 */
-	public function __construct($planet, $combat_index) {
+	public function __construct($planet = null, $combat_index = null) {
 		
 		$this->_planet = $planet;
 		$this->_combat_index = $combat_index;
@@ -69,13 +69,24 @@ class OGetIt_Fleet implements OGetIt_Value {
 	 */
 	public function addTechnologyState($technology, $count, $lost = false) {
 		
-		$techState = new OGetIt_Technology_State(
-			$technology, 
-			$count, 
-			$lost
-		);
+		if (isset($this->_state[$technology->getType()])) {
+			
+			$this->_state[$technology->getType()]->addCount($count);
+			if ($lost !== false) {
+				$this->_state[$technology->getType()]->addLost($lost);
+			}
+			
+		} else {
 		
-		$this->_state[$technology->getType()] = $techState;
+			$techState = new OGetIt_Technology_State(
+				$technology, 
+				$count, 
+				$lost
+			);
+			
+			$this->_state[$technology->getType()] = $techState;
+			
+		}
 		
 	}
 	
@@ -139,6 +150,23 @@ class OGetIt_Fleet implements OGetIt_Value {
 	
 		$this->_state = array(); //Clear state
 	
+	}
+	
+	/**
+	 * @param OGetIt_Fleet $fleet
+	 */
+	public function merge(OGetIt_Fleet $fleet) {
+		
+		foreach ($fleet->getTechnologyStates() as $techState) {
+			
+			$this->addTechnologyState(
+				$techState->getTechnology(), 
+				$techState->getCount(),
+				$techState->getLost()
+			);
+			
+		}
+		
 	}
 	
 	/**
