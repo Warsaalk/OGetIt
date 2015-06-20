@@ -267,6 +267,33 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
+	 * @return OGetIt_Planet
+	 */
+	public function getPlanet() {
+		
+		return $this->_planet;
+		
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getWinner() {
+		
+		return $this->_winner;
+		
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getLootPercentage() {
+		
+		return $this->_loot_percentage;
+		
+	}
+	
+	/**
 	 * @return OGetIt_Resources
 	 */
 	public function getLoot() {
