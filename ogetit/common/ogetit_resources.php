@@ -77,6 +77,15 @@ class OGetIt_Resources {
 	}
 	
 	/**
+	 * @return integer
+	 */
+	public function getTotal() {
+		
+		return $this->_metal + $this->_crystal + $this->_deuterium;
+		
+	}
+	
+	/**
 	 * @param OGetIt_Resources $resources
 	 */
 	public function subtract(OGetIt_Resources $resources) {
