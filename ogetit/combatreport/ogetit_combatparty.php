@@ -22,6 +22,7 @@ namespace OGetIt\CombatReport;
 use OGetIt\Common\OGetIt_Player;
 use OGetIt\Common\OGetIt_Value;
 use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
+use OGetIt\HarvestReport\OGetIt_HarvestReport;
 
 class OGetIt_CombatParty implements OGetIt_Value {
 
@@ -41,6 +42,11 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	 * @var OGetIt_Player[]
 	 */
 	private $_players;
+	
+	/**
+	 * @var OGetIt_HarvestReport[]
+	 */
+	private $_harvestreports;
 	
 	/**
 	 * @param integer $count
@@ -140,6 +146,24 @@ class OGetIt_CombatParty implements OGetIt_Value {
 		}
 		
 		$this->setPlayers($players);
+		
+	}
+	
+	/**
+	 * @param OGetIt_HarvestReport $harvestreport
+	 */
+	public function addHarvestReport(OGetIt_HarvestReport $harvestreport) {
+		
+		$this->_harvestreports[] = $harvestreport;
+		
+	}
+	
+	/**
+	 * @return OGetIt_HarvestReport
+	 */
+	public function getHarvestReport() {
+		
+		return $this->_harvestreports;
 		
 	}
 	
