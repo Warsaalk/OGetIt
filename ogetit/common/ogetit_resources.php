@@ -87,6 +87,7 @@ class OGetIt_Resources {
 	
 	/**
 	 * @param OGetIt_Resources $resources
+	 * @return OGetIt_Resources
 	 */
 	public function subtract(OGetIt_Resources $resources) {
 		
@@ -94,16 +95,35 @@ class OGetIt_Resources {
 		$this->_crystal -= $resources->getCrystal();
 		$this->_deuterium -= $resources->getDeuterium();
 		
+		return $this;
+		
 	}
 	
 	/**
 	 * @param OGetIt_Resources $resources
+	 * @return OGetIt_Resources
 	 */
 	public function add(OGetIt_Resources $resources) {
 		
 		$this->_metal += $resources->getMetal();
 		$this->_crystal += $resources->getCrystal();
 		$this->_deuterium += $resources->getDeuterium();
+		
+		return $this;
+		
+	}
+	
+	/**
+	 * @param integer $number
+	 * @return OGetIt_Resources
+	 */
+	public function multiply($number) {
+		
+		$this->_metal *= $number;
+		$this->_crystal *= $number;
+		$this->_deuterium *= $number;
+		
+		return $this;
 		
 	}
 	
