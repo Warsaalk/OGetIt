@@ -46,7 +46,7 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	/**
 	 * @var OGetIt_HarvestReport[]
 	 */
-	private $_harvestreports;
+	private $_harvestreports = array();
 	
 	/**
 	 * @param integer $count
