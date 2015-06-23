@@ -360,6 +360,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
+	 * TODO:: Check if the coordinates are the same
 	 * @param OGetIt_CombatReport $raid
 	 */
 	public function addRaid(OGetIt_CombatReport $raid) {
@@ -374,6 +375,15 @@ class OGetIt_CombatReport {
 	public function getRaids() {
 		
 		return $this->_raids;
+		
+	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function hasRaids() {
+		
+		return !empty($this->_raids);
 		
 	}
 	
