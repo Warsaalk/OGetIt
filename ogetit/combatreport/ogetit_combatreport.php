@@ -26,7 +26,6 @@ use OGetIt\Technology\OGetIt_Technology_Factory;
 use OGetIt\CombatReport\Round\OGetIt_CombatRound;
 use OGetIt\Common\OGetIt_Resources;
 use OGetIt\Common\OGetIt\Common;
-use OGetIt\Common\OGetIt\Common;
 
 class OGetIt_CombatReport {
 	
