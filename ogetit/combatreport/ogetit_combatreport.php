@@ -86,7 +86,7 @@ class OGetIt_CombatReport {
 	/**
 	 * @var OGetIt_CombatReport[]
 	 */
-	private $_raids;
+	private $_raids = array();
 	
 	/**
 	 * @var OGetIt_CombatReport_Calculator
