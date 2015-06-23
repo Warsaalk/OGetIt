@@ -1,6 +1,7 @@
 <?php
 namespace OGetIt\HarvestReport;
 
+use OGetIt\Common\OGetIt_Resources;
 class OGetIt_HarvestReport {
 
 	/**
@@ -9,14 +10,9 @@ class OGetIt_HarvestReport {
 	private $_coordinates;
 
 	/**
-	 * @var integer
+	 * @var OGetIt_Resources
 	 */
-	private $_metal;
-	
-	/**
-	 * @var integer
-	 */
-	private $_crystal;
+	private $_resources;
 	
 	/**
 	 * @param unknown $coordinates Format; 1:100:10
@@ -26,8 +22,7 @@ class OGetIt_HarvestReport {
 	public function __construct($coordinates, $metal, $crystal) {
 		
 		$this->_coordinates = $coordinates;
-		$this->_metal = $metal;
-		$this->_crystal = $crystal;
+		$this->_resources = new OGetIt_Resources($metal, $crystal, 0);
 		
 	}
 	
@@ -45,7 +40,7 @@ class OGetIt_HarvestReport {
 	 */
 	public function getMetal() {
 		
-		return $this->_metal;
+		return $this->_resources->getMetal();
 		
 	}
 
@@ -54,7 +49,16 @@ class OGetIt_HarvestReport {
 	 */
 	public function getCrystal() {
 		
-		return $this->_crystal;
+		return $this->_resources->getCrystal();
+		
+	}
+	
+	/**
+	 * @return OGetIt_Resources
+	 */
+	public function getResources() {
+		
+		return $this->_resources;
 		
 	}
 	
