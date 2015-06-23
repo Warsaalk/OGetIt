@@ -84,6 +84,11 @@ class OGetIt_CombatReport {
 	private $_combat_rounds;
 	
 	/**
+	 * @var OGetIt_CombatReport[]
+	 */
+	private $_raids;
+	
+	/**
 	 * @var OGetIt_CombatReport_Calculator
 	 */
 	private $_combatreport_calculator;
@@ -351,6 +356,24 @@ class OGetIt_CombatReport {
 	public function getRound($number) {
 		
 		return isset($this->_combat_rounds[$number]) ? $this->_combat_rounds[$number] : null;
+		
+	}
+	
+	/**
+	 * @param OGetIt_CombatReport $raid
+	 */
+	public function addRaid(OGetIt_CombatReport $raid) {
+		
+		$this->_raids[] = $raid;
+		
+	}
+	
+	/**
+	 * @return OGetIt_CombatReport[]
+	 */
+	public function getRaids() {
+		
+		return $this->_raids;
 		
 	}
 	
