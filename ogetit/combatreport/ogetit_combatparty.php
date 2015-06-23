@@ -159,9 +159,9 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return OGetIt_HarvestReport
+	 * @return OGetIt_HarvestReport[]
 	 */
-	public function getHarvestReport() {
+	public function getHarvestReports() {
 		
 		return $this->_harvestreports;
 		
