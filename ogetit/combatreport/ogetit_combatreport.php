@@ -44,6 +44,16 @@ class OGetIt_CombatReport {
 	private $_planet;
 	
 	/**
+	 * @var string
+	 */
+	private $_time;
+	
+	/**
+	 * @var integer
+	 */
+	private $_timestamp;
+	
+	/**
 	 * @var integer
 	 */
 	private $_loot_percentage;
@@ -111,6 +121,8 @@ class OGetIt_CombatReport {
 			$generic['combat_coordinates'], 
 			$generic['combat_planet_type'],
 			$generic['combat_rounds'],
+			$generic['event_time'],
+			$generic['event_timestamp'],
 			$generic['loot_percentage'],
 			$generic['winner'],
 			$generic['units_lost_attackers'],
@@ -157,9 +169,11 @@ class OGetIt_CombatReport {
 	 * @param integer $debris_metal
 	 * @param integer $debris_crystal
 	 */
-	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
+	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $time, $timestamp, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
 		
 		$this->_id = $id;
+		$this->_time = $time;
+		$this->_timestamp = $timestamp;
 		$this->_loot_percentage = $loot_percentage;
 		$this->_combat_rounds_count = $combat_rounds;
 		$this->_winner = $winner;
@@ -265,6 +279,24 @@ class OGetIt_CombatReport {
 			);
 			
 		}		
+		
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getTime() {
+		
+		return $this->_time;
+		
+	}
+	
+	/**
+	 * @return integer
+	 */
+	public function getTimestamp() {
+		
+		return $this->_timestamp;
 		
 	}
 	
