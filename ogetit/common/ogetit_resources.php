@@ -43,9 +43,9 @@ class OGetIt_Resources {
 	 */
 	public function __construct($metal, $crystal, $deuterium) {
 		
-		$this->_metal = $metal;
-		$this->_crystal = $crystal;
-		$this->_deuterium = $deuterium;
+		$this->_metal = (int)$metal;
+		$this->_crystal = (int)$crystal;
+		$this->_deuterium = (int)$deuterium;
 		
 	}
 	
