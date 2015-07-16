@@ -75,17 +75,23 @@ class OGetIt {
 		
 	}
 	
+	private function getApiData($type, $label, $key, $username = false, $password = false) {
+		
+		$url = OGetIt_Api::constructUrl($type, $this, array(
+			'api_key' => $this->_apikey,
+			$label => $key
+		));
+		
+		return OGetIt_Api::getData($url, $username, $password); 
+		
+	}
+	
 	/**
 	 * @param string $cr_api_key
 	 */
 	public function getCombatReport($cr_api_key, $username = false, $password = false) {
 		
-		$url = OGetIt_Api::constructUrl(OGetIt_Api::TYPE_COMBATREPORT, $this, array(
-			'api_key' => $this->_apikey,
-			'cr_id' => $cr_api_key
-		));
-		
-		$data = OGetIt_Api::getData($url, $username, $password);
+		$data = $this->getApiData(OGetIt_Api::TYPE_COMBATREPORT, 'cr_id', $cr_api_key, $username, $password);
 				
 		return $data === false ? $data : OGetIt_CombatReport::createCombatReport($data);
 		
@@ -96,12 +102,7 @@ class OGetIt {
 	 */
 	public function getHarvestReport($rr_api_key, $username = false, $password = false) {
 		
-		$url = OGetIt_Api::constructUrl(OGetIt_Api::TYPE_HARVESTREPORT, $this, array(
-				'api_key' => $this->_apikey,
-				'rr_id' => $rr_api_key
-		));
-		
-		$data = OGetIt_Api::getData($url, $username, $password);
+		$data = $this->getApiData(OGetIt_Api::TYPE_HARVESTREPORT, 'rr_id', $rr_api_key, $username, $password);
 		
 		return $data === false ? $data : OGetIt_HarvestReport::createHarvestReport($data);
 		
@@ -112,13 +113,8 @@ class OGetIt {
 	 */
 	public function getSpyReport($sr_api_key, $username = false, $password = false) {
 		
-		$url = OGetIt_Api::constructUrl(OGetIt_Api::TYPE_SPYREPORT, $this, array(
-				'api_key' => $this->_apikey,
-				'sr_id' => $sr_api_key
-		));
-		
-		$data = OGetIt_Api::getData($url, $username, $password);
-		
+		$data = $this->getApiData(OGetIt_Api::TYPE_SPYREPORT, 'sr_id', $sr_api_key, $username, $password);
+				
 		return $data === false ? $data : OGetIt_SpyReport::createSpyReport($data);
 		
 	}
