@@ -35,6 +35,11 @@ class OGetIt_Api {
 	const TYPE_HARVESTREPORT = 'recycle/report';
 	
 	/**
+	 * @var string
+	 */
+	const TYPE_SPYREPORT = 'spy/report';
+	
+	/**
 	 * @param integer $error
 	 * @throws OGetIt_Exception
 	 */
