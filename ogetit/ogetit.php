@@ -21,6 +21,7 @@ namespace OGetIt;
 
 use OGetIt\Http\OGetIt_HttpRequest;
 use OGetIt\CombatReport\OGetIt_CombatReport;
+use OGetIt\HarvestReport\OGetIt_HarvestReport;
 
 class OGetIt { 
 	
@@ -86,6 +87,22 @@ class OGetIt {
 		$data = OGetIt_Api::getData($url, $username, $password);
 				
 		return $data === false ? $data : OGetIt_CombatReport::createCombatReport($data);
+		
+	}
+	
+	/**
+	 * @param string $rr_api_key
+	 */
+	public function getHarvestReport($rr_api_key, $username = false, $password = false) {
+		
+		$url = OGetIt_Api::constructUrl(OGetIt_Api::TYPE_HARVESTREPORT, $this, array(
+				'api_key' => $this->_apikey,
+				'rr_id' => $rr_api_key
+		));
+		
+		$data = OGetIt_Api::getData($url, $username, $password);
+		
+		return $data === false ? $data : OGetIt_HarvestReport::createHarvestReport($data);
 		
 	}
 	

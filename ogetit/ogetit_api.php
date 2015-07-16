@@ -28,7 +28,12 @@ class OGetIt_Api {
 	 * @var string
 	 */
 	const TYPE_COMBATREPORT = 'combat/report';
-
+	
+	/**
+	 * @var string
+	 */
+	const TYPE_HARVESTREPORT = 'recycle/report';
+	
 	/**
 	 * @param integer $error
 	 * @throws OGetIt_Exception
