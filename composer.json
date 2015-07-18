@@ -2,7 +2,6 @@
 	"name": "ogetit/ogetit",
     "description": "OGetIt is a open source PHP library for handling the new OGame API as of version 6.",
     "keywords": ["OGame", "UniverseView"],
-	"version": "0.0.2-beta",
     "type": "library",
     "license": "LGPL-3.0",
     "authors": [{"name": "Klaas Van Parys"}],
