@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity; 
 
-use OGetIt\Technology\OGetIt_Technology_Combat;
+use OGetIt\Technology\Technology_Combat;
 
-class t406_Plasma_Turret extends OGetIt_Technology_Combat {
+class t406_Plasma_Turret extends Technology_Combat {
 
 	const TYPE = 406;
 	

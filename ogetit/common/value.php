@@ -19,50 +19,8 @@
  */
 namespace OGetIt\Common;
 
-class OGetIt_DebrisField extends OGetIt_Coordinates {
-
-	/**
-	 * @var OGetIt_Resources
-	 */
-	private $_resources;
+interface Value {
 	
-	/**
-	 * @param string $type
-	 * @param string $coordinates
-	 */
-	public function __construct($coordinates, $metal, $crystal) {
-		
-		parent::__construct($coordinates);
-
-		$this->_resources = new OGetIt_Resources($metal, $crystal, 0);
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getMetal() {
-		
-		return $this->_resources->getMetal();
-		
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getCrystal() {
-		
-		return $this->_resources->getCrystal();
-		
-	}
-	
-	/**
-	 * @return OGetIt_Resources
-	 */
-	public function getResources() {
-		
-		return $this->_resources;
-		
-	}
+	public function getValue($byLosses = false);
 	
 }

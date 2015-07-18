@@ -19,21 +19,50 @@
  */
 namespace OGetIt;
 
-use OGetIt\CombatReport\OGetIt_CombatReport;
+use OGetIt\CombatReport\CombatReport;
+use OGetIt\HarvestReport\HarvestReport;
+use OGetIt\SpyReport\SpyReport;
 
-class OGetIt_Debug extends OGetIt { 
+class Debug extends OGetIt { 
 	
 	public function __construct() {}
+	
+	private function getData($url) {
+		
+		return json_decode(file_get_contents($url), true);
+		
+	}
 	
 	/**
 	 * @param string $dataUrl
 	 */
 	public function getCombatReport($dataUrl) {
-
-		$data = file_get_contents($dataUrl);
-		$data = json_decode($data, true);
 				
-		return $data === false ? $data : OGetIt_CombatReport::createCombatReport($data['RESULT_DATA']);
+		$data = $this->getData($dataUrl);
+		
+		return $data === false ? $data : CombatReport::createCombatReport($data['RESULT_DATA']);
+		
+	}
+	
+	/**
+	 * @param string $dataUrl
+	 */
+	public function getHarvestReport($dataUrl) {
+				
+		$data = $this->getData($dataUrl);
+		
+		return $data === false ? $data : HarvestReport::createHarvestReport($data['RESULT_DATA']);
+		
+	}
+	
+	/**
+	 * @param string $dataUrl
+	 */
+	public function getSpyReport($dataUrl) {
+				
+		$data = $this->getData($dataUrl);
+		
+		return $data === false ? $data : SpyReport::createSpyReport($data['RESULT_DATA']);
 		
 	}
 		

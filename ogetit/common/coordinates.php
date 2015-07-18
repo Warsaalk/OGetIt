@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Common;
 
-class OGetIt_Coordinates {
+class Coordinates {
 	
 	/**
 	 * @var string

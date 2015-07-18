@@ -19,15 +19,15 @@
  */
 namespace OGetIt\CombatReport;
 
-use OGetIt\Common\OGetIt_Planet;
-use OGetIt\Common\OGetIt_Player;
-use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
-use OGetIt\Technology\OGetIt_Technology_Factory;
-use OGetIt\CombatReport\Round\OGetIt_CombatRound;
-use OGetIt\Common\OGetIt_Resources;
-use OGetIt\Common\OGetIt_DebrisField;
+use OGetIt\Common\Planet;
+use OGetIt\Common\Player;
+use OGetIt\CombatReport\Fleet\Fleet;
+use OGetIt\Technology\Technology_Factory;
+use OGetIt\CombatReport\Round\CombatRound;
+use OGetIt\Common\Resources;
+use OGetIt\Common\DebrisField;
 
-class OGetIt_CombatReport {
+class CombatReport {
 	
 	const 	WINNER_ATTACKER = 'attacker',
 			WINNER_DEFENDER = 'defender',
@@ -39,7 +39,7 @@ class OGetIt_CombatReport {
 	private $_id;
 	
 	/**
-	 * @var OGetIt_Planet
+	 * @var Planet
 	 */
 	private $_planet;
 	
@@ -64,12 +64,12 @@ class OGetIt_CombatReport {
 	private $_combat_rounds_count;
 	
 	/**
-	 * @var OGetIt_Resources
+	 * @var Resources
 	 */
 	private $_loot;
 
 	/**
-	 * @var OGetIt_DebrisField
+	 * @var DebrisField
 	 */
 	private $_debris_field;
 	
@@ -79,27 +79,27 @@ class OGetIt_CombatReport {
 	private $_winner;
 	
 	/**
-	 * @var OGetIt_CombatParty
+	 * @var CombatParty
 	 */
 	private $_attacker_party;
 
 	/**
-	 * @var OGetIt_CombatParty
+	 * @var CombatParty
 	 */
 	private $_defender_party;
 	
 	/**
-	 * @var OGetIt_CombatRound[]
+	 * @var CombatRound[]
 	 */
 	private $_combat_rounds;
 	
 	/**
-	 * @var OGetIt_CombatReport[]
+	 * @var CombatReport[]
 	 */
 	private $_raids = array();
 	
 	/**
-	 * @var OGetIt_CombatReport_Calculator
+	 * @var CombatReport_Calculator
 	 */
 	private $_combatreport_calculator;
 	
@@ -110,7 +110,7 @@ class OGetIt_CombatReport {
 	
 	/**
 	 * @param string $api_data
-	 * @return OGetIt_CombatReport
+	 * @return CombatReport
 	 */
 	public static function createCombatReport($api_data) {
 				
@@ -177,15 +177,15 @@ class OGetIt_CombatReport {
 		$this->_loot_percentage = $loot_percentage;
 		$this->_combat_rounds_count = $combat_rounds;
 		$this->_winner = $winner;
-		$this->_planet = new OGetIt_Planet($planet_type, $coordinates);
+		$this->_planet = new Planet($planet_type, $coordinates);
 		
-		$this->_attacker_party = new OGetIt_CombatParty($attacker_count, $attacker_losses);
-		$this->_defender_party = new OGetIt_CombatParty($defender_count, $defender_losses);
+		$this->_attacker_party = new CombatParty($attacker_count, $attacker_losses);
+		$this->_defender_party = new CombatParty($defender_count, $defender_losses);
 		
-		$this->_loot = new OGetIt_Resources($loot_metal, $loot_crystal, $loot_deuterium);
-		$this->_debris_field = new OGetIt_DebrisField($coordinates, $debris_metal, $debris_crystal);
+		$this->_loot = new Resources($loot_metal, $loot_crystal, $loot_deuterium);
+		$this->_debris_field = new DebrisField($coordinates, $debris_metal, $debris_crystal);
 		
-		$this->_combatreport_calculator = new OGetIt_CombatReport_Calculator($this);
+		$this->_combatreport_calculator = new CombatReport_Calculator($this);
 		
 	}
 	
@@ -228,7 +228,7 @@ class OGetIt_CombatReport {
 			if ($playerId === false) {
 				$playerId = $this->_player_id_count++;
 				$playerIdMapping[$rawPlayer] = $playerId;
-				$players[$playerId] = new OGetIt_Player($rawPlayer, $playerId);
+				$players[$playerId] = new Player($rawPlayer, $playerId);
 				$players[$playerId]->setCombatTechnologies(
 					$fleetData['fleet_armor_percentage'], 
 					$fleetData['fleet_shield_percentage'], 
@@ -237,16 +237,16 @@ class OGetIt_CombatReport {
 			}
 			
 			$player = $players[$playerId];
-			$planet = new OGetIt_Planet(
+			$planet = new Planet(
 				$fleetData['fleet_owner_planet_type'], 
 				$fleetData['fleet_owner_coordinates'], 
 				$fleetData['fleet_owner_planet_name']
 			);
-			$fleet = new OGetIt_Fleet($planet, $combat_index);
+			$fleet = new Fleet($planet, $combat_index);
 			
 			foreach ($fleetData['fleet_composition'] as $rawTechnology) {
 				
-				$technology = OGetIt_Technology_Factory::create($rawTechnology['ship_type']);
+				$technology = Technology_Factory::create($rawTechnology['ship_type']);
 				
 				$fleet->addTechnologyState($technology, $rawTechnology['count']);
 				
@@ -267,7 +267,7 @@ class OGetIt_CombatReport {
 		
 		foreach ($rawRounds as $rawRound) {
 			
-			$this->_combat_rounds[$rawRound['round_number']] = new OGetIt_CombatRound(
+			$this->_combat_rounds[$rawRound['round_number']] = new CombatRound(
 				$rawRound['round_number'], 
 				$rawRound['statistics'],
 				$rawRound['attacker_ships'],
@@ -301,7 +301,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_Planet
+	 * @return Planet
 	 */
 	public function getPlanet() {
 		
@@ -328,7 +328,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function getLoot() {
 		
@@ -337,7 +337,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_DebrisField
+	 * @return DebrisField
 	 */
 	public function getDebrisField() {
 		
@@ -346,7 +346,7 @@ class OGetIt_CombatReport {
 	}
 
 	/**
-	 * @return OGetIt_CombatParty
+	 * @return CombatParty
 	 */
 	public function getAttackerParty() {
 		
@@ -355,7 +355,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_CombatParty
+	 * @return CombatParty
 	 */
 	public function getDefenderParty() {
 		
@@ -373,7 +373,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_CombatRound[]
+	 * @return CombatRound[]
 	 */
 	public function getRounds() {
 		
@@ -383,7 +383,7 @@ class OGetIt_CombatReport {
 	
 	/**
 	 * @param integer $number
-	 * @return OGetIt_CombatRound|null
+	 * @return CombatRound|null
 	 */
 	public function getRound($number) {
 		
@@ -393,16 +393,16 @@ class OGetIt_CombatReport {
 	
 	/**
 	 * TODO:: Check if the coordinates are the same
-	 * @param OGetIt_CombatReport $raid
+	 * @param CombatReport $raid
 	 */
-	public function addRaid(OGetIt_CombatReport $raid) {
+	public function addRaid(CombatReport $raid) {
 		
 		$this->_raids[] = $raid;
 		
 	}
 	
 	/**
-	 * @return OGetIt_CombatReport[]
+	 * @return CombatReport[]
 	 */
 	public function getRaids() {
 		
@@ -420,7 +420,7 @@ class OGetIt_CombatReport {
 	}
 	
 	/**
-	 * @return OGetIt_CombatReport_Calculator
+	 * @return CombatReport_Calculator
 	 */
 	public function getCalculator() {
 		

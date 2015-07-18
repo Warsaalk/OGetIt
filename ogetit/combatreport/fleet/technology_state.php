@@ -19,15 +19,15 @@
  */
 namespace OGetIt\CombatReport\Fleet;
 
-use OGetIt\Technology\OGetIt_Technology;
-use OGetIt\Technology\OGetIt_Technology_Combat;
-use OGetIt\Common\OGetIt_Resources;
-use OGetIt\Common\OGetIt_Value;
+use OGetIt\Technology\Technology;
+use OGetIt\Technology\Technology_Combat;
+use OGetIt\Common\Resources;
+use OGetIt\Common\Value;
 
-class OGetIt_Technology_State implements OGetIt_Value {
+class Technology_State implements Value {
 	
 	/**
-	 * @var OGetIt_Technology_Combat
+	 * @var Technology_Combat
 	 */
 	private $_technology;
 	
@@ -42,7 +42,7 @@ class OGetIt_Technology_State implements OGetIt_Value {
 	private $_lost;	
 	
 	/**
-	 * @param OGetIt_Technology_Combat $technology
+	 * @param Technology_Combat $technology
 	 * @param integer $count
 	 * @param integer $lost
 	 */
@@ -55,7 +55,7 @@ class OGetIt_Technology_State implements OGetIt_Value {
 	}
 
 	/**
-	 * @return OGetIt_Technology
+	 * @return Technology
 	 */
 	public function getTechnology() {
 		
@@ -101,7 +101,7 @@ class OGetIt_Technology_State implements OGetIt_Value {
 	
 	/**
 	 * @param boolean $byLosses
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function getValue($byLosses = false) {
 		

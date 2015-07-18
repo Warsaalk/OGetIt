@@ -1,11 +1,11 @@
 <?php
 namespace OGetIt\SpyReport;
 
-use OGetIt\Common\OGetIt_Resources;
-use OGetIt\Common\OGetIt_Player;
-use OGetIt\Common\OGetIt_Planet;
+use OGetIt\Common\Resources;
+use OGetIt\Common\Player;
+use OGetIt\Common\Planet;
 
-class OGetIt_SpyReport {
+class SpyReport {
 
 	/**
 	 * @var string
@@ -18,22 +18,22 @@ class OGetIt_SpyReport {
 	private $_activity;
 	
 	/**
-	 * @var OGetIt_Player
+	 * @var Player
 	 */
 	private $_attacker;
 	
 	/**
-	 * @var OGetIt_Planet
+	 * @var Planet
 	 */
 	private $_attacker_planet;
 
 	/**
-	 * @var OGetIt_Player
+	 * @var Player
 	 */
 	private $_defender;
 
 	/**
-	 * @var OGetIt_Planet
+	 * @var Planet
 	 */
 	private $_defender_planet;
 	
@@ -69,7 +69,7 @@ class OGetIt_SpyReport {
 	
 	/**
 	 * @param string $api_data
-	 * @return OGetIt_CombatReport
+	 * @return CombatReport
 	 */
 	public static function createSpyReport($api_data) {
 	
@@ -137,11 +137,11 @@ class OGetIt_SpyReport {
 		$this->_id = $id;
 		$this->_activity = $activity;
 		
-		$this->_attacker = new OGetIt_Player($attacker_name);
-		$this->_attacker_planet = new OGetIt_Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name);
+		$this->_attacker = new Player($attacker_name);
+		$this->_attacker_planet = new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name);
 		
-		$this->_defender = new OGetIt_Player($defender_name);
-		$this->_defender_planet = new OGetIt_Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name);
+		$this->_defender = new Player($defender_name);
+		$this->_defender_planet = new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name);
 		
 		$this->_time = $time;
 		$this->_timestamp = $timestamp;
@@ -172,7 +172,7 @@ class OGetIt_SpyReport {
 	}
 	
 	/**
-	 * @return OGetIt_Player
+	 * @return Player
 	 */
 	public function getAttacker() {
 		
@@ -181,7 +181,7 @@ class OGetIt_SpyReport {
 	}
 	
 	/**
-	 * @return OGetIt_Planet
+	 * @return Planet
 	 */
 	public function getAttackerPlanet() {
 		
@@ -190,7 +190,7 @@ class OGetIt_SpyReport {
 	}
 	
 	/**
-	 * @return OGetIt_Player
+	 * @return Player
 	 */
 	public function getDefender() {
 		
@@ -199,7 +199,7 @@ class OGetIt_SpyReport {
 	}
 	
 	/**
-	 * @return OGetIt_Planet
+	 * @return Planet
 	 */
 	public function getDefenderPlanet() {
 		

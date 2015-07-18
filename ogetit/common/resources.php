@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Common;
 
-class OGetIt_Resources {
+class Resources {
 	
 	/**
 	 * @var integer
@@ -86,10 +86,10 @@ class OGetIt_Resources {
 	}
 	
 	/**
-	 * @param OGetIt_Resources $resources
-	 * @return OGetIt_Resources
+	 * @param Resources $resources
+	 * @return Resources
 	 */
-	public function subtract(OGetIt_Resources $resources) {
+	public function subtract(Resources $resources) {
 		
 		$this->_metal -= $resources->getMetal();
 		$this->_crystal -= $resources->getCrystal();
@@ -100,10 +100,10 @@ class OGetIt_Resources {
 	}
 	
 	/**
-	 * @param OGetIt_Resources $resources
-	 * @return OGetIt_Resources
+	 * @param Resources $resources
+	 * @return Resources
 	 */
-	public function add(OGetIt_Resources $resources) {
+	public function add(Resources $resources) {
 		
 		$this->_metal += $resources->getMetal();
 		$this->_crystal += $resources->getCrystal();
@@ -115,7 +115,7 @@ class OGetIt_Resources {
 	
 	/**
 	 * @param integer $number
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function multiply($number) {
 		

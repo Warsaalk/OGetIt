@@ -17,20 +17,27 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\Exception;
+namespace OGetIt\CombatReport\Helper;
 
-class OGetIt_cURL_Exception extends \Exception {
-	
-	private $_prefix = 'cURL error: ';
+use OGetIt\Common\Value;
+use OGetIt\Common\Resources;
+
+trait Combat_ChildValue {
 	
 	/**
-	 * @param string $message
-	 * @param number $code
-	 * @param Exception $previous
+	 * @param Value[] $children
+	 * @param string $byLosses
+	 * @return Resources
 	 */
-	public function __construct($message = "Unknown exception", $code = 0, Exception $previous = null) {
+	protected function getChildrenValue($children, $byLosses = false) {
 		
-		parent::__construct($this->_prefix . $message, $code, $previous);
+		$value = new Resources(0, 0, 0);
+		
+		foreach ($children as $child) {
+			$value->add($child->getValue($byLosses));
+		}
+		
+		return $value;
 		
 	}
 	

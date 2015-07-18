@@ -19,7 +19,7 @@
  */
 namespace OGetIt\CombatReport\Round;
 
-class OGetIt_CombatRound_Stats {
+class CombatRound_Stats {
 		
 	/**
 	 * @var integer
@@ -53,7 +53,7 @@ class OGetIt_CombatRound_Stats {
 
 	/**
 	 * @param array $data
-	 * @return OGetIt_CombatRound_Stats
+	 * @return CombatRound_Stats
 	 */
 	public static function createInstance($data) {
 		

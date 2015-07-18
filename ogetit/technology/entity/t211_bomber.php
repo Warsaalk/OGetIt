@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity; 
 
-use OGetIt\Technology\OGetIt_Technology_Combat;
+use OGetIt\Technology\Technology_Combat;
 
-class t211_Bomber extends OGetIt_Technology_Combat {
+class t211_Bomber extends Technology_Combat {
 
 	const TYPE = 211;
 	

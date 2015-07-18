@@ -19,30 +19,30 @@
  */
 namespace OGetIt\CombatReport\Fleet;
 
-use OGetIt\Technology\OGetIt_Technology;
-use OGetIt\Common\OGetIt_Planet;
-use OGetIt\Common\OGetIt_Resources;
-use OGetIt\Common\OGetIt_Player;
+use OGetIt\Technology\Technology;
+use OGetIt\Common\Planet;
+use OGetIt\Common\Resources;
+use OGetIt\Common\Player;
 use OGetIt;
-use OGetIt\Common\OGetIt_Value;
-use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
+use OGetIt\Common\Value;
+use OGetIt\CombatReport\Helper\Combat_ChildValue;
 
-class OGetIt_Fleet implements OGetIt_Value {
+class Fleet implements Value {
 	
-	use OGetIt_Combat_ChildValue;
+	use Combat_ChildValue;
 	
 	/**
-	 * @var OGetIt_Planet
+	 * @var Planet
 	 */
 	private $_planet;
 	
 	/**
-	 * @var OGetIt_Player
+	 * @var Player
 	 */
 	private $_player;
 	
 	/**
-	 * @var OGetIt_Technology_State[] 
+	 * @var Technology_State[] 
 	 */
 	private $_state = array();
 	
@@ -52,7 +52,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	private $_combat_index;
 	
 	/**
-	 * @param OGetIt_Planet $planet
+	 * @param Planet $planet
 	 * @parem integer $combat_index
 	 */
 	public function __construct($planet = null, $combat_index = null) {
@@ -63,7 +63,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Technology $technology
+	 * @param Technology $technology
 	 * @param integer $count
 	 * @param integer $lost
 	 */
@@ -78,7 +78,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 			
 		} else {
 		
-			$techState = new OGetIt_Technology_State(
+			$techState = new Technology_State(
 				$technology, 
 				$count, 
 				$lost
@@ -92,7 +92,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	
 	/**
 	 * @param integer $type
-	 * @return OGetIt_Technology_State|NULL
+	 * @return Technology_State|NULL
 	 */
 	public function getTechnologyState($type) {
 		
@@ -101,7 +101,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return OGetIt_Technology_State[]
+	 * @return Technology_State[]
 	 */
 	public function getTechnologyStates() {
 		
@@ -110,16 +110,16 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Player $player
+	 * @param Player $player
 	 */
-	public function setPlayer(OGetIt_Player $player) {
+	public function setPlayer(Player $player) {
 		
 		$this->_player = $player;
 		
 	}
 	
 	/**
-	 * @return OGetIt_Player
+	 * @return Player
 	 */
 	public function getPlayer() {
 		
@@ -128,7 +128,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return OGetIt_Planet
+	 * @return Planet
 	 */
 	public function getPlanet() {
 		
@@ -153,9 +153,9 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Fleet $fleet
+	 * @param Fleet $fleet
 	 */
-	public function merge(OGetIt_Fleet $fleet) {
+	public function merge(Fleet $fleet) {
 		
 		foreach ($fleet->getTechnologyStates() as $techState) {
 			
@@ -171,7 +171,7 @@ class OGetIt_Fleet implements OGetIt_Value {
 	
 	/**
 	 * @param boolean $byLosses
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function getValue($byLosses = false) {
 		
@@ -180,10 +180,10 @@ class OGetIt_Fleet implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Fleet $other
-	 * @return OGetIt_Fleet
+	 * @param Fleet $other
+	 * @return Fleet
 	 */
-	public function difference(OGetIt_Fleet $other) {
+	public function difference(Fleet $other) {
 		
 		$fleet = clone $other;
 		

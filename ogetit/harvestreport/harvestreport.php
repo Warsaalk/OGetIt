@@ -1,10 +1,10 @@
 <?php
 namespace OGetIt\HarvestReport;
 
-use OGetIt\Common\OGetIt_Resources;
-use OGetIt\Common\OGetIt_DebrisField;
+use OGetIt\Common\Resources;
+use OGetIt\Common\DebrisField;
 
-class OGetIt_HarvestReport {
+class HarvestReport {
 
 	/**
 	 * @var string
@@ -12,7 +12,7 @@ class OGetIt_HarvestReport {
 	private $_id;
 
 	/**
-	 * @var OGetIt_DebrisField
+	 * @var DebrisField
 	 */
 	private $_debris_field;
 	
@@ -38,7 +38,7 @@ class OGetIt_HarvestReport {
 	
 	/**
 	 * @param string $api_data
-	 * @return OGetIt_CombatReport
+	 * @return CombatReport
 	 */
 	public static function createHarvestReport($api_data) {
 	
@@ -76,13 +76,13 @@ class OGetIt_HarvestReport {
 	public function __construct($id, $coordinates, $metal, $metal_floating, $crystal, $crystal_floating, $time, $timestamp, $recycler_capacity, $recycler_count) {
 		
 		$this->_id = $id;
-		$this->_resources = new OGetIt_Resources($metal, $crystal, 0);
+		$this->_resources = new Resources($metal, $crystal, 0);
 		$this->_time = $time;
 		$this->_timestamp = $timestamp;
 		$this->_recycler_capacity = (int)$recycler_capacity;
 		$this->_recycler_count = (int)$recycler_count;
 		
-		$this->_debris_field = new OGetIt_DebrisField($coordinates, $metal_floating, $crystal_floating);
+		$this->_debris_field = new DebrisField($coordinates, $metal_floating, $crystal_floating);
 		
 	}
 	
@@ -114,7 +114,7 @@ class OGetIt_HarvestReport {
 	}
 	
 	/**
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function getResources() {
 		
@@ -123,7 +123,7 @@ class OGetIt_HarvestReport {
 	}
 	
 	/**
-	 * @return OGetIt_DebrisField
+	 * @return DebrisField
 	 */
 	public function getDebrisField() {
 		

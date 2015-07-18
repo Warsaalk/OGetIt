@@ -19,10 +19,10 @@
  */
 namespace OGetIt;
 
-use OGetIt\Http\OGetIt_HttpRequest;
-use OGetIt\CombatReport\OGetIt_CombatReport;
-use OGetIt\HarvestReport\OGetIt_HarvestReport;
-use OGetIt\SpyReport\OGetIt_SpyReport;
+use OGetIt\Http\HttpRequest;
+use OGetIt\CombatReport\CombatReport;
+use OGetIt\HarvestReport\HarvestReport;
+use OGetIt\SpyReport\SpyReport;
 
 class OGetIt { 
 	
@@ -77,12 +77,12 @@ class OGetIt {
 	
 	private function getApiData($type, $label, $key, $username = false, $password = false) {
 		
-		$url = OGetIt_Api::constructUrl($type, $this, array(
+		$url = OGameApi::constructUrl($type, $this, array(
 			'api_key' => $this->_apikey,
 			$label => $key
 		));
 		
-		return OGetIt_Api::getData($url, $username, $password); 
+		return OGameApi::getData($url, $username, $password); 
 		
 	}
 	
@@ -91,9 +91,9 @@ class OGetIt {
 	 */
 	public function getCombatReport($cr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGetIt_Api::TYPE_COMBATREPORT, 'cr_id', $cr_api_key, $username, $password);
+		$data = $this->getApiData(OGameApi::TYPE_COMBATREPORT, 'cr_id', $cr_api_key, $username, $password);
 				
-		return $data === false ? $data : OGetIt_CombatReport::createCombatReport($data);
+		return $data === false ? $data : CombatReport::createCombatReport($data);
 		
 	}
 	
@@ -102,9 +102,9 @@ class OGetIt {
 	 */
 	public function getHarvestReport($rr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGetIt_Api::TYPE_HARVESTREPORT, 'rr_id', $rr_api_key, $username, $password);
+		$data = $this->getApiData(OGameApi::TYPE_HARVESTREPORT, 'rr_id', $rr_api_key, $username, $password);
 		
-		return $data === false ? $data : OGetIt_HarvestReport::createHarvestReport($data);
+		return $data === false ? $data : HarvestReport::createHarvestReport($data);
 		
 	}
 	
@@ -113,9 +113,9 @@ class OGetIt {
 	 */
 	public function getSpyReport($sr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGetIt_Api::TYPE_SPYREPORT, 'sr_id', $sr_api_key, $username, $password);
+		$data = $this->getApiData(OGameApi::TYPE_SPYREPORT, 'sr_id', $sr_api_key, $username, $password);
 				
-		return $data === false ? $data : OGetIt_SpyReport::createSpyReport($data);
+		return $data === false ? $data : SpyReport::createSpyReport($data);
 		
 	}
 	

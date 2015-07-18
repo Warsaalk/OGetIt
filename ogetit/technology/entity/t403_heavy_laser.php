@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity; 
 
-use OGetIt\Technology\OGetIt_Technology_Combat;
+use OGetIt\Technology\Technology_Combat;
 
-class t403_Heavy_Laser extends OGetIt_Technology_Combat {
+class t403_Heavy_Laser extends Technology_Combat {
 
 	const TYPE = 403;
 	

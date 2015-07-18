@@ -19,25 +19,25 @@
  */
 namespace OGetIt\CombatReport\Result;
 
-use OGetIt\Exception\OGetIt_Exception;
-use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
-use OGetIt\Common\OGetIt_Player;
-use OGetIt\CombatReport\OGetIt_CombatReport;
+use OGetIt\Exception\Exception;
+use OGetIt\CombatReport\Fleet\Fleet;
+use OGetIt\Common\Player;
+use OGetIt\CombatReport\CombatReport;
 
-class OGetIt_CombatResult_RoundDifference {
+class CombatResult_RoundDifference {
 	
 	/**
-	 * @param OGetIt_CombatReport $combatreport
+	 * @param CombatReport $combatreport
 	 * @param integer $startRound
 	 * @param integer $endRound
-	 * @throws OGetIt_Exception
-	 * @return OGetIt_CombatParty[]
+	 * @throws Exception
+	 * @return CombatParty[]
 	 */
 	public static function calculate($combatreport, $startRound, $endRound) {
 		
 		//TODO:: Throw decent exeption
-		if ($endRound < $startRound) throw new OGetIt_Exception('OGetIt_CombatReport_Result: Your starting round should be greater than your ending round.');
-		if ($endRound > 6) throw new OGetIt_Exception('OGetIt_CombatReport_Result: OGame has a maximum of 6 rounds.');
+		if ($endRound < $startRound) throw new Exception('CombatReport_Result: Your starting round should be greater than your ending round.');
+		if ($endRound > 6) throw new Exception('CombatReport_Result: OGame has a maximum of 6 rounds.');
 		
 		if ($startRound === 0) {
 			$startAttackers = $combatreport->getAttackerParty()->getPlayers();
@@ -63,10 +63,10 @@ class OGetIt_CombatResult_RoundDifference {
 	}
 	
 	/**
-	 * @param OGetIt_Player[] $start
-	 * @param OGetIt_Player[] $end
-	 * @param OGetIt_CombatParty $party
-	 * @return OGetIt_CombatParty
+	 * @param Player[] $start
+	 * @param Player[] $end
+	 * @param CombatParty $party
+	 * @return CombatParty
 	 */
 	private static function getFleetDifferences($start, $end, $party) {
 				

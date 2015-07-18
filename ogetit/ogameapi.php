@@ -19,10 +19,10 @@
  */
 namespace OGetIt;
 
-use OGetIt\Http\OGetIt_HttpRequest;
-use OGetIt\Exception\OGetIt_API_Exception;
+use OGetIt\Http\HttpRequest;
+use OGetIt\Exception\API_Exception;
 
-class OGetIt_Api { 
+class OGameApi { 
 	
 	/**
 	 * @var string
@@ -41,22 +41,22 @@ class OGetIt_Api {
 	
 	/**
 	 * @param integer $error
-	 * @throws OGetIt_Exception
+	 * @throws Exception
 	 */
 	private static function processError($error) {
 	
-		throw new OGetIt_API_Exception($error);
+		throw new API_Exception($error);
 	
 	}
 	
 	/**
 	 * @param string $url
 	 * @return mixed|boolean
-	 * @throws OGetIt_Exception
+	 * @throws Exception
 	 */
 	public static function getData($url, $username = false, $password = false) {
 		
-		$request = new OGetIt_HttpRequest($url);
+		$request = new HttpRequest($url);
 		
 		if ($username !== false && $password !== false) {
 			$request->useAuthentication($username, $password);

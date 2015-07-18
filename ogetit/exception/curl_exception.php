@@ -19,16 +19,18 @@
  */
 namespace OGetIt\Exception;
 
-class OGetIt_Exception extends \Exception {
+class cURL_Exception extends \Exception {
+	
+	private $_prefix = 'cURL error: ';
 	
 	/**
 	 * @param string $message
 	 * @param number $code
 	 * @param Exception $previous
 	 */
-	public function __construct($message, $code = 0, Exception $previous = null) {
+	public function __construct($message = "Unknown exception", $code = 0, Exception $previous = null) {
 		
-		parent::__construct($message, $code, $previous);
+		parent::__construct($this->_prefix . $message, $code, $previous);
 		
 	}
 	

@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Http;
 
-use OGetIt\Exception\OGetIt_cURL_Exception;
+use OGetIt\Exception\cURL_Exception;
 
-class OGetIt_HttpRequest {
+class HttpRequest {
 	
 	private static $STATE_OPEN = 0, $STATE_CLOSED = 1;
 	
@@ -108,7 +108,7 @@ class OGetIt_HttpRequest {
 		
 		//If the request fails, save the last error
 		if ($this->_response === false) {
-			throw new OGetIt_cURL_Exception(curl_error($this->_resource), curl_errno($this->_resource));
+			throw new cURL_Exception(curl_error($this->_resource), curl_errno($this->_resource));
 		}
 		
 		if ($finish === true) $this->close();

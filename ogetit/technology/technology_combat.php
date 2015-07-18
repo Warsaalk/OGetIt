@@ -17,50 +17,66 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\Common;
+namespace OGetIt\Technology;
 
-class OGetIt_Planet extends OGetIt_Coordinates {
+use OGetIt\Common\Resources;
+abstract class Technology_Combat extends Technology {
 
-	const	TYPE_PLANET = 1,
-			TYPE_MOON = 3;
-	
 	/**
 	 * @var integer
 	 */
-	private $_type;
+	private $ARMOR;
+
+	/**
+	 * @var integer
+	 */
+	private $SHIELD;
+
+	/**
+	 * @var integer
+	 */
+	private $WEAPON;
 	
 	/**
-	 * @var string
+	 * @param integer $type
+	 * @param integer $metal
+	 * @param integer $crystal
+	 * @param integer $deuterium
 	 */
-	private $_name;
-	/**
-	 * @param string $type
-	 * @param string $coordinates
-	 */
-	public function __construct($type, $coordinates, $name = null) {
+	protected function __construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon) {
 		
-		parent::__construct($coordinates);
+		parent::__construct($type, $metal, $crystal, $deuterium);
 		
-		$this->_type = $type;
-		$this->_name = $name;
+		$this->ARMOR = $armor;
+		$this->SHIELD = $shield;
+		$this->WEAPON = $weapon;
 		
 	}
-	
+
 	/**
 	 * @return integer
 	 */
-	public function getType() {
+	public function getArmor() {
 		
-		return $this->_type;
+		return $this->ARMOR;
 		
 	}
-	
+
 	/**
-	 * @return string
+	 * @return integer
 	 */
-	public function getName() {
+	public function getShield() {
 		
-		return $this->_name;
+		return $this->SHIELD;
+		
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getWeapon() {
+		
+		return $this->WEAPON;
 		
 	}
 	

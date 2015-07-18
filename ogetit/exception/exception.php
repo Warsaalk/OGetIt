@@ -17,27 +17,18 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\CombatReport\Helper;
+namespace OGetIt\Exception;
 
-use OGetIt\Common\OGetIt_Value;
-use OGetIt\Common\OGetIt_Resources;
-
-trait OGetIt_Combat_ChildValue {
+class Exception extends \Exception {
 	
 	/**
-	 * @param OGetIt_Value[] $children
-	 * @param string $byLosses
-	 * @return OGetIt_Resources
+	 * @param string $message
+	 * @param number $code
+	 * @param Exception $previous
 	 */
-	protected function getChildrenValue($children, $byLosses = false) {
+	public function __construct($message, $code = 0, Exception $previous = null) {
 		
-		$value = new OGetIt_Resources(0, 0, 0);
-		
-		foreach ($children as $child) {
-			$value->add($child->getValue($byLosses));
-		}
-		
-		return $value;
+		parent::__construct($message, $code, $previous);
 		
 	}
 	

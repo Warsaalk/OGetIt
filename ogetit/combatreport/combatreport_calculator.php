@@ -19,22 +19,22 @@
  */
 namespace OGetIt\CombatReport;
 
-use OGetIt\Exception\OGetIt_Exception;
-use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
-use OGetIt\Common\OGetIt_Player;
-use OGetIt\CombatReport\Result\OGetIt_CombatResult_RoundDifference;
+use OGetIt\Exception\Exception;
+use OGetIt\CombatReport\Fleet\Fleet;
+use OGetIt\Common\Player;
+use OGetIt\CombatReport\Result\CombatResult_RoundDifference;
 
-class OGetIt_CombatReport_Calculator {
+class CombatReport_Calculator {
 	
 	/**
-	 * @var OGetIt_CombatReport
+	 * @var CombatReport
 	 */
 	private $_combatreport;
 	
 	/**
-	 * @param OGetIt_CombatReport $combatreport
+	 * @param CombatReport $combatreport
 	 */
-	public function __construct(OGetIt_CombatReport $combatreport) {
+	public function __construct(CombatReport $combatreport) {
 		
 		$this->_combatreport = $combatreport;
 		
@@ -43,17 +43,17 @@ class OGetIt_CombatReport_Calculator {
 	/**
 	 * @param integer $startRound Round number, if 0 it'll use the initial fleet state
 	 * @param integer $endRound
-	 * @throws OGetIt_Exception
-	 * @return OGetIt_CombatParty[]
+	 * @throws Exception
+	 * @return CombatParty[]
 	 */
 	public function getRoundDifference($startRound, $endRound) {
 		
-		return OGetIt_CombatResult_RoundDifference::calculate($this->_combatreport, $startRound, $endRound);
+		return CombatResult_RoundDifference::calculate($this->_combatreport, $startRound, $endRound);
 		
 	}
 	
 	/**
-	 * @return OGetIt_CombatParty[]
+	 * @return CombatParty[]
 	 */
 	public function getFinalResult() {
 		

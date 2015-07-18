@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity; 
 
-use OGetIt\Technology\OGetIt_Technology_Combat;
+use OGetIt\Technology\Technology_Combat;
 
-class t209_Recycler extends OGetIt_Technology_Combat {
+class t209_Recycler extends Technology_Combat {
 
 	const TYPE = 209;
 	

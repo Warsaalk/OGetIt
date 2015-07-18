@@ -19,14 +19,14 @@
  */
 namespace OGetIt\CombatReport;
 
-use OGetIt\Common\OGetIt_Player;
-use OGetIt\Common\OGetIt_Value;
-use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
-use OGetIt\HarvestReport\OGetIt_HarvestReport;
+use OGetIt\Common\Player;
+use OGetIt\Common\Value;
+use OGetIt\CombatReport\Helper\Combat_ChildValue;
+use OGetIt\HarvestReport\HarvestReport;
 
-class OGetIt_CombatParty implements OGetIt_Value {
+class CombatParty implements Value {
 
-	use OGetIt_Combat_ChildValue;
+	use Combat_ChildValue;
 	
 	/**
 	 * @var integer
@@ -39,12 +39,12 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	private $_total_losses;
 	
 	/**
-	 * @var OGetIt_Player[]
+	 * @var Player[]
 	 */
 	private $_players;
 	
 	/**
-	 * @var OGetIt_HarvestReport[]
+	 * @var HarvestReport[]
 	 */
 	private $_harvestreports = array();
 	
@@ -60,7 +60,7 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Player[] $players
+	 * @param Player[] $players
 	 */
 	public function setPlayers(array $players) {
 		
@@ -87,7 +87,7 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return OGetIt_Player[]
+	 * @return Player[]
 	 */
 	public function getPlayers() {
 		
@@ -97,7 +97,7 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	
 	/**
 	 * @param integer $combat_index
-	 * @return OGetIt_Player|NULL
+	 * @return Player|NULL
 	 */
 	public function getPlayerByCombatIndex($combat_index) {
 		
@@ -113,7 +113,7 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	
 	/**
 	 * @param integer $combat_index
-	 * @return OGetIt_Fleet\NULL
+	 * @return Fleet\NULL
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 		
@@ -129,7 +129,7 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	
 	/**
 	 * @param boolean $byLosses
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function getValue($byLosses = false) {
 		
@@ -150,16 +150,16 @@ class OGetIt_CombatParty implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_HarvestReport $harvestreport
+	 * @param HarvestReport $harvestreport
 	 */
-	public function addHarvestReport(OGetIt_HarvestReport $harvestreport) {
+	public function addHarvestReport(HarvestReport $harvestreport) {
 		
 		$this->_harvestreports[] = $harvestreport;
 		
 	}
 	
 	/**
-	 * @return OGetIt_HarvestReport[]
+	 * @return HarvestReport[]
 	 */
 	public function getHarvestReports() {
 		

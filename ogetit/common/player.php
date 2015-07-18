@@ -19,13 +19,12 @@
  */
 namespace OGetIt\Common;
 
-use OGetIt\CombatReport\Fleet\OGetIt_Fleet;
-use OGetIt\CombatReport\Helper\OGetIt_Combat_ChildValue;
-use OGetIt\CombatReport\Fleet\OGetIt\CombatReport\Fleet;
+use OGetIt\CombatReport\Fleet\Fleet;
+use OGetIt\CombatReport\Helper\Combat_ChildValue;
 
-class OGetIt_Player implements OGetIt_Value {
+class Player implements Value {
 
-	use OGetIt_Combat_ChildValue;
+	use Combat_ChildValue;
 	
 	/**
 	 * @var integer
@@ -53,7 +52,7 @@ class OGetIt_Player implements OGetIt_Value {
 	private $_weapon;
 	
 	/**
-	 * @var OGetIt_Fleet[]
+	 * @var Fleet[]
 	 */
 	private $_fleets = array();
 	
@@ -82,9 +81,9 @@ class OGetIt_Player implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Fleet $fleet
+	 * @param Fleet $fleet
 	 */
-	public function addFleet(OGetIt_Fleet $fleet) {
+	public function addFleet(Fleet $fleet) {
 		
 		$fleet->setPlayer($this);
 		$this->_fleets[] = $fleet;
@@ -92,9 +91,9 @@ class OGetIt_Player implements OGetIt_Value {
 	}
 	
 	/**
-	 * @param OGetIt_Fleet $updatedFleet
+	 * @param Fleet $updatedFleet
 	 */
-	public function updateFleet(OGetIt_Fleet $updatedFleet) {
+	public function updateFleet(Fleet $updatedFleet) {
 		
 		foreach ($this->_fleets as $i => $fleet) {
 			if ($fleet->getCombatIndex() === $updatedFleet->getCombatIndex()) {
@@ -107,7 +106,7 @@ class OGetIt_Player implements OGetIt_Value {
 
 	/**
 	 * @param integer $combat_index
-	 * @return OGetIt_Fleet|NULL
+	 * @return Fleet|NULL
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 		
@@ -122,7 +121,7 @@ class OGetIt_Player implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return OGetIt_Fleet[]
+	 * @return Fleet[]
 	 */
 	public function getFleets() {
 		
@@ -131,11 +130,11 @@ class OGetIt_Player implements OGetIt_Value {
 	}
 	
 	/**
-	 * @return OGetIt_Fleet
+	 * @return Fleet
 	 */
 	public function getFleetsMerged() {
 		
-		$merged = new OGetIt_Fleet();
+		$merged = new Fleet();
 		
 		foreach ($this->_fleets as $fleet) {
 			$merged->merge($fleet);
@@ -147,7 +146,7 @@ class OGetIt_Player implements OGetIt_Value {
 	
 	/**
 	 * @param boolean $byLosses
-	 * @return OGetIt_Resources
+	 * @return Resources
 	 */
 	public function getValue($byLosses = false) {
 		

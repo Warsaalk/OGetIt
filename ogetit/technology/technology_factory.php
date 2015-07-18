@@ -42,11 +42,11 @@ use OGetIt\Technology\Entity\t206_Cruiser;
 use OGetIt\Technology\Entity\t205_Heavy_Fighter;
 use OGetIt\Technology\Entity\t204_Light_Fighter;
 
-class OGetIt_Technology_Factory {
+class Technology_Factory {
 	
 	/**
 	 * @param integer $type
-	 * @return OGetIt_Technology
+	 * @return Technology
 	 */
 	public static function create($type) {
 		
@@ -80,7 +80,7 @@ class OGetIt_Technology_Factory {
 			case 408: $technology = new t408_Large_Shield_Dome(); break;
 			
 			/*
-			 * default: throws new OGetIt_Exception('test');
+			 * default: throws new Exception('test');
 			 */
 		}	
 		
