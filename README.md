@@ -6,7 +6,7 @@ It handles everything from connecting with the API, parsing the API to advanced 
 
 ##How to use?
 
-	include('ogetit/ogetit_autoload.php');
+	include('autoload.php');
 	$ogetit = new OGetIt($uni, $lang, $apikey);
 	$cr = $ogetit->getCombatReport($crkey);
 	
