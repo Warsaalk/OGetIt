@@ -392,12 +392,16 @@ class CombatReport {
 	}
 	
 	/**
-	 * TODO:: Check if the coordinates are the same
 	 * @param CombatReport $raid
+	 * @return boolean
 	 */
 	public function addRaid(CombatReport $raid) {
 		
+		if ($raid->getPlanet()->getCoordinates() !== $this->getPlanet()->getCoordinates()) return false;
+		
 		$this->_raids[] = $raid;
+		
+		return true;
 		
 	}
 	
