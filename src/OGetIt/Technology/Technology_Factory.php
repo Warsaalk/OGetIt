@@ -53,6 +53,45 @@ class Technology_Factory {
 		$technology = null;
 		
 		switch ($type) {
+			//Buildings
+			case 1: $technology = new MetalMine(); break;
+			case 2: $technology = new CrystalMine(); break;
+			case 3: $technology = new DeuteriumSynthesizer(); break;
+			case 4: $technology = new SolarPlant(); break;
+			case 12: $technology = new FusionReactor(); break;
+			case 14: $technology = new RoboticsFactory(); break;
+			case 15: $technology = new NaniteFactory(); break;
+			case 21: $technology = new Shipyard(); break;
+			case 22: $technology = new MetalStorage(); break;
+			case 23: $technology = new CrystalStorage(); break;
+			case 24: $technology = new DeuteriumTank(); break;
+			case 25: $technology = new ShieldedMetalDen(); break;
+			case 26: $technology = new UndergroundCrystalDen(); break;
+			case 27: $technology = new SeabedDeuteriumDen(); break;
+			case 31: $technology = new ResearchLab(); break;
+			case 33: $technology = new Terraformer(); break;
+			case 34: $technology = new AllianceDepot(); break;
+			case 41: $technology = new LunarBase(); break;
+			case 42: $technology = new SensorPhalanx(); break;
+			case 43: $technology = new JumpGate(); break;
+			case 44: $technology = new MissileSilo(); break;
+			//Research
+			case 106: $technology = new EspionageTechnology(); break;
+			case 108: $technology = new ComputerTechnology(); break;
+			case 109: $technology = new WeaponsTechnology(); break;
+			case 110: $technology = new ShieldingTechnology(); break;
+			case 111: $technology = new ArmourTechnology(); break;
+			case 113: $technology = new EnergyTechnology(); break;
+			case 114: $technology = new HyperspaceTechnology(); break;
+			case 115: $technology = new CombustionDrive(); break;
+			case 117: $technology = new ImpulseDrive(); break;
+			case 118: $technology = new HyperspaceDrive(); break;
+			case 120: $technology = new LaserTechnology(); break;
+			case 121: $technology = new IonTechnology(); break;
+			case 122: $technology = new PlasmaTechnology(); break;
+			case 123: $technology = new IntergalacticResearchNetwork(); break;
+			case 124: $technology = new Astrophysics(); break;
+			case 199: $technology = new GravitonTechnology(); break;
 			//Ships			
 			case 202: $technology = new SmallCargo(); break;
 			case 203: $technology = new LargeCargo(); break;
