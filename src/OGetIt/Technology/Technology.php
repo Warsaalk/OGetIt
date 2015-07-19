@@ -39,10 +39,10 @@ abstract class Technology {
 	 * @param integer $crystal
 	 * @param integer $deuterium
 	 */
-	protected function __construct($type, $metal, $crystal, $deuterium) {
+	protected function __construct($type, $metal, $crystal, $deuterium, $energy = 0) {
 		
 		$this->_type = $type;
-		$this->_resources = new Resources($metal, $crystal, $deuterium);
+		$this->_resources = new Resources($metal, $crystal, $deuterium, $energy);
 		
 	}
 	
@@ -65,17 +65,8 @@ abstract class Technology {
 	}
 	
 	/**
-	 * @param integer $count
 	 * @return Resources
 	 */
-	public function getCosts($count = 1) {
-		
-		return new Resources(
-			$this->_resources->getMetal() * $count,
-			$this->_resources->getCrystal() * $count,
-			$this->_resources->getDeuterium() * $count	
-		);
-		
-	}
+	abstract public function getCosts();
 	
 }
