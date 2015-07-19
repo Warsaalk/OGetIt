@@ -22,9 +22,7 @@ namespace OGetIt\Common;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 
-class Player implements Value {
-
-	use Combat_ChildValue;
+class Player {
 	
 	/**
 	 * @var integer
@@ -37,26 +35,6 @@ class Player implements Value {
 	private $_name;
 	
 	/**
-	 * @var integer
-	 */
-	private $_armor;
-
-	/**
-	 * @var integer
-	 */
-	private $_shield;
-
-	/**
-	 * @var integer
-	 */
-	private $_weapon;
-	
-	/**
-	 * @var Fleet[]
-	 */
-	private $_fleets = array();
-	
-	/**
 	 * @param string $name
 	 * @param integer $id
 	 */
@@ -64,93 +42,6 @@ class Player implements Value {
 		
 		$this->_name = $name;
 		$this->_id = $id;
-		
-	}
-	
-	/**
-	 * @param integer $armor
-	 * @param integer $shield
-	 * @param integer $weapon
-	 */
-	public function setCombatTechnologies($armor, $shield, $weapon) {
-		
-		$this->_armor = $armor;
-		$this->_shield = $shield;
-		$this->_weapon = $weapon;
-		
-	}
-	
-	/**
-	 * @param Fleet $fleet
-	 */
-	public function addFleet(Fleet $fleet) {
-		
-		$fleet->setPlayer($this);
-		$this->_fleets[] = $fleet;
-		
-	}
-	
-	/**
-	 * @param Fleet $updatedFleet
-	 */
-	public function updateFleet(Fleet $updatedFleet) {
-		
-		foreach ($this->_fleets as $i => $fleet) {
-			if ($fleet->getCombatIndex() === $updatedFleet->getCombatIndex()) {
-				$this->_fleets[$i] = $updatedFleet;
-				break;
-			}
-		}
-		
-	}
-
-	/**
-	 * @param integer $combat_index
-	 * @return Fleet|NULL
-	 */
-	public function getFleetByCombatIndex($combat_index) {
-		
-		foreach ($this->_fleets as $fleet) {
-				
-			if ($fleet->getCombatIndex() === $combat_index) return $fleet;
-				
-		}
-		
-		return null;
-		
-	}
-	
-	/**
-	 * @return Fleet[]
-	 */
-	public function getFleets() {
-		
-		return $this->_fleets;
-		
-	}
-	
-	/**
-	 * @return Fleet
-	 */
-	public function getFleetsMerged() {
-		
-		$merged = new Fleet();
-		
-		foreach ($this->_fleets as $fleet) {
-			$merged->merge($fleet);
-		}
-		
-		return $merged;
-		
-	}
-	
-	/**
-	 * @param boolean $byLosses
-	 * @return Resources
-	 */
-	public function getValue($byLosses = false) {
-		
-		return $this->getChildrenValue($this->_fleets, $byLosses);
 		
 	}
 	
@@ -169,47 +60,6 @@ class Player implements Value {
 	public function getName() {
 		
 		return $this->_name;
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getArmor() {
-		
-		return $this->_armor;
-		
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getShield() {
-		
-		return $this->_shield;
-		
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getWeapon() {
-		
-		return $this->_weapon;
-		
-	}
-	
-	public function __clone() {
-		
-		$fleets = array();
-		
-		foreach ($this->_fleets as $fleet) {
-			$clone = clone $fleet;
-			$clone->setPlayer($this);
-			$fleets[] = $clone;
-		}
-		
-		$this->_fleets = $fleets; //Clone the fleets
 		
 	}
 	

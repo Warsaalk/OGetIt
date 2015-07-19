@@ -26,6 +26,7 @@ use OGetIt\Common\Player;
 use OGetIt;
 use OGetIt\Common\Value;
 use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
+use OGetIt\Report\CombatReport\CombatPlayer;
 
 class Fleet implements Value {
 	
@@ -37,7 +38,7 @@ class Fleet implements Value {
 	private $_planet;
 	
 	/**
-	 * @var Player
+	 * @var CombatPlayer
 	 */
 	private $_player;
 	
@@ -110,16 +111,16 @@ class Fleet implements Value {
 	}
 	
 	/**
-	 * @param Player $player
+	 * @param CombatPlayer $player
 	 */
-	public function setPlayer(Player $player) {
+	public function setPlayer(CombatPlayer $player) {
 		
 		$this->_player = $player;
 		
 	}
 	
 	/**
-	 * @return Player
+	 * @return CombatPlayer
 	 */
 	public function getPlayer() {
 		

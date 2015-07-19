@@ -23,6 +23,7 @@ use OGetIt\Exception\Exception;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Player;
 use OGetIt\Report\CombatReport\CombatReport;
+use OGetIt\Report\CombatReport\CombatPlayer;
 
 class CombatResult_RoundDifference {
 	
@@ -63,8 +64,8 @@ class CombatResult_RoundDifference {
 	}
 	
 	/**
-	 * @param Player[] $start
-	 * @param Player[] $end
+	 * @param CombatPlayer[] $start
+	 * @param CombatPlayer[] $end
 	 * @param CombatParty $party
 	 * @return CombatParty
 	 */

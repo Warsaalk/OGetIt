@@ -39,7 +39,7 @@ class CombatParty implements Value {
 	private $_total_losses;
 	
 	/**
-	 * @var Player[]
+	 * @var CombatPlayer[]
 	 */
 	private $_players;
 	
@@ -60,7 +60,7 @@ class CombatParty implements Value {
 	}
 	
 	/**
-	 * @param Player[] $players
+	 * @param CombatPlayer[] $players
 	 */
 	public function setPlayers(array $players) {
 		
@@ -87,7 +87,7 @@ class CombatParty implements Value {
 	}
 	
 	/**
-	 * @return Player[]
+	 * @return CombatPlayer[]
 	 */
 	public function getPlayers() {
 		
@@ -97,7 +97,7 @@ class CombatParty implements Value {
 	
 	/**
 	 * @param integer $combat_index
-	 * @return Player|NULL
+	 * @return CombatPlayer|NULL
 	 */
 	public function getPlayerByCombatIndex($combat_index) {
 		

@@ -23,6 +23,7 @@ use OGetIt\Report\CombatReport\CombatParty;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Player;
 use OGetIt\Technology\Technology_Factory;
+use OGetIt\Report\CombatReport\CombatPlayer;
 
 class CombatRound {
 		
@@ -37,12 +38,12 @@ class CombatRound {
 	private $_statistics;
 	
 	/** 
-	 * @var Player[]
+	 * @var CombatPlayer[]
 	 */
 	private $_attacker_fleet_details;
 
 	/**
-	 * @var Player[]
+	 * @var CombatPlayer[]
 	 */
 	private $_defender_fleet_details;
 
@@ -71,7 +72,7 @@ class CombatRound {
 	 * @param array $ships
 	 * @param array $ship_losses
 	 * @param CombatParty $party
-	 * @return Player[]
+	 * @return CombatPlayer[]
 	 */
 	private function loadFleetDetails($ships, $ship_losses, $party) {
 		
@@ -102,7 +103,7 @@ class CombatRound {
 	/**
 	 * @param array $fleetDetails
 	 * @param CombatParty $party
-	 * @return Player[]
+	 * @return CombatPlayer[]
 	 */
 	private function createFleets($fleetDetails, $party) {
 		
@@ -153,7 +154,7 @@ class CombatRound {
 	}
 	
 	/**
-	 * @return Player[]
+	 * @return CombatPlayer[]
 	 */
 	public function getAttackersDetails() {
 		
@@ -162,7 +163,7 @@ class CombatRound {
 	}
 	
 	/**
-	 * @return Player[]
+	 * @return CombatPlayer[]
 	 */
 	public function getDefendersDetails() {
 		

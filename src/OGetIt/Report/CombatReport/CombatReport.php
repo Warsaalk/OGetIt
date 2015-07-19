@@ -228,7 +228,7 @@ class CombatReport {
 			if ($playerId === false) {
 				$playerId = $this->_player_id_count++;
 				$playerIdMapping[$rawPlayer] = $playerId;
-				$players[$playerId] = new Player($rawPlayer, $playerId);
+				$players[$playerId] = new CombatPlayer($rawPlayer, $playerId);
 				$players[$playerId]->setCombatTechnologies(
 					$fleetData['fleet_armor_percentage'], 
 					$fleetData['fleet_shield_percentage'], 

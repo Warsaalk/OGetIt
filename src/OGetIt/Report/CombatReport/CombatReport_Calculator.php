@@ -21,7 +21,6 @@ namespace OGetIt\Report\CombatReport;
 
 use OGetIt\Exception\Exception;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
-use OGetIt\Common\Player;
 use OGetIt\Report\CombatReport\Result\CombatResult_RoundDifference;
 
 class CombatReport_Calculator {
