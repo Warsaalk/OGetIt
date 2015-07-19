@@ -20,7 +20,7 @@
 namespace OGetIt\Technology;
 
 use OGetIt\Common\Resources;
-abstract class Technology_Combat extends Technology {
+abstract class TechnologyCombat extends Technology {
 
 	/**
 	 * @var integer

@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class RocketLauncher extends Technology_Combat {
+class RocketLauncher extends TechnologyCombat {
 
 	const TYPE = 401;
 	

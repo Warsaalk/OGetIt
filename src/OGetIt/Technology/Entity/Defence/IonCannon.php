@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class IonCannon extends Technology_Combat {
+class IonCannon extends TechnologyCombat {
 
 	const TYPE = 405;
 	

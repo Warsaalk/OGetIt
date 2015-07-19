@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Research; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class IntergalacticResearchNetwork extends Technology_Economy {
+class IntergalacticResearchNetwork extends TechnologyEconomy {
 	
 	const TYPE = 123;
 	

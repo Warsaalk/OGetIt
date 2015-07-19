@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Research; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class ImpulseDrive extends Technology_Economy {
+class ImpulseDrive extends TechnologyEconomy {
 	
 	const TYPE = 117;
 	

@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class Deathstar extends Technology_Combat {
+class Deathstar extends TechnologyCombat {
 
 	const TYPE = 214;
 	

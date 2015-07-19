@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class Battlecruiser extends Technology_Combat {
+class Battlecruiser extends TechnologyCombat {
 
 	const TYPE = 215;
 	

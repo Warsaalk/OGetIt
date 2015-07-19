@@ -20,14 +20,14 @@
 namespace OGetIt\Report\CombatReport\Fleet;
 
 use OGetIt\Technology\Technology;
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Common\Resources;
 use OGetIt\Common\Value;
 
 class Technology_State implements Value {
 	
 	/**
-	 * @var Technology_Combat
+	 * @var TechnologyCombat
 	 */
 	private $_technology;
 	
@@ -42,7 +42,7 @@ class Technology_State implements Value {
 	private $_lost;	
 	
 	/**
-	 * @param Technology_Combat $technology
+	 * @param TechnologyCombat $technology
 	 * @param integer $count
 	 * @param integer $lost
 	 */

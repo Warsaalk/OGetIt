@@ -42,7 +42,7 @@ use OGetIt\Technology\Entity\Ship\Cruiser;
 use OGetIt\Technology\Entity\Ship\HeavyFighter;
 use OGetIt\Technology\Entity\Ship\LightFighter;
 
-class Technology_Factory {
+class TechnologyFactory {
 	
 	/**
 	 * @param integer $type

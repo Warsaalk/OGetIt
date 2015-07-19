@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class SmallShieldDome extends Technology_Combat {
+class SmallShieldDome extends TechnologyCombat {
 
 	const TYPE = 407;
 	

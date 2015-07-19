@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class Shipyard extends Technology_Economy {
+class Shipyard extends TechnologyEconomy {
 	
 	const TYPE = 21;
 	

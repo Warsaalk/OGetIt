@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class JumpGate extends Technology_Economy {
+class JumpGate extends TechnologyEconomy {
 	
 	const TYPE = 43;
 	

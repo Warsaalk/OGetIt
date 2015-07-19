@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Research; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class Astrophysics extends Technology_Economy {
+class Astrophysics extends TechnologyEconomy {
 	
 	const TYPE = 124;
 	

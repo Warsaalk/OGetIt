@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class MetalStorage extends Technology_Economy {
+class MetalStorage extends TechnologyEconomy {
 	
 	const TYPE = 22;
 	

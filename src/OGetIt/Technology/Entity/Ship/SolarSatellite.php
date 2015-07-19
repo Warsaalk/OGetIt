@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class SolarSatellite extends Technology_Combat {
+class SolarSatellite extends TechnologyCombat {
 
 	const TYPE = 212;
 	

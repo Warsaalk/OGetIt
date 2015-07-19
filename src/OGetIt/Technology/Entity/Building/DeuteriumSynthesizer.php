@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class CrystalMine extends Technology_Economy {
+class CrystalMine extends TechnologyEconomy {
 	
 	const TYPE = 2;
 	

@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class EspionageProbe extends Technology_Combat {
+class EspionageProbe extends TechnologyCombat {
 
 	const TYPE = 210;
 	

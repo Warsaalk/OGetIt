@@ -21,7 +21,7 @@ namespace OGetIt\Technology;
 
 use OGetIt\Common\Resources;
 
-abstract class Technology_Economy extends Technology {
+abstract class TechnologyEconomy extends Technology {
 	
 	/**
 	 * @var integer

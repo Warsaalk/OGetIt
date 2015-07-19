@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class Recycler extends Technology_Combat {
+class Recycler extends TechnologyCombat {
 
 	const TYPE = 209;
 	

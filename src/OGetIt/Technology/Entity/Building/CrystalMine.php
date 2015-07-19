@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class DeuteriumSynthesizer extends Technology_Economy {
+class DeuteriumSynthesizer extends TechnologyEconomy {
 	
 	const TYPE = 3;
 	

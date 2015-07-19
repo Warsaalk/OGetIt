@@ -22,7 +22,7 @@ namespace OGetIt\Report\CombatReport;
 use OGetIt\Common\Planet;
 use OGetIt\Common\Player;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
-use OGetIt\Technology\Technology_Factory;
+use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Report\CombatReport\Round\CombatRound;
 use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
@@ -246,7 +246,7 @@ class CombatReport {
 			
 			foreach ($fleetData['fleet_composition'] as $rawTechnology) {
 				
-				$technology = Technology_Factory::create($rawTechnology['ship_type']);
+				$technology = TechnologyFactory::create($rawTechnology['ship_type']);
 				
 				$fleet->addTechnologyState($technology, $rawTechnology['count']);
 				

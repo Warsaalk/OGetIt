@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class AllianceDepot extends Technology_Economy {
+class AllianceDepot extends TechnologyEconomy {
 	
 	const TYPE = 34;
 	

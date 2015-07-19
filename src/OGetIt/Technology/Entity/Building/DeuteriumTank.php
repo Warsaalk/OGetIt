@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class DeuteriumTank extends Technology_Economy {
+class DeuteriumTank extends TechnologyEconomy {
 	
 	const TYPE = 24;
 	

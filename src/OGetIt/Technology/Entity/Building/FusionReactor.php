@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class FusionReactor extends Technology_Economy {
+class FusionReactor extends TechnologyEconomy {
 	
 	const TYPE = 12;
 	

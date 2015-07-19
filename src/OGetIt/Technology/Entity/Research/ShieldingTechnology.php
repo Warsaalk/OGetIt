@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Research; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class ShieldingTechnology extends Technology_Economy {
+class ShieldingTechnology extends TechnologyEconomy {
 	
 	const TYPE = 110;
 	

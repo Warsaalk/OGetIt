@@ -22,7 +22,7 @@ namespace OGetIt\Report\CombatReport\Round;
 use OGetIt\Report\CombatReport\CombatParty;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Player;
-use OGetIt\Technology\Technology_Factory;
+use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Report\CombatReport\CombatPlayer;
 
 class CombatRound {
@@ -120,7 +120,7 @@ class CombatRound {
 				foreach ($fleetData as $type => $techData) {
 					
 					$lost = isset($techData['lost']) ? $techData['lost'] : 0;
-					$fleet->addTechnologyState(Technology_Factory::create($type), $techData['ships'], $lost);
+					$fleet->addTechnologyState(TechnologyFactory::create($type), $techData['ships'], $lost);
 					
 				}
 				

@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class SensorPhalanx extends Technology_Economy {
+class SensorPhalanx extends TechnologyEconomy {
 	
 	const TYPE = 42;
 	

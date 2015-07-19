@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
-use OGetIt\Technology\Technology_Combat;
+use OGetIt\Technology\TechnologyCombat;
 
-class LightLaser extends Technology_Combat {
+class LightLaser extends TechnologyCombat {
 
 	const TYPE = 402;
 	

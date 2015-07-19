@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Research; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class PlasmaTechnology extends Technology_Economy {
+class PlasmaTechnology extends TechnologyEconomy {
 	
 	const TYPE = 122;
 	

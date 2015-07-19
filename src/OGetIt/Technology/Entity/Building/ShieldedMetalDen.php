@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class ShieldedMetalDen extends Technology_Economy {
+class ShieldedMetalDen extends TechnologyEconomy {
 	
 	const TYPE = 25;
 	

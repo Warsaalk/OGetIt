@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Building; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class LunarBase extends Technology_Economy {
+class LunarBase extends TechnologyEconomy {
 	
 	const TYPE = 41;
 	

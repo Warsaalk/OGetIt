@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Research; 
 
-use OGetIt\Technology\Technology_Economy;
+use OGetIt\Technology\TechnologyEconomy;
 
-class HyperspaceDrive extends Technology_Economy {
+class HyperspaceDrive extends TechnologyEconomy {
 	
 	const TYPE = 118;
 	
