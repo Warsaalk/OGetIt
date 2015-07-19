@@ -80,4 +80,18 @@ abstract class Technology_Combat extends Technology {
 		
 	}
 	
+	/**
+	 * @param integer $count
+	 * @return Resources
+	 */
+	public function getCosts($count = 1) {
+		
+		return new Resources(
+			$this->getResources()->getMetal() * $count,
+			$this->getResources()->getCrystal() * $count,
+			$this->getResources()->getDeuterium() * $count	
+		);
+		
+	}
+	
 }
