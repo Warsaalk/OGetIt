@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\CombatReport\Fleet;
+namespace OGetIt\Report\CombatReport\Fleet;
 
 use OGetIt\Technology\Technology;
 use OGetIt\Common\Planet;
@@ -25,7 +25,7 @@ use OGetIt\Common\Resources;
 use OGetIt\Common\Player;
 use OGetIt;
 use OGetIt\Common\Value;
-use OGetIt\CombatReport\Helper\Combat_ChildValue;
+use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 
 class Fleet implements Value {
 	

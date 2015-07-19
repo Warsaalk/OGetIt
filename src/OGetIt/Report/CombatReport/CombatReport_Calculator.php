@@ -17,12 +17,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\CombatReport;
+namespace OGetIt\Report\CombatReport;
 
 use OGetIt\Exception\Exception;
-use OGetIt\CombatReport\Fleet\Fleet;
+use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Player;
-use OGetIt\CombatReport\Result\CombatResult_RoundDifference;
+use OGetIt\Report\CombatReport\Result\CombatResult_RoundDifference;
 
 class CombatReport_Calculator {
 	

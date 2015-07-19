@@ -20,9 +20,9 @@
 namespace OGetIt;
 
 use OGetIt\Http\HttpRequest;
-use OGetIt\CombatReport\CombatReport;
-use OGetIt\HarvestReport\HarvestReport;
-use OGetIt\SpyReport\SpyReport;
+use OGetIt\Report\CombatReport\CombatReport;
+use OGetIt\Report\HarvestReport\HarvestReport;
+use OGetIt\Report\SpyReport\SpyReport;
 
 class OGetIt { 
 	

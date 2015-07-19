@@ -1,5 +1,5 @@
 <?php
-namespace OGetIt\SpyReport;
+namespace OGetIt\Report\SpyReport;
 
 use OGetIt\Common\Resources;
 use OGetIt\Common\Player;

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\CombatReport\Round;
+namespace OGetIt\Report\CombatReport\Round;
 
 class CombatRound_Stats {
 		

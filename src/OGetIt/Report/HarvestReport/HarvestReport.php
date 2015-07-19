@@ -1,5 +1,5 @@
 <?php
-namespace OGetIt\HarvestReport;
+namespace OGetIt\Report\HarvestReport;
 
 use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;

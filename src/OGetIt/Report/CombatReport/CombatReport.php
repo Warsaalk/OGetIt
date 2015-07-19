@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\CombatReport;
+namespace OGetIt\Report\CombatReport;
 
 use OGetIt\Common\Planet;
 use OGetIt\Common\Player;
-use OGetIt\CombatReport\Fleet\Fleet;
+use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Technology\Technology_Factory;
-use OGetIt\CombatReport\Round\CombatRound;
+use OGetIt\Report\CombatReport\Round\CombatRound;
 use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
 
