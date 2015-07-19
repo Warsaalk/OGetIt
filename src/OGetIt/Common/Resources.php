@@ -35,17 +35,23 @@ class Resources {
 	 * @var integer
 	 */
 	private $_deuterium;
+
+	/**
+	 * @var integer
+	 */	
+	private $_energy;
 	
 	/**
 	 * @param integer $metal
 	 * @param integer $crystal
 	 * @param integer $deuterium
 	 */
-	public function __construct($metal, $crystal, $deuterium) {
+	public function __construct($metal, $crystal, $deuterium, $energy = 0) {
 		
 		$this->_metal = (int)$metal;
 		$this->_crystal = (int)$crystal;
 		$this->_deuterium = (int)$deuterium;
+		$this->_energy = (int)$energy;
 		
 	}
 	
@@ -79,6 +85,15 @@ class Resources {
 	/**
 	 * @return integer
 	 */
+	public function getEnergy() {
+		
+		return $this->_energy;
+		
+	}
+	
+	/**
+	 * @return integer
+	 */
 	public function getTotal() {
 		
 		return $this->_metal + $this->_crystal + $this->_deuterium;
@@ -94,6 +109,7 @@ class Resources {
 		$this->_metal -= $resources->getMetal();
 		$this->_crystal -= $resources->getCrystal();
 		$this->_deuterium -= $resources->getDeuterium();
+		$this->_energy -= $resources->getEnergy();
 		
 		return $this;
 		
@@ -108,6 +124,7 @@ class Resources {
 		$this->_metal += $resources->getMetal();
 		$this->_crystal += $resources->getCrystal();
 		$this->_deuterium += $resources->getDeuterium();
+		$this->_energy += $resources->getEnergy();
 		
 		return $this;
 		
@@ -122,6 +139,7 @@ class Resources {
 		$this->_metal *= $number;
 		$this->_crystal *= $number;
 		$this->_deuterium *= $number;
+		$this->_energy *= $number;
 		
 		return $this;
 		
