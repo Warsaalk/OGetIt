@@ -23,6 +23,7 @@ use OGetIt\Http\HttpRequest;
 use OGetIt\Report\CombatReport\CombatReport;
 use OGetIt\Report\HarvestReport\HarvestReport;
 use OGetIt\Report\SpyReport\SpyReport;
+use OGetIt\Report\MissileReport\MissileReport;
 
 class OGetIt { 
 	
@@ -116,6 +117,17 @@ class OGetIt {
 		$data = $this->getApiData(OGameApi::TYPE_SPYREPORT, 'sr_id', $sr_api_key, $username, $password);
 				
 		return $data === false ? $data : SpyReport::createSpyReport($data);
+		
+	}
+	
+	/**
+	 * @param string $mr_api_key
+	 */
+	public function getMissileReport($mr_api_key, $username = false, $password = false) {
+		
+		$data = $this->getApiData(OGameApi::TYPE_MISSILEREPORT, 'mr_id', $mr_api_key, $username, $password);
+				
+		return $data === false ? $data : MissileReport::createMissileReport($data);
 		
 	}
 	

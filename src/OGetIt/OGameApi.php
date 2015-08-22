@@ -40,6 +40,11 @@ class OGameApi {
 	const TYPE_SPYREPORT = 'spy/report';
 	
 	/**
+	 * @var string
+	 */
+	const TYPE_MISSILEREPORT = 'missile/report';
+	
+	/**
 	 * @param integer $error
 	 * @throws Exception
 	 */
