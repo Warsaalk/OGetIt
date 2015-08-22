@@ -85,9 +85,7 @@ class SpyReport {
 	 * @return CombatReport
 	 */
 	public static function createSpyReport($api_data) {
-	
-		var_dump($api_data);
-		
+			
 		$generic = $api_data['generic'];
 		$details = $api_data['details'];
 	
