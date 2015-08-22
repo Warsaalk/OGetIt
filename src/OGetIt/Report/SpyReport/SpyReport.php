@@ -27,13 +27,9 @@ use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Technology\State\StateCombat;
 use OGetIt\Technology\State\StateEconomy;
 use OGetIt\Common\OGetIt\Common;
+use OGetIt\Report\Report;
 
-class SpyReport {
-
-	/**
-	 * @var string
-	 */
-	private $_id;
+class SpyReport extends Report {
 	
 	/**
 	 * @var integer
@@ -49,16 +45,6 @@ class SpyReport {
 	 * @var SpiedPlayer
 	 */
 	private $_defender;
-	
-	/**
-	 * @var string
-	 */
-	private $_time;
-	
-	/**
-	 * @var integer
-	 */
-	private $_timestamp;
 
 	/**
 	 * @var integer
@@ -172,7 +158,8 @@ class SpyReport {
 	 */
 	public function __construct($id, $activity, $attacker_name, $attacker_planet_coordinates, $attacker_planet_name, $attacker_planet_type, $defender_name, $defender_planet_coordinates, $defender_planet_name, $defender_planet_type, $time, $timestamp, $loot_percentage, $spy_fail_chance, $total_defense_count, $total_ship_count) {
 		
-		$this->_id = $id;
+		parent::__construct($id, $time, $timestamp);
+
 		$this->_activity = $activity;
 		
 		$this->_attacker = new SpyPlayer($attacker_name);
@@ -181,22 +168,10 @@ class SpyReport {
 		$this->_defender = new SpiedPlayer($defender_name);
 		$this->_defender->setPlanet(new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name));
 		
-		$this->_time = $time;
-		$this->_timestamp = $timestamp;
-		
 		$this->_loot_percentage = $loot_percentage;
 		$this->_spy_fail_chance = $spy_fail_chance;
 		$this->_total_defense_count = $total_defense_count;
 		$this->_total_ship_count = $total_ship_count;
-		
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getId() {
-		
-		return $this->_id;
 		
 	}
 	
@@ -224,24 +199,6 @@ class SpyReport {
 	public function getDefender() {
 		
 		return $this->_defender;
-		
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getTime() {
-		
-		return $this->_time;
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getTimestamp() {
-		
-		return $this->_timestamp;
 		
 	}
 

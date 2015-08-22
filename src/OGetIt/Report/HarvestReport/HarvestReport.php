@@ -21,28 +21,14 @@ namespace OGetIt\Report\HarvestReport;
 
 use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
+use OGetIt\Report\Report;
 
-class HarvestReport {
-
-	/**
-	 * @var string
-	 */
-	private $_id;
+class HarvestReport extends Report {
 
 	/**
 	 * @var DebrisField
 	 */
 	private $_debris_field;
-	
-	/**
-	 * @var string
-	 */
-	private $_time;
-	
-	/**
-	 * @var integer
-	 */
-	private $_timestamp;
 	
 	/**
 	 * @var integer
@@ -93,23 +79,13 @@ class HarvestReport {
 	 */
 	public function __construct($id, $coordinates, $metal, $metal_floating, $crystal, $crystal_floating, $time, $timestamp, $recycler_capacity, $recycler_count) {
 		
-		$this->_id = $id;
+		parent::__construct($id, $time, $timestamp);
+		
 		$this->_resources = new Resources($metal, $crystal, 0);
-		$this->_time = $time;
-		$this->_timestamp = $timestamp;
 		$this->_recycler_capacity = (int)$recycler_capacity;
 		$this->_recycler_count = (int)$recycler_count;
 		
 		$this->_debris_field = new DebrisField($coordinates, $metal_floating, $crystal_floating);
-		
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getId() {
-		
-		return $this->_id;
 		
 	}
 	
@@ -146,24 +122,6 @@ class HarvestReport {
 	public function getDebrisField() {
 		
 		return $this->_debris_field;
-		
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getTime() {
-		
-		return $this->_time;
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getTimestamp() {
-		
-		return $this->_timestamp;
 		
 	}
 	

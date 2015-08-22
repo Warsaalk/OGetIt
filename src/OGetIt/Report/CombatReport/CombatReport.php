@@ -26,32 +26,18 @@ use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Report\CombatReport\Round\CombatRound;
 use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
+use OGetIt\Report\Report;
 
-class CombatReport {
+class CombatReport extends Report {
 	
 	const 	WINNER_ATTACKER = 'attacker',
 			WINNER_DEFENDER = 'defender',
 			WINNER_DRAW = 'draw';
 	
 	/**
-	 * @var string
-	 */
-	private $_id;
-	
-	/**
 	 * @var Planet
 	 */
 	private $_planet;
-	
-	/**
-	 * @var string
-	 */
-	private $_time;
-	
-	/**
-	 * @var integer
-	 */
-	private $_timestamp;
 	
 	/**
 	 * @var integer
@@ -171,9 +157,8 @@ class CombatReport {
 	 */
 	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $time, $timestamp, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
 		
-		$this->_id = $id;
-		$this->_time = $time;
-		$this->_timestamp = $timestamp;
+		parent::__construct($id, $time, $timestamp);
+		
 		$this->_loot_percentage = $loot_percentage;
 		$this->_combat_rounds_count = $combat_rounds;
 		$this->_winner = $winner;
@@ -279,24 +264,6 @@ class CombatReport {
 			);
 			
 		}		
-		
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getTime() {
-		
-		return $this->_time;
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getTimestamp() {
-		
-		return $this->_timestamp;
 		
 	}
 	
