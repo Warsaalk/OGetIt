@@ -22,6 +22,11 @@ namespace OGetIt\Report\SpyReport;
 use OGetIt\Common\Resources;
 use OGetIt\Common\Player;
 use OGetIt\Common\Planet;
+use OGetIt\Report\SpyReport\SpyPlayer;
+use OGetIt\Technology\TechnologyFactory;
+use OGetIt\Technology\State\StateCombat;
+use OGetIt\Technology\State\StateEconomy;
+use OGetIt\Common\OGetIt\Common;
 
 class SpyReport {
 
@@ -36,24 +41,14 @@ class SpyReport {
 	private $_activity;
 	
 	/**
-	 * @var Player
+	 * @var SpyPlayer
 	 */
 	private $_attacker;
-	
-	/**
-	 * @var Planet
-	 */
-	private $_attacker_planet;
 
 	/**
-	 * @var Player
+	 * @var SpiedPlayer
 	 */
 	private $_defender;
-
-	/**
-	 * @var Planet
-	 */
-	private $_defender_planet;
 	
 	/**
 	 * @var string
@@ -91,7 +86,10 @@ class SpyReport {
 	 */
 	public static function createSpyReport($api_data) {
 	
+		var_dump($api_data);
+		
 		$generic = $api_data['generic'];
+		$details = $api_data['details'];
 	
 		$spyreport = new self(
 			$generic['sr_id'],
@@ -111,21 +109,45 @@ class SpyReport {
 			$generic['total_defense_count'],
 			$generic['total_ship_count']				
 		);
+		
+		if (isset($details['resources'])) {
+			$spyreport->getDefender()->setResources(new Resources($details['resources']['metal'], $details['resources']['crystal'], $details['resources']['deuterium']));
+		}
 						
-		if ($generic['failed_buildings']) {
-			
+		if ($generic['failed_buildings'] === false) {
+			if (isset($details['buildings'])) {
+				foreach ($details['buildings'] as $state) {
+					$buildingState = new StateEconomy(TechnologyFactory::create($state['building_type']), $state['level']);
+					$spyreport->getDefender()->addBuilding($buildingState);
+				}
+			}
 		}
 
-		if ($generic['failed_research']) {
-			
+		if ($generic['failed_research'] === false) {
+			if (isset($details['research'])) {
+				foreach ($details['research'] as $state) {
+					$researchState = new StateEconomy(TechnologyFactory::create($state['research_type']), $state['level']);
+					$spyreport->getDefender()->addResearch($researchState);
+				}
+			}
 		}
 		
-		if ($generic['failed_ships']) {
-			
+		if ($generic['failed_ships'] === false) {
+			if (isset($details['ships'])) {
+				foreach ($details['ships'] as $state) {
+					$shipState = new StateCombat(TechnologyFactory::create($state['ship_type']), $state['count']);
+					$spyreport->getDefender()->addShip($shipState);
+				}
+			}
 		}
 		
-		if ($generic['failed_defense']) {
-			
+		if ($generic['failed_defense'] === false) {
+			if (isset($details['defense'])) {
+				foreach ($details['defense'] as $state) {
+					$defenceState = new StateCombat(TechnologyFactory::create($state['defense_type']), $state['count']);
+					$spyreport->getDefender()->addDefence($defenceState);
+				}
+			}
 		}
 			
 		return $spyreport;
@@ -155,11 +177,11 @@ class SpyReport {
 		$this->_id = $id;
 		$this->_activity = $activity;
 		
-		$this->_attacker = new Player($attacker_name);
-		$this->_attacker_planet = new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name);
+		$this->_attacker = new SpyPlayer($attacker_name);
+		$this->_attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
 		
-		$this->_defender = new Player($defender_name);
-		$this->_defender_planet = new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name);
+		$this->_defender = new SpiedPlayer($defender_name);
+		$this->_defender->setPlanet(new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name));
 		
 		$this->_time = $time;
 		$this->_timestamp = $timestamp;
@@ -190,7 +212,7 @@ class SpyReport {
 	}
 	
 	/**
-	 * @return Player
+	 * @return SpyPlayer
 	 */
 	public function getAttacker() {
 		
@@ -199,29 +221,11 @@ class SpyReport {
 	}
 	
 	/**
-	 * @return Planet
-	 */
-	public function getAttackerPlanet() {
-		
-		return $this->_attacker_planet;
-		
-	}
-	
-	/**
-	 * @return Player
+	 * @return SpiedPlayer
 	 */
 	public function getDefender() {
 		
 		return $this->_defender;
-		
-	}
-	
-	/**
-	 * @return Planet
-	 */
-	public function getDefenderPlanet() {
-		
-		return $this->_defender_planet;
 		
 	}
 	
