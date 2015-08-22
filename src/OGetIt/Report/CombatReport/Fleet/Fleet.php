@@ -27,6 +27,7 @@ use OGetIt;
 use OGetIt\Common\Value;
 use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 use OGetIt\Report\CombatReport\CombatPlayer;
+use OGetIt\Technology\State\StateCombatWithLosses;
 
 class Fleet implements Value {
 	
@@ -43,7 +44,7 @@ class Fleet implements Value {
 	private $_player;
 	
 	/**
-	 * @var Technology_State[] 
+	 * @var StateCombatWithLosses[] 
 	 */
 	private $_state = array();
 	
@@ -79,7 +80,7 @@ class Fleet implements Value {
 			
 		} else {
 		
-			$techState = new Technology_State(
+			$techState = new StateCombatWithLosses(
 				$technology, 
 				$count, 
 				$lost
@@ -93,7 +94,7 @@ class Fleet implements Value {
 	
 	/**
 	 * @param integer $type
-	 * @return Technology_State|NULL
+	 * @return StateCombatWithLosses|NULL
 	 */
 	public function getTechnologyState($type) {
 		
@@ -102,7 +103,7 @@ class Fleet implements Value {
 	}
 	
 	/**
-	 * @return Technology_State[]
+	 * @return StateCombatWithLosses[]
 	 */
 	public function getTechnologyStates() {
 		
