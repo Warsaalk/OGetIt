@@ -155,6 +155,9 @@ class TechnologyFactory {
 			case 407: $technology = new SmallShieldDome(); break;
 			case 408: $technology = new LargeShieldDome(); break;
 			
+			case 502: $technology = new AntiBallisticMissile(); break;
+			case 503: $technology = new InterplanetaryMissile(); break;
+			
 			/*
 			 * default: throws new Exception('test');
 			 */
