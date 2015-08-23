@@ -22,7 +22,7 @@ namespace OGetIt\Report\SpyReport;
 use OGetIt\Common\Resources;
 use OGetIt\Common\Player;
 use OGetIt\Common\Planet;
-use OGetIt\Report\SpyReport\SpyPlayer;
+use OGetIt\Report\ReportPlayer;
 use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Technology\State\StateCombat;
 use OGetIt\Technology\State\StateEconomy;
@@ -37,7 +37,7 @@ class SpyReport extends Report {
 	private $_activity;
 	
 	/**
-	 * @var SpyPlayer
+	 * @var ReportPlayer
 	 */
 	private $_attacker;
 
@@ -162,7 +162,7 @@ class SpyReport extends Report {
 
 		$this->_activity = $activity;
 		
-		$this->_attacker = new SpyPlayer($attacker_name);
+		$this->_attacker = new ReportPlayer($attacker_name);
 		$this->_attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
 		
 		$this->_defender = new SpiedPlayer($defender_name);
@@ -185,7 +185,7 @@ class SpyReport extends Report {
 	}
 	
 	/**
-	 * @return SpyPlayer
+	 * @return ReportPlayer
 	 */
 	public function getAttacker() {
 		

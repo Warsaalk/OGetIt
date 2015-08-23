@@ -17,31 +17,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\Report\SpyReport;
+namespace OGetIt\Report;
 
 use OGetIt\Common\Player;
-use OGetIt\Common\Planet;
+use OGetIt\Common\PlanetTrait;
 
-class SpyPlayer extends Player {
+class ReportPlayer extends Player {
 	
-	private $_planet;
-	
-	/**
-	 * @param Planet $planet
-	 */
-	public function setPlanet(Planet $planet) {
-		
-		$this->_planet = $planet;
-		
-	}
-	
-	/**
-	 * @return Planet
-	 */
-	public function getPlanet() {
-		
-		return $this->_planet;
-		
-	}
+	use PlanetTrait;
 	
 }

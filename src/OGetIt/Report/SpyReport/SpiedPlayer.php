@@ -24,8 +24,9 @@ use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Technology\TechnologyEconomy;
 use OGetIt\Technology\State\StateEconomy;
 use OGetIt\Technology\State\StateCombat;
+use OGetIt\Report\ReportPlayer;
 
-class SpiedPlayer extends SpyPlayer {
+class SpiedPlayer extends ReportPlayer {
 		
 	/**
 	 * @var Resources
