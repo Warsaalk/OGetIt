@@ -28,15 +28,12 @@ use OGetIt\Common\Value;
 use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 use OGetIt\Report\CombatReport\CombatPlayer;
 use OGetIt\Technology\State\StateCombatWithLosses;
+use OGetIt\Common\PlanetTrait;
 
 class Fleet implements Value {
 	
 	use Combat_ChildValue;
-	
-	/**
-	 * @var Planet
-	 */
-	private $_planet;
+	use PlanetTrait;
 	
 	/**
 	 * @var CombatPlayer
@@ -59,7 +56,7 @@ class Fleet implements Value {
 	 */
 	public function __construct($planet = null, $combat_index = null) {
 		
-		$this->_planet = $planet;
+		$this->setPlanet($planet);
 		$this->_combat_index = $combat_index;
 		
 	}
@@ -126,15 +123,6 @@ class Fleet implements Value {
 	public function getPlayer() {
 		
 		return $this->_player;
-		
-	}
-	
-	/**
-	 * @return Planet
-	 */
-	public function getPlanet() {
-		
-		return $this->_planet;
 		
 	}
 	
