@@ -19,8 +19,8 @@
  */
 namespace OGetIt\Technology;
 
-use OGetIt\Technology\Entity\Ship\SmallCargo;
-use OGetIt\Technology\Entity\Ship\LargeCargo;
+use OGetIt\Technology\Entity\Defence\InterplanetaryMissile;
+use OGetIt\Technology\Entity\Defence\AntiBallisticMissile;
 use OGetIt\Technology\Entity\Defence\LargeShieldDome;
 use OGetIt\Technology\Entity\Defence\SmallShieldDome;
 use OGetIt\Technology\Entity\Defence\PlasmaTurret;
@@ -41,6 +41,8 @@ use OGetIt\Technology\Entity\Ship\Battleship;
 use OGetIt\Technology\Entity\Ship\Cruiser;
 use OGetIt\Technology\Entity\Ship\HeavyFighter;
 use OGetIt\Technology\Entity\Ship\LightFighter;
+use OGetIt\Technology\Entity\Ship\SmallCargo;
+use OGetIt\Technology\Entity\Ship\LargeCargo;
 use OGetIt\Technology\Entity\Building\MetalMine;
 use OGetIt\Technology\Entity\Building\CrystalMine;
 use OGetIt\Technology\Entity\Building\DeuteriumSynthesizer;
