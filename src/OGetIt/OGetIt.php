@@ -89,6 +89,7 @@ class OGetIt {
 	
 	/**
 	 * @param string $cr_api_key
+	 * @return CombatReport
 	 */
 	public function getCombatReport($cr_api_key, $username = false, $password = false) {
 		
@@ -100,6 +101,7 @@ class OGetIt {
 	
 	/**
 	 * @param string $rr_api_key
+	 * @return HarvestReport
 	 */
 	public function getHarvestReport($rr_api_key, $username = false, $password = false) {
 		
@@ -111,6 +113,7 @@ class OGetIt {
 	
 	/**
 	 * @param string $sr_api_key
+	 * @return SpyReport
 	 */
 	public function getSpyReport($sr_api_key, $username = false, $password = false) {
 		
@@ -122,6 +125,7 @@ class OGetIt {
 	
 	/**
 	 * @param string $mr_api_key
+	 * @return MissileReport
 	 */
 	public function getMissileReport($mr_api_key, $username = false, $password = false) {
 		
