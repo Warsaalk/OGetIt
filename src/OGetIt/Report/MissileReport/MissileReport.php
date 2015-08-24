@@ -126,6 +126,15 @@ class MissileReport extends Report {
 		}
 		
 	}
+	
+	/**
+	 * @return ReportPlayer
+	 */
+	public function getAttacker() {
+		
+		return $this->attacker;
+		
+	}
 
 	/**
 	 * @return integer
@@ -133,6 +142,15 @@ class MissileReport extends Report {
 	public function getAttackerLostMissiles() {
 		
 		return $this->attacker_lost_missiles;
+		
+	}
+	
+	/**
+	 * @return MissilePlayer
+	 */
+	public function getDefender() {
+		
+		return $this->defender;
 		
 	}
 	
