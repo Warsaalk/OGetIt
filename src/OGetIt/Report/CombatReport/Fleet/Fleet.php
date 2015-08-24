@@ -23,17 +23,13 @@ use OGetIt\Technology\Technology;
 use OGetIt\Common\Planet;
 use OGetIt\Common\Resources;
 use OGetIt\Common\Player;
-use OGetIt;
-use OGetIt\Common\Value;
 use OGetIt\Report\CombatReport\CombatPlayer;
 use OGetIt\Technology\State\StateCombatWithLosses;
-use OGetIt\Common\PlanetTrait;
 use OGetIt\Common\Value\ChildValueAndLosses;
 
 class Fleet {
 	
 	use ChildValueAndLosses;
-	use PlanetTrait;
 	
 	/**
 	 * @var CombatPlayer
@@ -44,22 +40,6 @@ class Fleet {
 	 * @var StateCombatWithLosses[] 
 	 */
 	private $_state = array();
-	
-	/**
-	 * @var integer
-	 */
-	private $_combat_index;
-	
-	/**
-	 * @param Planet $planet
-	 * @parem integer $combat_index
-	 */
-	public function __construct($planet = null, $combat_index = null) {
-		
-		$this->setPlanet($planet);
-		$this->_combat_index = $combat_index;
-		
-	}
 	
 	/**
 	 * @param Technology $technology
@@ -123,15 +103,6 @@ class Fleet {
 	public function getPlayer() {
 		
 		return $this->_player;
-		
-	}
-	
-	/**
-	 * @return integer
-	 */
-	public function getCombatIndex() {
-		
-		return $this->_combat_index;
 		
 	}
 	

@@ -23,6 +23,7 @@ use OGetIt\Common\Player;
 use OGetIt\Common\Value;
 use OGetIt\Report\HarvestReport\HarvestReport;
 use OGetIt\Common\Value\ChildValueAndLosses;
+use OGetIt\Report\CombatReport\Fleet\CombatFleet;
 
 class CombatParty {
 
@@ -113,7 +114,7 @@ class CombatParty {
 	
 	/**
 	 * @param integer $combat_index
-	 * @return Fleet\NULL
+	 * @return CombatFleet\NULL
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 		

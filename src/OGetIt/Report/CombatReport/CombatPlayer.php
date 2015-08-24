@@ -22,6 +22,7 @@ namespace OGetIt\Report\CombatReport;
 use OGetIt\Common\Player;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Value\ChildValueAndLosses;
+use OGetIt\Report\CombatReport\Fleet\CombatFleet;
 
 class CombatPlayer extends Player {
 
@@ -43,7 +44,7 @@ class CombatPlayer extends Player {
 	private $_weapon;
 	
 	/**
-	 * @var Fleet[]
+	 * @var CombatFleet[]
 	 */
 	private $_fleets = array();
 	
@@ -61,9 +62,9 @@ class CombatPlayer extends Player {
 	}
 	
 	/**
-	 * @param Fleet $fleet
+	 * @param CombatFleet $fleet
 	 */
-	public function addFleet(Fleet $fleet) {
+	public function addFleet(CombatFleet $fleet) {
 	
 		$fleet->setPlayer($this);
 		$this->_fleets[] = $fleet;
@@ -71,9 +72,9 @@ class CombatPlayer extends Player {
 	}
 	
 	/**
-	 * @param Fleet $updatedFleet
+	 * @param CombatFleet $updatedFleet
 	 */
-	public function updateFleet(Fleet $updatedFleet) {
+	public function updateFleet(CombatFleet $updatedFleet) {
 	
 		foreach ($this->_fleets as $i => $fleet) {
 			if ($fleet->getCombatIndex() === $updatedFleet->getCombatIndex()) {
@@ -86,7 +87,7 @@ class CombatPlayer extends Player {
 	
 	/**
 	 * @param integer $combat_index
-	 * @return Fleet|NULL
+	 * @return CombatFleet|NULL
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 	
@@ -101,7 +102,7 @@ class CombatPlayer extends Player {
 	}
 	
 	/**
-	 * @return Fleet[]
+	 * @return CombatFleet[]
 	 */
 	public function getFleets() {
 	

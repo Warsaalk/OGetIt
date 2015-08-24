@@ -27,6 +27,7 @@ use OGetIt\Report\CombatReport\Round\CombatRound;
 use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
 use OGetIt\Report\Report;
+use OGetIt\Report\CombatReport\Fleet\CombatFleet;
 
 class CombatReport extends Report {
 	
@@ -227,7 +228,7 @@ class CombatReport extends Report {
 				$fleetData['fleet_owner_coordinates'], 
 				$fleetData['fleet_owner_planet_name']
 			);
-			$fleet = new Fleet($planet, $combat_index);
+			$fleet = new CombatFleet($planet, $combat_index);
 			
 			foreach ($fleetData['fleet_composition'] as $rawTechnology) {
 				
