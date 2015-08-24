@@ -17,28 +17,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\Report\CombatReport\Helper;
+namespace OGetIt\Common\Value;
 
-use OGetIt\Common\Value;
 use OGetIt\Common\Resources;
 
-trait Combat_ChildValue {
+trait ChildValueAndLosses {
 	
-	/**
-	 * @param Value[] $children
-	 * @param string $byLosses
-	 * @return Resources
-	 */
-	protected function getChildrenValue($children, $byLosses = false) {
-		
-		$value = new Resources(0, 0, 0);
-		
-		foreach ($children as $child) {
-			$value->add($child->getValue($byLosses));
-		}
-		
-		return $value;
-		
-	}
+	use ChildValue;
+	use ChildLosses;
 	
 }

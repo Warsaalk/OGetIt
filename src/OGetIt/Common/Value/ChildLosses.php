@@ -17,10 +17,29 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OGetIt.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace OGetIt\Common;
+namespace OGetIt\Common\Value;
 
-interface Value {
+use OGetIt\Common\Resources;
+
+trait ChildLosses {
 	
-	public function getValue($byLosses = false);
+	use Losses;
+	
+	/**
+	 * @param Losses[] $children
+	 * @param string $byLosses
+	 * @return Resources
+	 */
+	protected function getChildrenLosses($children) {
+		
+		$value = new Resources(0, 0, 0);
+		
+		foreach ($children as $child) {
+			$value->add($child->getLosses());
+		}
+		
+		return $value;
+		
+	}
 	
 }
