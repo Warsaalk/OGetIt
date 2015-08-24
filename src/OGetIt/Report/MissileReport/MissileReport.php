@@ -25,6 +25,7 @@ use OGetIt\Common\Player;
 use OGetIt\Common\Planet;
 use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Technology\State\StateCombatWithLosses;
+use OGetIt\Technology\Entity\Defence\InterplanetaryMissile;
 
 class MissileReport extends Report {
 	
@@ -91,6 +92,8 @@ class MissileReport extends Report {
 			$missilereport->loadDefenderDefence($defence_data);			
 		}
 		
+		$missilereport->setAttackerMissiles();
+		
 		return $missilereport;
 	
 	}
@@ -102,7 +105,7 @@ class MissileReport extends Report {
 		
 		parent::__construct($id, $time, $timestamp);
 		
-		$this->attacker = new ReportPlayer($attacker_name);
+		$this->attacker = new MissilePlayer($attacker_name);
 		$this->attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
 		$this->attacker_lost_missiles = $missiles_lost_attacker;
 		
@@ -124,6 +127,13 @@ class MissileReport extends Report {
 			$this->defender->addLostDefence($state);
 				
 		}
+		
+	}
+	
+	private function setAttackerMissiles() {
+		
+		$state = new StateCombatWithLosses(TechnologyFactory::create(InterplanetaryMissile::TYPE), $this->attacker_lost_missiles, $this->attacker_lost_missiles);
+		$this->attacker->addLostDefence($state);
 		
 	}
 	
