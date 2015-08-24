@@ -21,12 +21,12 @@ namespace OGetIt\Report\CombatReport;
 
 use OGetIt\Common\Player;
 use OGetIt\Common\Value;
-use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 use OGetIt\Report\HarvestReport\HarvestReport;
+use OGetIt\Common\Value\ChildValueAndLosses;
 
-class CombatParty implements Value {
+class CombatParty {
 
-	use Combat_ChildValue;
+	use ChildValueAndLosses;
 	
 	/**
 	 * @var integer
@@ -127,16 +127,6 @@ class CombatParty implements Value {
 		
 	}
 	
-	/**
-	 * @param boolean $byLosses
-	 * @return Resources
-	 */
-	public function getValue($byLosses = false) {
-		
-		return $this->getChildrenValue($this->_players, $byLosses);
-		
-	}
-	
 	public function __clone() {
 		
 		$players = array();
@@ -164,6 +154,24 @@ class CombatParty implements Value {
 	public function getHarvestReports() {
 		
 		return $this->_harvestreports;
+		
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getValue() {
+	
+		return $this->getChildrenValue($this->_players);
+	
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getLosses() {
+		
+		return $this->getChildrenLosses($this->_players);
 		
 	}
 	

@@ -23,8 +23,11 @@ use OGetIt\Technology\Technology;
 use OGetIt\Common\Resources;
 use OGetIt\Common\Value;
 use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Common\Value\ChildLosses;
 
 class StateCombatWithLosses extends StateCombat {
+	
+	use ChildLosses;
 	
 	/**
 	 * @var integer
@@ -63,14 +66,20 @@ class StateCombatWithLosses extends StateCombat {
 	}
 	
 	/**
-	 * @param boolean $byLosses
 	 * @return Resources
 	 */
-	public function getValue($byLosses = false) {
+	public function getValue() {
 		
-		$count = $byLosses === true ? $this->_lost : $this->getCount();
+		return $this->getTechnology()->getCosts($this->getCount());
 		
-		return $this->getTechnology()->getCosts($count);
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getLosses() {
+		
+		return $this->getTechnology()->getCosts($this->_lost);
 		
 	}
 	

@@ -53,10 +53,9 @@ class StateEconomy extends State {
 	}
 	
 	/**
-	 * @param boolean $byLosses
 	 * @return Resources
 	 */
-	public function getValue($byLosses = false) {
+	public function getValue() {
 				
 		return $this->getTechnology()->getCosts($this->_level);
 		

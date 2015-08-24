@@ -20,13 +20,12 @@
 namespace OGetIt\Report\CombatReport;
 
 use OGetIt\Common\Player;
-use OGetIt\Common\Value;
-use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
+use OGetIt\Common\Value\ChildValueAndLosses;
 
-class CombatPlayer extends Player implements Value {
+class CombatPlayer extends Player {
 
-	use Combat_ChildValue;
+	use ChildValueAndLosses;
 
 	/**
 	 * @var integer
@@ -124,16 +123,6 @@ class CombatPlayer extends Player implements Value {
 		return $merged;
 	
 	}
-	
-	/**
-	 * @param boolean $byLosses
-	 * @return Resources
-	 */
-	public function getValue($byLosses = false) {
-	
-		return $this->getChildrenValue($this->_fleets, $byLosses);
-	
-	}
 
 	/**
 	 * @return integer
@@ -174,6 +163,24 @@ class CombatPlayer extends Player implements Value {
 	
 		$this->_fleets = $fleets; //Clone the fleets
 	
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getValue() {
+	
+		return $this->getChildrenValue($this->_fleets);
+	
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getLosses() {
+		
+		return $this->getChildrenLosses($this->_fleets);
+		
 	}
 	
 }

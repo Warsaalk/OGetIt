@@ -19,9 +19,6 @@
  */
 namespace OGetIt\Common;
 
-use OGetIt\Report\CombatReport\Fleet\Fleet;
-use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
-
 class Player {
 	
 	/**

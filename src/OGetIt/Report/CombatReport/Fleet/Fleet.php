@@ -25,14 +25,14 @@ use OGetIt\Common\Resources;
 use OGetIt\Common\Player;
 use OGetIt;
 use OGetIt\Common\Value;
-use OGetIt\Report\CombatReport\Helper\Combat_ChildValue;
 use OGetIt\Report\CombatReport\CombatPlayer;
 use OGetIt\Technology\State\StateCombatWithLosses;
 use OGetIt\Common\PlanetTrait;
+use OGetIt\Common\Value\ChildValueAndLosses;
 
-class Fleet implements Value {
+class Fleet {
 	
-	use Combat_ChildValue;
+	use ChildValueAndLosses;
 	use PlanetTrait;
 	
 	/**
@@ -160,12 +160,20 @@ class Fleet implements Value {
 	}
 	
 	/**
-	 * @param boolean $byLosses
 	 * @return Resources
 	 */
-	public function getValue($byLosses = false) {
+	public function getValue() {
+	
+		return $this->getChildrenValue($this->_state);
+	
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getLosses() {
 		
-		return $this->getChildrenValue($this->_state, $byLosses);
+		return $this->getChildrenLosses($this->_state);
 		
 	}
 	

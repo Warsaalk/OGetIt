@@ -20,8 +20,11 @@
 namespace OGetIt\Technology\State;
 
 use OGetIt\Common\Value;
+use OGetIt\Common\Value\ChildValue;
 
-abstract class State implements Value {
+abstract class State {
+	
+	use ChildValue;
 	
 	/**
 	 * @var TechnologyCombat
