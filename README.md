@@ -4,20 +4,55 @@ OGetIt is a open source library for handling the new OGame API as of version 6.
 
 It handles everything from connecting with the API, parsing the API to advanced calculations to get detailed results.    
 
+##Supported features
+###Reports
+* Combat
+* Harvest
+* Espionage
+* Missile
+
 ##How to use?
 
-	include('autoload.php');
+	include('autoload.php'); //Or via Composer
 	$ogetit = new OGetIt($uni, $lang, $apikey);
+	
+	//Get Combat report
 	$cr = $ogetit->getCombatReport($crkey);
 	
-###Get detailed resource losses for the attackers
+	//Get Harvest report
+	$rr = $ogetit->getHarvestReport($rrkey);
 	
+	//Get Spy report
+	$sr = $ogetit->getSpyReport($srkey);
+	
+	//Get Missile report
+	$mr = $ogetit->getMissileReport($mrkey);
+	
+###Examples
+####Get attacker losses from combat report
+	
+	$cr = $ogetit->getCombatReport($crkey);
 	$result = $cr->getCalculator()->getFinalResult();
-	$result['attackers']->getValue(true);
+	$result->getAttackers()->getLosses();
+	
+####Get harvested metal from harvest report
+	
+	$rr = $ogetit->getHarvestReport($rrkey);
+	$rr->getMetal();
+	
+####Get Astrophysics level from espionage report
+
+	$sr = $ogetit->getSpyReport($srkey);
+	$sr->getDefender()->getResearch()[Astrophysics::TYPE];
+	
+####Get defender losses from missile report
+
+	$mr = $ogetit->getMissileReport($mrkey);
+	$mr->getDefender()->getLosses();
 	
 ##Requirements
 
-* PHP v5.4+ 
+* PHP v5.4+ (64-bit)
 * PHP cURL (libcurl v7.10.5+)
 
 ##Exceptions
