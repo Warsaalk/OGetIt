@@ -43,7 +43,7 @@ class CombatReport_Calculator {
 	 * @param integer $startRound Round number, if 0 it'll use the initial fleet state
 	 * @param integer $endRound
 	 * @throws Exception
-	 * @return CombatParty[]
+	 * @return CombatResult_RoundDifference
 	 */
 	public function getRoundDifference($startRound, $endRound) {
 		
@@ -52,7 +52,7 @@ class CombatReport_Calculator {
 	}
 	
 	/**
-	 * @return CombatParty[]
+	 * @return CombatResult_RoundDifference
 	 */
 	public function getFinalResult() {
 		

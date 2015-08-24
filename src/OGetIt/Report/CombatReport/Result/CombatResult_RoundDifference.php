@@ -24,8 +24,19 @@ use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Player;
 use OGetIt\Report\CombatReport\CombatReport;
 use OGetIt\Report\CombatReport\CombatPlayer;
+use OGetIt\Report\CombatReport\CombatParty;
 
 class CombatResult_RoundDifference {
+	
+	/**
+	 * @var CombatParty[]
+	 */
+	private $attackers;
+
+	/**
+	 * @var CombatParty[]
+	 */
+	private $defenders;
 	
 	/**
 	 * @param CombatReport $combatreport
@@ -56,10 +67,11 @@ class CombatResult_RoundDifference {
 			$endDefenders = $combatreport->getRound($endRound)->getDefendersDetails();
 		}
 		
-		return array(
-			'attackers' => self::getFleetDifferences($startAttackers, $endAttackers, clone $combatreport->getAttackerParty()),
-			'defenders' => self::getFleetDifferences($startDefenders, $endDefenders, clone $combatreport->getDefenderParty())
-		);
+		$self = new self();
+		$self->setAttackers(self::getFleetDifferences($startAttackers, $endAttackers, clone $combatreport->getAttackerParty()));
+		$self->setDefenders(self::getFleetDifferences($startDefenders, $endDefenders, clone $combatreport->getDefenderParty()));
+		
+		return $self;
 		
 	}
 	
@@ -87,6 +99,42 @@ class CombatResult_RoundDifference {
 		}
 		
 		return $party;
+		
+	}
+	
+	/**
+	 * @param CombatParty[] $attackers
+	 */
+	public function setAttackers($attackers) {
+		
+		$this->attackers = $attackers;
+		
+	}
+	
+	/**
+	 * @return CombatParty[]
+	 */
+	public function getAttackers() {
+		
+		return $this->attackers;
+		
+	}
+	
+	/**
+	 * @param CombatParty[] $defenders
+	 */
+	public function setDefenders($defenders) {
+		
+		$this->defenders = $defenders;
+		
+	}
+	
+	/**
+	 * @return CombatParty[]
+	 */
+	public function getDefenders() {
+		
+		return $this->defenders;
 		
 	}
 	
