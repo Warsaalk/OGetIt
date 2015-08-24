@@ -22,9 +22,13 @@ namespace OGetIt\Report\MissileReport;
 use OGetIt\Report\Report;
 use OGetIt\Report\ReportPlayer;
 use OGetIt\Technology\State\StateCombatWithLosses;
+use OGetIt\Common\Value\ChildValueAndLosses;
+use OGetIt\Common\Resources;
 
 class MissilePlayer extends ReportPlayer {
 
+	use ChildValueAndLosses;
+	
 	/**
 	 * @var StateCombatWithLosses[]
 	 */
@@ -46,6 +50,24 @@ class MissilePlayer extends ReportPlayer {
 	
 		return $this->_defence;
 	
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getValue() {
+		
+		return $this->getChildrenValue($this->_defence);
+		
+	}
+	
+	/**
+	 * @return Resources
+	 */
+	public function getLosses() {
+		
+		return $this->getChildrenLosses($this->_defence);
+		
 	}
 	
 }
