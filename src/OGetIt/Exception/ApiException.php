@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Exception;
 
-class API_Exception extends \Exception {
+class ApiException extends \Exception {
 	
 	const INVALID_VERSION = 4000;
 	const INVALID_API_KEY = 4001;

@@ -20,7 +20,7 @@
 namespace OGetIt;
 
 use OGetIt\Http\HttpRequest;
-use OGetIt\Exception\API_Exception;
+use OGetIt\Exception\ApiException;
 
 class OGameApi { 
 	
@@ -50,7 +50,7 @@ class OGameApi {
 	 */
 	private static function processError($error) {
 	
-		throw new API_Exception($error);
+		throw new ApiException($error);
 	
 	}
 	

@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Exception;
 
-class cURL_Exception extends \Exception {
+class CurlException extends \Exception {
 	
 	private $_prefix = 'cURL error: ';
 	

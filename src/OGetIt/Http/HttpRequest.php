@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Http;
 
-use OGetIt\Exception\cURL_Exception;
+use OGetIt\Exception\CurlException;
 
 class HttpRequest {
 	
@@ -108,7 +108,7 @@ class HttpRequest {
 		
 		//If the request fails, save the last error
 		if ($this->_response === false) {
-			throw new cURL_Exception(curl_error($this->_resource), curl_errno($this->_resource));
+			throw new CurlException(curl_error($this->_resource), curl_errno($this->_resource));
 		}
 		
 		if ($finish === true) $this->close();
