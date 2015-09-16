@@ -21,6 +21,7 @@ namespace OGetIt\Report\CombatReport;
 
 use OGetIt\Common\Planet;
 use OGetIt\Common\Player;
+use OGetIt\Common\Alliance;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Report\CombatReport\Round\CombatRound;
@@ -220,6 +221,7 @@ class CombatReport extends Report {
 					$fleetData['fleet_shield_percentage'], 
 					$fleetData['fleet_weapon_percentage']
 				);
+				$players[$playerId]->setAlliance(new Alliance($fleetData['fleet_owner_alliance_tag'], $fleetData['fleet_owner_alliance']));
 			}
 			
 			$player = $players[$playerId];

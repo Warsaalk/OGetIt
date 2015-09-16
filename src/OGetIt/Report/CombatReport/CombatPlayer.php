@@ -23,10 +23,12 @@ use OGetIt\Common\Player;
 use OGetIt\Report\CombatReport\Fleet\Fleet;
 use OGetIt\Common\Value\ChildValueAndLosses;
 use OGetIt\Report\CombatReport\Fleet\CombatFleet;
+use OGetIt\Common\AllianceTrait;
 
 class CombatPlayer extends Player {
 
 	use ChildValueAndLosses;
+	use AllianceTrait;
 
 	/**
 	 * @var integer

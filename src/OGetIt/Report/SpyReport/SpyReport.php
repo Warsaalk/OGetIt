@@ -22,6 +22,7 @@ namespace OGetIt\Report\SpyReport;
 use OGetIt\Common\Resources;
 use OGetIt\Common\Player;
 use OGetIt\Common\Planet;
+use OGetIt\Common\Alliance;
 use OGetIt\Report\ReportPlayer;
 use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Technology\State\StateCombat;
@@ -82,10 +83,14 @@ class SpyReport extends Report {
 			$generic['attacker_planet_coordinates'],
 			$generic['attacker_planet_name'],
 			$generic['attacker_planet_type'],
+			$generic['attacker_alliance_name'],
+			$generic['attacker_alliance_tag'],
 			$generic['defender_name'],
 			$generic['defender_planet_coordinates'],
 			$generic['defender_planet_name'],
 			$generic['defender_planet_type'],
+			$generic['defender_alliance_name'],
+			$generic['defender_alliance_tag'],
 			$generic['event_time'],
 			$generic['event_timestamp'],
 			$generic['loot_percentage'],
@@ -156,7 +161,7 @@ class SpyReport extends Report {
 	 * @param integer $total_defense_count
 	 * @param integer $total_ship_count
 	 */
-	public function __construct($id, $activity, $attacker_name, $attacker_planet_coordinates, $attacker_planet_name, $attacker_planet_type, $defender_name, $defender_planet_coordinates, $defender_planet_name, $defender_planet_type, $time, $timestamp, $loot_percentage, $spy_fail_chance, $total_defense_count, $total_ship_count) {
+	public function __construct($id, $activity, $attacker_name, $attacker_planet_coordinates, $attacker_planet_name, $attacker_planet_type, $attacker_alliance_name, $attacker_alliance_tag, $defender_name, $defender_planet_coordinates, $defender_planet_name, $defender_planet_type, $defender_alliance_name, $defender_alliance_tag, $time, $timestamp, $loot_percentage, $spy_fail_chance, $total_defense_count, $total_ship_count) {
 		
 		parent::__construct($id, $time, $timestamp);
 
@@ -164,9 +169,11 @@ class SpyReport extends Report {
 		
 		$this->_attacker = new ReportPlayer($attacker_name);
 		$this->_attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
+		$this->_attacker->setAlliance(new Alliance($attacker_alliance_tag, $attacker_alliance_name));
 		
 		$this->_defender = new SpiedPlayer($defender_name);
 		$this->_defender->setPlanet(new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name));
+		$this->_defender->setAlliance(new Alliance($defender_alliance_tag, $defender_alliance_name));
 		
 		$this->_loot_percentage = $loot_percentage;
 		$this->_spy_fail_chance = $spy_fail_chance;
