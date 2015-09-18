@@ -88,14 +88,46 @@ class OGetIt {
 	}
 	
 	/**
+	 * @param string $type
+	 * @param array $data
+	 * @return CombatReport|SpyReport|HarvestReport|SpyReport
+	 */
+	private function getReport($type, $data) {
+		
+		if ($data !== false) {
+		
+			switch ($type) {
+				case OGameApi::TYPE_COMBATREPORT:
+					return CombatReport::createCombatReport($data);
+					
+				case OGameApi::TYPE_HARVESTREPORT:
+					return HarvestReport::createHarvestReport($data);
+					
+				case OGameApi::TYPE_MISSILEREPORT:
+					return MissileReport::createMissileReport($data);
+					
+				case OGameApi::TYPE_SPYREPORT:
+					return SpyReport::createSpyReport($data);
+				
+				default;
+			}
+		
+		}
+		
+		return false;
+		
+	}
+	
+	/**
 	 * @param string $cr_api_key
 	 * @return CombatReport
 	 */
 	public function getCombatReport($cr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGameApi::TYPE_COMBATREPORT, 'cr_id', $cr_api_key, $username, $password);
+		$type = OGameApi::TYPE_COMBATREPORT;
+		$data = $this->getApiData($type, 'cr_id', $cr_api_key, $username, $password);
 				
-		return $data === false ? $data : CombatReport::createCombatReport($data);
+		return $this->getReport($type, $data);
 		
 	}
 	
@@ -105,9 +137,10 @@ class OGetIt {
 	 */
 	public function getHarvestReport($rr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGameApi::TYPE_HARVESTREPORT, 'rr_id', $rr_api_key, $username, $password);
+		$type = OGameApi::TYPE_HARVESTREPORT;
+		$data = $this->getApiData($type, 'rr_id', $rr_api_key, $username, $password);
 		
-		return $data === false ? $data : HarvestReport::createHarvestReport($data);
+		return $this->getReport($type, $data);
 		
 	}
 	
@@ -117,9 +150,10 @@ class OGetIt {
 	 */
 	public function getSpyReport($sr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGameApi::TYPE_SPYREPORT, 'sr_id', $sr_api_key, $username, $password);
+		$type = OGameApi::TYPE_SPYREPORT;
+		$data = $this->getApiData($type, 'sr_id', $sr_api_key, $username, $password);
 				
-		return $data === false ? $data : SpyReport::createSpyReport($data);
+		return $this->getReport($type, $data);
 		
 	}
 	
@@ -129,9 +163,10 @@ class OGetIt {
 	 */
 	public function getMissileReport($mr_api_key, $username = false, $password = false) {
 		
-		$data = $this->getApiData(OGameApi::TYPE_MISSILEREPORT, 'mr_id', $mr_api_key, $username, $password);
+		$type = OGameApi::TYPE_MISSILEREPORT;
+		$data = $this->getApiData($type, 'mr_id', $mr_api_key, $username, $password);
 				
-		return $data === false ? $data : MissileReport::createMissileReport($data);
+		return $this->getReport($type, $data);
 		
 	}
 	
