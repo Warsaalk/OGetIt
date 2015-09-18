@@ -132,6 +132,16 @@ class OGetIt {
 	}
 	
 	/**
+	 * @param string $json
+	 * @return CombatReport
+	 */
+	public function getCombatReportFromJSON($json) {
+		
+		return $this->getReport(OGameApi::TYPE_COMBATREPORT, json_decode($json));
+		
+	}
+	
+	/**
 	 * @param string $rr_api_key
 	 * @return HarvestReport
 	 */
@@ -141,6 +151,16 @@ class OGetIt {
 		$data = $this->getApiData($type, 'rr_id', $rr_api_key, $username, $password);
 		
 		return $this->getReport($type, $data);
+		
+	}
+	
+	/**
+	 * @param string $json
+	 * @return HarvestReport
+	 */
+	public function getHarvestReportFromJSON($json) {
+		
+		return $this->getReport(OGameApi::TYPE_HARVESTREPORT, json_decode($json));
 		
 	}
 	
@@ -158,6 +178,16 @@ class OGetIt {
 	}
 	
 	/**
+	 * @param string $json
+	 * @return SpyReport
+	 */
+	public function getSpyReportFromJSON($json) {
+		
+		return $this->getReport(OGameApi::TYPE_SPYREPORT, json_decode($json));
+		
+	}
+	
+	/**
 	 * @param string $mr_api_key
 	 * @return MissileReport
 	 */
@@ -167,6 +197,16 @@ class OGetIt {
 		$data = $this->getApiData($type, 'mr_id', $mr_api_key, $username, $password);
 				
 		return $this->getReport($type, $data);
+		
+	}
+	
+	/**
+	 * @param string $json
+	 * @return MissileReport
+	 */
+	public function getMissileReportFromJSON($json) {
+		
+		return $this->getReport(OGameApi::TYPE_MISSILEREPORT, json_decode($json));
 		
 	}
 	
