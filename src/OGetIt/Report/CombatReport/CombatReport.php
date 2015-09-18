@@ -115,8 +115,12 @@ class CombatReport extends Report {
 			$generic['winner'],
 			$generic['units_lost_attackers'],
 			$generic['attacker_count'],
+			$generic['attacker_honorable'],
+			$generic['attacker_honorpoints'],
 			$generic['units_lost_defenders'],
 			$generic['defender_count'],
+			$generic['defender_honorable'],
+			$generic['defender_honorpoints'],
 			$generic['loot_metal'],
 			$generic['loot_crystal'],
 			$generic['loot_deuterium'],
@@ -149,15 +153,19 @@ class CombatReport extends Report {
 	 * @param string $winner
 	 * @param integer $attacker_losses
 	 * @param integer $attacker_count
+	 * @param boolean $attacker_honorable
+	 * @param integer $attacker_honorpoints
 	 * @param integer $defender_losses
 	 * @param integer $defender_count
+	 * @param boolean $defender_honorable
+	 * @param integer $defender_honorpoints
 	 * @param integer $loot_metal
 	 * @param integer $loot_crystal
 	 * @param integer $loot_deuterium
 	 * @param integer $debris_metal
 	 * @param integer $debris_crystal
 	 */
-	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $time, $timestamp, $loot_percentage, $winner, $attacker_losses, $attacker_count, $defender_losses, $defender_count, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
+	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $time, $timestamp, $loot_percentage, $winner, $attacker_losses, $attacker_count, $attacker_honourable, $attacker_honourpoints, $defender_losses, $defender_count, $defender_honourable, $defender_honourpoints, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal) {
 		
 		parent::__construct($id, $time, $timestamp);
 		
@@ -166,8 +174,8 @@ class CombatReport extends Report {
 		$this->_winner = $winner;
 		$this->_planet = new Planet($planet_type, $coordinates);
 		
-		$this->_attacker_party = new CombatParty($attacker_count, $attacker_losses);
-		$this->_defender_party = new CombatParty($defender_count, $defender_losses);
+		$this->_attacker_party = new CombatParty($attacker_count, $attacker_losses, $attacker_honourable, $attacker_honourpoints);
+		$this->_defender_party = new CombatParty($defender_count, $defender_losses, $defender_honourable, $defender_honourpoints);
 		
 		$this->_loot = new Resources($loot_metal, $loot_crystal, $loot_deuterium);
 		$this->_debris_field = new DebrisField($coordinates, $debris_metal, $debris_crystal);

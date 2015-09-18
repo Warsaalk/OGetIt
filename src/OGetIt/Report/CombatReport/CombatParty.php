@@ -38,6 +38,16 @@ class CombatParty {
 	 * @var integer
 	 */
 	private $_total_losses;
+
+	/**
+	 * @var integer
+	 */
+	private $_honourable;
+
+	/**
+	 * @var integer
+	 */
+	private $_honourpoints;
 	
 	/**
 	 * @var CombatPlayer[]
@@ -52,11 +62,14 @@ class CombatParty {
 	/**
 	 * @param integer $count
 	 * @param integer $losses
+	 * @param 
 	 */
-	public function __construct($count, $losses) {
+	public function __construct($count, $losses, $honourable, $honourpoints) {
 		
 		$this->_count = $count;
 		$this->_total_losses = $losses;
+		$this->_honourable = $honourable;
+		$this->_honourpoints = $honourpoints;
 		
 	}
 	
@@ -173,6 +186,24 @@ class CombatParty {
 	public function getLosses() {
 		
 		return $this->getChildrenLosses($this->_players);
+		
+	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function getHonourable() {
+		
+		return $this->_honourable;
+		
+	}
+	
+	/**
+	 * @return integer
+	 */
+	public function getHonourPoints() {
+		
+		return $this->_honourpoints;
 		
 	}
 	
