@@ -56,6 +56,7 @@ class OGetIt {
 	/**
 	 * @param integer $universeID
 	 * @param string $community
+	 * @param string $apikey
 	 * @param string $version (optional)
 	 */
 	public function __construct($universeID, $community, $apikey, $version = 'v1') {
