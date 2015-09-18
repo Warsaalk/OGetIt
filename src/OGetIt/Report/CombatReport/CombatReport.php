@@ -52,6 +52,11 @@ class CombatReport extends Report {
 	private $_combat_rounds_count;
 	
 	/**
+	 * @var boolean
+	 */
+	private $_combat_honourable;
+	
+	/**
 	 * @var Resources
 	 */
 	private $_loot;
@@ -114,6 +119,7 @@ class CombatReport extends Report {
 			$generic['combat_coordinates'], 
 			$generic['combat_planet_type'],
 			$generic['combat_rounds'],
+			$generic['combat_honorable'],
 			$generic['event_time'],
 			$generic['event_timestamp'],
 			$generic['loot_percentage'],
@@ -174,12 +180,13 @@ class CombatReport extends Report {
 	 * @param integer $debris_metal
 	 * @param integer $debris_crystal
 	 */
-	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $time, $timestamp, $loot_percentage, $winner, $attacker_losses, $attacker_count, $attacker_honourable, $attacker_honourpoints, $defender_losses, $defender_count, $defender_honourable, $defender_honourpoints, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal, $moon_chance, $moon_created, $moon_exists, $moon_size) {
+	public function __construct($id, $coordinates, $planet_type, $combat_rounds, $combat_honourable, $time, $timestamp, $loot_percentage, $winner, $attacker_losses, $attacker_count, $attacker_honourable, $attacker_honourpoints, $defender_losses, $defender_count, $defender_honourable, $defender_honourpoints, $loot_metal, $loot_crystal, $loot_deuterium, $debris_metal, $debris_crystal, $moon_chance, $moon_created, $moon_exists, $moon_size) {
 		
 		parent::__construct($id, $time, $timestamp);
 		
 		$this->_loot_percentage = $loot_percentage;
 		$this->_combat_rounds_count = $combat_rounds;
+		$this->_combat_honourable = $combat_honourable;
 		$this->_winner = $winner;
 		$this->_planet = new Planet($planet_type, $coordinates);
 		
@@ -295,6 +302,15 @@ class CombatReport extends Report {
 	public function getPlanet() {
 		
 		return $this->_planet;
+		
+	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function isCombatHonourable() {
+		
+		return $this->_combat_honourable;
 		
 	}
 	
