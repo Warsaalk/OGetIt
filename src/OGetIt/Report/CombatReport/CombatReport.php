@@ -437,4 +437,13 @@ class CombatReport extends Report {
 		
 	}
 	
+	/**
+	 * @return CombatMoon
+	 */
+	public function getCombatMoon() {
+		
+		return $this->_combat_moon;
+		
+	}
+	
 }
