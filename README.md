@@ -81,5 +81,4 @@ Your changes will be reviewed and merged afterwards if approved by the repositor
 
 GNU Lesser General Public License, version 2.1
 
-* Source license: [GNU GPL](COPYING)
-* Lesser license: [GNU LGPL](COPYING.LESSER)
+* License: [GNU LGPL](COPYING)
