@@ -79,7 +79,7 @@ Your changes will be reviewed and merged afterwards if approved by the repositor
 
 ##License
 
-GNU Lesser General Public License, Version 3
+GNU Lesser General Public License, version 2.1
 
 * Source license: [GNU GPL](COPYING)
 * Lesser license: [GNU LGPL](COPYING.LESSER)
