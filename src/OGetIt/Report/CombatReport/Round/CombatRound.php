@@ -115,13 +115,17 @@ class CombatRound {
 			
 			foreach ($clone->getFleets() as $fleet) {
 				
-				$fleetData = $fleetDetails[$fleet->getCombatIndex()];
+				if (isset($fleetDetails[$fleet->getCombatIndex()])) {
 				
-				foreach ($fleetData as $type => $techData) {
+					$fleetData = $fleetDetails[$fleet->getCombatIndex()];
 					
-					$lost = isset($techData['lost']) ? $techData['lost'] : 0;
-					$fleet->addTechnologyState(TechnologyFactory::create($type), $techData['ships'], $lost);
-					
+					foreach ($fleetData as $type => $techData) {
+						
+						$lost = isset($techData['lost']) ? $techData['lost'] : 0;
+						$fleet->addTechnologyState(TechnologyFactory::create($type), $techData['ships'], $lost);
+						
+					}
+				
 				}
 				
 				
