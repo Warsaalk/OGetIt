@@ -21,16 +21,16 @@ namespace OGetIt\Technology\Entity\Building;
 
 use OGetIt\Technology\TechnologyEconomy;
 
-class DeuteriumSynthesizer extends TechnologyEconomy {
+class CrystalMine extends TechnologyEconomy {
 	
-	const TYPE = 3;
+	const TYPE = 2;
 	
 	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
 	
 	/**
 	 * @var integer
 	 */
-	protected $power_base = 1.5;
+	protected $power_base = 1.6;
 	
 	public function __construct() {
 		
