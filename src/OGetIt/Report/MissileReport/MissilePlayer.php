@@ -25,21 +25,21 @@ use OGetIt\Technology\State\StateCombatWithLosses;
 use OGetIt\Common\Value\ChildValueAndLosses;
 use OGetIt\Common\Resources;
 
-class MissilePlayer extends ReportPlayer {
+class MissilePlayer extends ReportPlayer implements \JsonSerializable {
 
 	use ChildValueAndLosses;
 	
 	/**
 	 * @var StateCombatWithLosses[]
 	 */
-	private $_defence = array();
+	private $defence = array();
 	
 	/**
 	 * @param StateCombatWithLosses $entityState
 	 */
 	public function addLostDefence(StateCombatWithLosses $entityState) {
 	
-		$this->_defence[$entityState->getTechnology()->getType()] = $entityState;
+		$this->defence[$entityState->getTechnology()->getType()] = $entityState;
 	
 	}
 	
@@ -48,7 +48,7 @@ class MissilePlayer extends ReportPlayer {
 	 */
 	public function getLostDefence() {
 	
-		return $this->_defence;
+		return $this->defence;
 	
 	}
 	
@@ -57,7 +57,7 @@ class MissilePlayer extends ReportPlayer {
 	 */
 	public function getValue() {
 		
-		return $this->getChildrenValue($this->_defence);
+		return $this->getChildrenValue($this->defence);
 		
 	}
 	
@@ -66,8 +66,17 @@ class MissilePlayer extends ReportPlayer {
 	 */
 	public function getLosses() {
 		
-		return $this->getChildrenLosses($this->_defence);
+		return $this->getChildrenLosses($this->defence);
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'defence' => $this->defence
+		), parent::jsonSerialize());
 	}
 	
 }

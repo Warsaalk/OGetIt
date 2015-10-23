@@ -25,14 +25,14 @@ use OGetIt\Common\Value;
 use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Common\Value\ChildLosses;
 
-class StateCombatWithLosses extends StateCombat {
+class StateCombatWithLosses extends StateCombat implements \JsonSerializable {
 	
 	use ChildLosses;
 	
 	/**
 	 * @var integer
 	 */
-	private $_lost;
+	private $lost;
 	
 	/**
 	 * @param TechnologyCombat $technology
@@ -43,7 +43,7 @@ class StateCombatWithLosses extends StateCombat {
 		
 		parent::__construct($technology, $count);
 		
-		$this->_lost = $lost;
+		$this->lost = $lost;
 		
 	}
 	
@@ -52,7 +52,7 @@ class StateCombatWithLosses extends StateCombat {
 	 */
 	public function getLost() {
 		
-		return $this->_lost;
+		return $this->lost;
 		
 	}
 	
@@ -61,7 +61,7 @@ class StateCombatWithLosses extends StateCombat {
 	 */
 	public function addLost($lost) {
 		
-		$this->_lost += $lost;
+		$this->lost += $lost;
 		
 	}
 	
@@ -79,8 +79,17 @@ class StateCombatWithLosses extends StateCombat {
 	 */
 	public function getLosses() {
 		
-		return $this->getTechnology()->getCosts($this->_lost);
+		return $this->getTechnology()->getCosts($this->lost);
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'lost' => $this->lost
+		), parent::jsonSerialize());
 	}
 	
 }

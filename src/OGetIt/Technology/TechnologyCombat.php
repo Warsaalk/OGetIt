@@ -20,7 +20,7 @@
 namespace OGetIt\Technology;
 
 use OGetIt\Common\Resources;
-abstract class TechnologyCombat extends Technology {
+abstract class TechnologyCombat extends Technology implements \JsonSerializable {
 
 	/**
 	 * @var integer
@@ -92,6 +92,17 @@ abstract class TechnologyCombat extends Technology {
 			$this->getResources()->getDeuterium() * $count	
 		);
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'armour' => $this->ARMOR,
+			'shield' => $this->SHIELD,
+			'weapon' => $this->WEAPON
+		), parent::jsonSerialize());
 	}
 	
 }

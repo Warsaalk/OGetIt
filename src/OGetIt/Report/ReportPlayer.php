@@ -23,9 +23,19 @@ use OGetIt\Common\Player;
 use OGetIt\Common\PlanetTrait;
 use OGetIt\Common\AllianceTrait;
 
-class ReportPlayer extends Player {
+class ReportPlayer extends Player implements \JsonSerializable {
 	
 	use PlanetTrait;
 	use AllianceTrait;
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'planet' => $this->planet,
+			'alliance' => $this->alliance
+		), parent::jsonSerialize());
+	}
 	
 }

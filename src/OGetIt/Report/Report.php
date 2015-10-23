@@ -19,31 +19,31 @@
  */
 namespace OGetIt\Report;
 
-abstract class Report {
+abstract class Report implements \JsonSerializable {
 
 	/**
 	 * @var string
 	 */
-	private $_id;
+	private $id;
 	
 	/**
 	 * @var string
 	 */
-	private $_time;
+	private $time;
 	
 	/**
 	 * @var integer
 	 */
-	private $_timestamp;
+	private $timestamp;
 	
 	/**
 	 * @param string $id
 	 */
 	public function __construct($id, $time, $timestamp) {
 		
-		$this->_id = $id;
-		$this->_time = $time;
-		$this->_timestamp = $timestamp;
+		$this->id = $id;
+		$this->time = $time;
+		$this->timestamp = $timestamp;
 		
 	}
 	
@@ -52,7 +52,7 @@ abstract class Report {
 	 */
 	public function getId() {
 		
-		return $this->_id;
+		return $this->id;
 		
 	}
 	
@@ -61,7 +61,7 @@ abstract class Report {
 	 */
 	public function getTime() {
 		
-		return $this->_time;
+		return $this->time;
 		
 	}
 	
@@ -70,8 +70,19 @@ abstract class Report {
 	 */
 	public function getTimestamp() {
 		
-		return $this->_timestamp;
+		return $this->timestamp;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'id' => $this->id,
+			'time' => $this->time,
+			'timestamp' => $this->timestamp
+		);
 	}
 	
 }

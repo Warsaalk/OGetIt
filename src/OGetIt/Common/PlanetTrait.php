@@ -23,14 +23,14 @@ use OGetIt\Common\Planet;
 
 trait PlanetTrait {
 	
-	private $_planet;
+	private $planet;
 	
 	/**
 	 * @param Planet $planet
 	 */
 	public function setPlanet(Planet $planet) {
 		
-		$this->_planet = $planet;
+		$this->planet = $planet;
 		
 	}
 	
@@ -39,7 +39,7 @@ trait PlanetTrait {
 	 */
 	public function getPlanet() {
 		
-		return $this->_planet;
+		return $this->planet;
 		
 	}
 	

@@ -24,12 +24,12 @@ use OGetIt\Common\Resources;
 use OGetIt\Common\Value;
 use OGetIt\Technology\TechnologyEconomy;
 
-class StateEconomy extends State {
+class StateEconomy extends State implements \JsonSerializable {
 	
 	/**
 	 * @var integer
 	 */
-	private $_level;
+	private $level;
 	
 	/**
 	 * @param TechnologyCombat $technology
@@ -39,7 +39,7 @@ class StateEconomy extends State {
 		
 		parent::__construct($technology);
 		
-		$this->_level = $level;
+		$this->level = $level;
 		
 	}
 	
@@ -48,7 +48,7 @@ class StateEconomy extends State {
 	 */
 	public function getLevel() {
 		
-		return $this->_level;
+		return $this->level;
 		
 	}
 	
@@ -57,8 +57,17 @@ class StateEconomy extends State {
 	 */
 	public function getValue() {
 				
-		return $this->getTechnology()->getCosts($this->_level);
+		return $this->getTechnology()->getCosts($this->level);
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'level' => $this->level
+		), parent::jsonSerialize());
 	}
 	
 }

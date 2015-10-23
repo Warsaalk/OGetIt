@@ -27,7 +27,7 @@ use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Technology\State\StateCombatWithLosses;
 use OGetIt\Technology\Entity\Defence\InterplanetaryMissile;
 
-class MissileReport extends Report {
+class MissileReport extends Report implements \JsonSerializable {
 	
 	/**
 	 * @var MissilePlayer
@@ -171,6 +171,18 @@ class MissileReport extends Report {
 		
 		return $this->defender_lost_missiles;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'attacker' => $this->attacker,
+			'attacker_lost_missiles' => $this->attacker_lost_missiles,
+			'defender' => $this->defender,
+			'defender_lost_missiles' => $this->defender_lost_missiles
+		), parent::jsonSerialize());
 	}
 	
 }

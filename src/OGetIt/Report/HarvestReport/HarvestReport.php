@@ -23,22 +23,22 @@ use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
 use OGetIt\Report\Report;
 
-class HarvestReport extends Report {
+class HarvestReport extends Report implements \JsonSerializable {
 
 	/**
 	 * @var DebrisField
 	 */
-	private $_debris_field;
+	private $debris_field;
 	
 	/**
 	 * @var integer
 	 */
-	private $_recycler_capacity;
+	private $recycler_capacity;
 	
 	/**
 	 * @var integer
 	 */
-	private $_recycler_count;
+	private $recycler_count;
 	
 	/**
 	 * @param string $api_data
@@ -81,11 +81,11 @@ class HarvestReport extends Report {
 		
 		parent::__construct($id, $time, $timestamp);
 		
-		$this->_resources = new Resources($metal, $crystal, 0);
-		$this->_recycler_capacity = (int)$recycler_capacity;
-		$this->_recycler_count = (int)$recycler_count;
+		$this->resources = new Resources($metal, $crystal, 0);
+		$this->recycler_capacity = (int)$recycler_capacity;
+		$this->recycler_count = (int)$recycler_count;
 		
-		$this->_debris_field = new DebrisField($coordinates, $metal_floating, $crystal_floating);
+		$this->debris_field = new DebrisField($coordinates, $metal_floating, $crystal_floating);
 		
 	}
 	
@@ -94,7 +94,7 @@ class HarvestReport extends Report {
 	 */
 	public function getMetal() {
 		
-		return $this->_resources->getMetal();
+		return $this->resources->getMetal();
 		
 	}
 
@@ -103,7 +103,7 @@ class HarvestReport extends Report {
 	 */
 	public function getCrystal() {
 		
-		return $this->_resources->getCrystal();
+		return $this->resources->getCrystal();
 		
 	}
 	
@@ -112,7 +112,7 @@ class HarvestReport extends Report {
 	 */
 	public function getResources() {
 		
-		return $this->_resources;
+		return $this->resources;
 		
 	}
 	
@@ -121,7 +121,7 @@ class HarvestReport extends Report {
 	 */
 	public function getDebrisField() {
 		
-		return $this->_debris_field;
+		return $this->debris_field;
 		
 	}
 	
@@ -130,7 +130,7 @@ class HarvestReport extends Report {
 	 */
 	public function getRecyclerCapacity() {
 		
-		return $this->_recycler_capacity;
+		return $this->recycler_capacity;
 		
 	}
 	
@@ -139,8 +139,18 @@ class HarvestReport extends Report {
 	 */
 	public function getRecyclerCount() {
 		
-		return $this->_recycler_count;
+		return $this->recycler_count;
 		
+	}
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'debris_field' => $this->debris_field,
+			'recycler_capacity' => $this->recycler_capacity,
+			'recycler_count' => $this->recycler_count
+		), parent::jsonSerialize());
 	}
 	
 }

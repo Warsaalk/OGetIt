@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Common;
 
-class Alliance {
+class Alliance implements \JsonSerializable {
 	
 	/**
 	 * @var integer
@@ -58,6 +58,16 @@ class Alliance {
 		
 		return $this->name;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'tag' => $this->tag,
+			'name' => $this->name
+		);
 	}
 	
 }

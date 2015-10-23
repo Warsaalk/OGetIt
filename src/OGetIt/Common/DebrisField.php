@@ -19,12 +19,12 @@
  */
 namespace OGetIt\Common;
 
-class DebrisField extends Coordinates {
+class DebrisField extends Coordinates implements \JsonSerializable {
 
 	/**
 	 * @var Resources
 	 */
-	private $_resources;
+	private $resources;
 	
 	/**
 	 * @param string $type
@@ -34,7 +34,7 @@ class DebrisField extends Coordinates {
 		
 		parent::__construct($coordinates);
 
-		$this->_resources = new Resources($metal, $crystal, 0);
+		$this->resources = new Resources($metal, $crystal, 0);
 		
 	}
 	
@@ -43,7 +43,7 @@ class DebrisField extends Coordinates {
 	 */
 	public function getMetal() {
 		
-		return $this->_resources->getMetal();
+		return $this->resources->getMetal();
 		
 	}
 
@@ -52,7 +52,7 @@ class DebrisField extends Coordinates {
 	 */
 	public function getCrystal() {
 		
-		return $this->_resources->getCrystal();
+		return $this->resources->getCrystal();
 		
 	}
 	
@@ -61,8 +61,17 @@ class DebrisField extends Coordinates {
 	 */
 	public function getResources() {
 		
-		return $this->_resources;
+		return $this->resources;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'resources' => $this->resources,
+		), parent::jsonSerialize());
 	}
 	
 }

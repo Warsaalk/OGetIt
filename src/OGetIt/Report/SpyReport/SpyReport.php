@@ -30,42 +30,42 @@ use OGetIt\Technology\State\StateEconomy;
 use OGetIt\Common\OGetIt\Common;
 use OGetIt\Report\Report;
 
-class SpyReport extends Report {
+class SpyReport extends Report implements \JsonSerializable {
 	
 	/**
 	 * @var integer
 	 */
-	private $_activity;
+	private $activity;
 	
 	/**
 	 * @var ReportPlayer
 	 */
-	private $_attacker;
+	private $attacker;
 
 	/**
 	 * @var SpiedPlayer
 	 */
-	private $_defender;
+	private $defender;
 
 	/**
 	 * @var integer
 	 */
-	private $_loot_percentage;
+	private $loot_percentage;
 
 	/**
 	 * @var integer
 	 */
-	private $_spy_fail_chance;
+	private $spy_fail_chance;
 
 	/**
 	 * @var integer
 	 */
-	private $_total_defense_count;
+	private $total_defense_count;
 
 	/**
 	 * @var integer
 	 */
-	private $_total_ship_count;
+	private $total_ship_count;
 	
 	/**
 	 * @param string $api_data
@@ -165,20 +165,20 @@ class SpyReport extends Report {
 		
 		parent::__construct($id, $time, $timestamp);
 
-		$this->_activity = $activity;
+		$this->activity = $activity;
 		
-		$this->_attacker = new ReportPlayer($attacker_name);
-		$this->_attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
-		$this->_attacker->setAlliance(new Alliance($attacker_alliance_tag, $attacker_alliance_name));
+		$this->attacker = new ReportPlayer($attacker_name);
+		$this->attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
+		$this->attacker->setAlliance(new Alliance($attacker_alliance_tag, $attacker_alliance_name));
 		
-		$this->_defender = new SpiedPlayer($defender_name);
-		$this->_defender->setPlanet(new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name));
-		$this->_defender->setAlliance(new Alliance($defender_alliance_tag, $defender_alliance_name));
+		$this->defender = new SpiedPlayer($defender_name);
+		$this->defender->setPlanet(new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name));
+		$this->defender->setAlliance(new Alliance($defender_alliance_tag, $defender_alliance_name));
 		
-		$this->_loot_percentage = $loot_percentage;
-		$this->_spy_fail_chance = $spy_fail_chance;
-		$this->_total_defense_count = $total_defense_count;
-		$this->_total_ship_count = $total_ship_count;
+		$this->loot_percentage = $loot_percentage;
+		$this->spy_fail_chance = $spy_fail_chance;
+		$this->total_defense_count = $total_defense_count;
+		$this->total_ship_count = $total_ship_count;
 		
 	}
 	
@@ -187,7 +187,7 @@ class SpyReport extends Report {
 	 */
 	public function getActivity() {
 		
-		return $this->_activity;
+		return $this->activity;
 		
 	}
 	
@@ -196,7 +196,7 @@ class SpyReport extends Report {
 	 */
 	public function getAttacker() {
 		
-		return $this->_attacker;
+		return $this->attacker;
 		
 	}
 	
@@ -205,7 +205,7 @@ class SpyReport extends Report {
 	 */
 	public function getDefender() {
 		
-		return $this->_defender;
+		return $this->defender;
 		
 	}
 
@@ -214,7 +214,7 @@ class SpyReport extends Report {
 	 */
 	public function getLootPercentage() {
 		
-		return $this->_loot_percentage;
+		return $this->loot_percentage;
 		
 	}
 	
@@ -223,7 +223,7 @@ class SpyReport extends Report {
 	 */
 	public function getSpyFailChance() {
 		
-		return $this->_spy_fail_chance;
+		return $this->spy_fail_chance;
 		
 	}
 	
@@ -232,7 +232,7 @@ class SpyReport extends Report {
 	 */
 	public function getTotalDefenseCount() {
 		
-		return $this->_total_defense_count;
+		return $this->total_defense_count;
 		
 	}
 	
@@ -241,8 +241,23 @@ class SpyReport extends Report {
 	 */
 	public function getTotalShipCount() {
 		
-		return $this->_total_ship_count;
+		return $this->total_ship_count;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'activity' => $this->activity,
+			'attacker' => $this->attacker,
+			'defender' => $this->defender,
+			'loot_percentage' => $this->loot_percentage,
+			'spy_fail_chance' => $this->spy_fail_chance,
+			'total_defense_count' => $this->total_defense_count,
+			'total_ship_count' => $this->total_ship_count
+		), parent::jsonSerialize());
 	}
 	
 }
