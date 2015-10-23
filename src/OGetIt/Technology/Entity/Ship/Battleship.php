@@ -27,7 +27,7 @@ class Battleship extends TechnologyCombat {
 	
 	const METAL = 45000, CRYSTAL = 15000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 60000, SHIELD = 200, WEAPON = 1000;
 	
 	public function __construct() {
 		

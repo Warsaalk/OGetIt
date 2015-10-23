@@ -27,7 +27,7 @@ class LightLaser extends TechnologyCombat {
 	
 	const METAL = 1500, CRYSTAL = 500, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 2000, SHIELD = 25, WEAPON = 100;
 	
 	public function __construct() {
 		

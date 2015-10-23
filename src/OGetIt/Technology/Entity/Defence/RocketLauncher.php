@@ -27,7 +27,7 @@ class RocketLauncher extends TechnologyCombat {
 	
 	const METAL = 2000, CRYSTAL = 0, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 2000, SHIELD = 20, WEAPON = 80;
 	
 	public function __construct() {
 		

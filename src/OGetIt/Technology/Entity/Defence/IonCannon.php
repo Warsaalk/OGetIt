@@ -27,7 +27,7 @@ class IonCannon extends TechnologyCombat {
 	
 	const METAL = 2000, CRYSTAL = 6000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 8000, SHIELD = 500, WEAPON = 150;
 	
 	public function __construct() {
 		

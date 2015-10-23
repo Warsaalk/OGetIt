@@ -27,7 +27,7 @@ class Destroyer extends TechnologyCombat {
 	
 	const METAL = 60000, CRYSTAL = 50000, DEUTERIUM = 15000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 110000, SHIELD = 500, WEAPON = 2000;
 	
 	public function __construct() {
 		

@@ -27,7 +27,7 @@ class Recycler extends TechnologyCombat {
 	
 	const METAL = 10000, CRYSTAL = 6000, DEUTERIUM = 2000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 16000, SHIELD = 10, WEAPON = 1;
 	
 	public function __construct() {
 		

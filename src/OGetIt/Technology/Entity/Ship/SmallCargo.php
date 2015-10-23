@@ -27,7 +27,7 @@ class SmallCargo extends TechnologyCombat {
 	
 	const METAL = 2000, CRYSTAL = 2000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 4000, SHIELD = 10, WEAPON = 5;
 	
 	public function __construct() {
 		

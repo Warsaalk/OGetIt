@@ -27,7 +27,7 @@ class SolarSatellite extends TechnologyCombat {
 	
 	const METAL = 0, CRYSTAL = 2000, DEUTERIUM = 500;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 2000, SHIELD = 1, WEAPON = 1;
 	
 	public function __construct() {
 		

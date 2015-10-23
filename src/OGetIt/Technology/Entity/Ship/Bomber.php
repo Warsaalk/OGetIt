@@ -27,7 +27,7 @@ class Bomber extends TechnologyCombat {
 	
 	const METAL = 50000, CRYSTAL = 25000, DEUTERIUM = 15000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 75000, SHIELD = 500, WEAPON = 1000;
 	
 	public function __construct() {
 		

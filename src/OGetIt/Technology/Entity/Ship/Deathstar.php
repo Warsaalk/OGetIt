@@ -27,7 +27,7 @@ class Deathstar extends TechnologyCombat {
 	
 	const METAL = 5000000, CRYSTAL = 4000000, DEUTERIUM = 1000000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 9000000, SHIELD = 50000, WEAPON = 200000;
 	
 	public function __construct() {
 		

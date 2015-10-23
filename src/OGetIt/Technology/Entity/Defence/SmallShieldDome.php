@@ -27,7 +27,7 @@ class SmallShieldDome extends TechnologyCombat {
 	
 	const METAL = 10000, CRYSTAL = 10000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 20000, SHIELD = 2000, WEAPON = 1;
 	
 	public function __construct() {
 		

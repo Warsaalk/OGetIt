@@ -27,7 +27,7 @@ class HeavyFighter extends TechnologyCombat {
 	
 	const METAL = 6000, CRYSTAL = 4000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 10000, SHIELD = 25, WEAPON = 150;
 	
 	public function __construct() {
 		

@@ -27,7 +27,7 @@ class Cruiser extends TechnologyCombat {
 	
 	const METAL = 20000, CRYSTAL = 7000, DEUTERIUM = 2000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 27000, SHIELD = 50, WEAPON = 400;
 	
 	public function __construct() {
 		

@@ -27,7 +27,7 @@ class HeavyLaser extends TechnologyCombat {
 	
 	const METAL = 6000, CRYSTAL = 2000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 8000, SHIELD = 100, WEAPON = 250;
 	
 	public function __construct() {
 		

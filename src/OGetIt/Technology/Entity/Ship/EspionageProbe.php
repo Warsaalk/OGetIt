@@ -27,7 +27,7 @@ class EspionageProbe extends TechnologyCombat {
 	
 	const METAL = 0, CRYSTAL = 1000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 1000, SHIELD = 0.01, WEAPON = 0.01;
 	
 	public function __construct() {
 		

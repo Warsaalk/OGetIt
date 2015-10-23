@@ -27,7 +27,7 @@ class LightFighter extends TechnologyCombat {
 	
 	const METAL = 3000, CRYSTAL = 1000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 4000, SHIELD = 10, WEAPON = 50;
 	
 	public function __construct() {
 		

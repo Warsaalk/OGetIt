@@ -27,7 +27,7 @@ class LargeShieldDome extends TechnologyCombat {
 	
 	const METAL = 50000, CRYSTAL = 50000, DEUTERIUM = 0;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 100000, SHIELD = 10000, WEAPON = 1;
 	
 	public function __construct() {
 		

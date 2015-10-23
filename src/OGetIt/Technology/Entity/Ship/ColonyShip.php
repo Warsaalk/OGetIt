@@ -27,7 +27,7 @@ class ColonyShip extends TechnologyCombat {
 	
 	const METAL = 10000, CRYSTAL = 20000, DEUTERIUM = 10000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 30000, SHIELD = 100, WEAPON = 50;
 	
 	public function __construct() {
 		

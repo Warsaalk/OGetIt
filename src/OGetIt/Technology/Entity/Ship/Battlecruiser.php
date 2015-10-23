@@ -27,7 +27,7 @@ class Battlecruiser extends TechnologyCombat {
 	
 	const METAL = 30000, CRYSTAL = 40000, DEUTERIUM = 15000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 70000, SHIELD = 400, WEAPON = 700;
 	
 	public function __construct() {
 		

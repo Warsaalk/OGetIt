@@ -27,7 +27,7 @@ class InterplanetaryMissile extends TechnologyCombat {
 	
 	const METAL = 12500, CRYSTAL = 2500, DEUTERIUM = 10000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 15000, SHIELD = 1, WEAPON = 12000;
 	
 	public function __construct() {
 		

@@ -27,7 +27,7 @@ class GaussCannon extends TechnologyCombat {
 	
 	const METAL = 20000, CRYSTAL = 15000, DEUTERIUM = 2000;
 	
-	const ARMOR = 0, SHIELD = 0, WEAPON = 0;
+	const ARMOR = 35000, SHIELD = 200, WEAPON = 1100;
 	
 	public function __construct() {
 		
