@@ -26,7 +26,7 @@ use OGetIt\Report\CombatReport\CombatReport;
 use OGetIt\Report\CombatReport\CombatPlayer;
 use OGetIt\Report\CombatReport\CombatParty;
 
-class CombatResult_RoundDifference {
+class CombatResult_RoundDifference implements \JsonSerializable {
 	
 	/**
 	 * @var CombatParty[]
@@ -136,6 +136,16 @@ class CombatResult_RoundDifference {
 		
 		return $this->defenders;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'attackers' => $this->attackers,
+			'defenders' => $this->defenders,
+		);
 	}
 	
 }
