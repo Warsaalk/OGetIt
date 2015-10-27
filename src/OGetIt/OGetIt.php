@@ -30,28 +30,28 @@ class OGetIt {
 	/**
 	 * @var integer
 	 */
-	private $_universeID;
+	private $universeID;
 	
 	/**
 	 * @var string
 	 */
-	private $_community;
+	private $community;
 	
 	/**
 	 * @var string
 	 * 
 	 */
-	private $_apikey;
+	private $apikey;
 	
 	/**
 	 * @var string
 	 */
-	private $_version;
+	private $version;
 	
 	/**
 	 * @var boolean
 	 */
-	private $_https = false;
+	private $https = false;
 	
 	/**
 	 * @param integer $universeID
@@ -61,10 +61,10 @@ class OGetIt {
 	 */
 	public function __construct($universeID, $community, $apikey, $version = 'v1') {
 		
-		$this->_universeID 	= $universeID;
-		$this->_community 	= $community;
-		$this->_apikey 		= $apikey;
-		$this->_version 	= $version;
+		$this->universeID 	= $universeID;
+		$this->community 	= $community;
+		$this->apikey 		= $apikey;
+		$this->version 	= $version;
 		
 	}
 	
@@ -86,14 +86,14 @@ class OGetIt {
 	 */
 	public function useHttps() {
 		
-		$this->_https = true;
+		$this->https = true;
 		
 	}
 	
 	private function getApiData($type, $label, $key, $username = false, $password = false) {
 		
 		$url = OGameApi::constructUrl($type, $this, array(
-			'api_key' => $this->_apikey,
+			'api_key' => $this->apikey,
 			$label => $key
 		));
 		
@@ -229,7 +229,7 @@ class OGetIt {
 	 */
 	public function getUniverseID() {
 		
-		return $this->_universeID;
+		return $this->universeID;
 		
 	}
 	
@@ -238,7 +238,7 @@ class OGetIt {
 	 */
 	public function getCommunity() {
 		
-		return $this->_community;
+		return $this->community;
 		
 	}
 	
@@ -247,7 +247,7 @@ class OGetIt {
 	 */
 	public function getApiVersion() {
 		
-		return $this->_version;
+		return $this->version;
 		
 	}
 	
@@ -256,7 +256,7 @@ class OGetIt {
 	 */
 	public function usesHttps() {
 		
-		return $this->_https;
+		return $this->https;
 		
 	}
 		
