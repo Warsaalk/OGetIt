@@ -26,7 +26,7 @@ use OGetIt\Technology\State\StateEconomy;
 use OGetIt\Technology\State\StateCombat;
 use OGetIt\Report\ReportPlayer;
 
-class SpiedPlayer extends ReportPlayer implements \JsonSerializable {
+class SpiedPlayer extends ReportPlayer {
 		
 	/**
 	 * @var Resources

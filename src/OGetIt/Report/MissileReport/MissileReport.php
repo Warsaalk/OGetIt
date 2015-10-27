@@ -27,7 +27,7 @@ use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Technology\State\StateCombatWithLosses;
 use OGetIt\Technology\Entity\Defence\InterplanetaryMissile;
 
-class MissileReport extends Report implements \JsonSerializable {
+class MissileReport extends Report {
 	
 	/**
 	 * @var MissilePlayer

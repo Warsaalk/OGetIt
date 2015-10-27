@@ -25,7 +25,7 @@ use OGetIt\Technology\State\StateCombatWithLosses;
 use OGetIt\Common\Value\ChildValueAndLosses;
 use OGetIt\Common\Resources;
 
-class MissilePlayer extends ReportPlayer implements \JsonSerializable {
+class MissilePlayer extends ReportPlayer {
 
 	use ChildValueAndLosses;
 	

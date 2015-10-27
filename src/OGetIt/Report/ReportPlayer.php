@@ -23,7 +23,7 @@ use OGetIt\Common\Player;
 use OGetIt\Common\PlanetTrait;
 use OGetIt\Common\AllianceTrait;
 
-class ReportPlayer extends Player implements \JsonSerializable {
+class ReportPlayer extends Player {
 	
 	use PlanetTrait;
 	use AllianceTrait;

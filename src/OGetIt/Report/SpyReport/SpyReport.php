@@ -30,7 +30,7 @@ use OGetIt\Technology\State\StateEconomy;
 use OGetIt\Common\OGetIt\Common;
 use OGetIt\Report\Report;
 
-class SpyReport extends Report implements \JsonSerializable {
+class SpyReport extends Report {
 	
 	/**
 	 * @var integer

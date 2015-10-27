@@ -23,7 +23,7 @@ use OGetIt\Common\Resources;
 use OGetIt\Common\DebrisField;
 use OGetIt\Report\Report;
 
-class HarvestReport extends Report implements \JsonSerializable {
+class HarvestReport extends Report {
 
 	/**
 	 * @var DebrisField
