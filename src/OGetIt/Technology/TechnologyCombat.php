@@ -20,7 +20,7 @@
 namespace OGetIt\Technology;
 
 use OGetIt\Common\Resources;
-abstract class TechnologyCombat extends Technology implements \JsonSerializable {
+abstract class TechnologyCombat extends Technology {
 
 	/**
 	 * @var integer

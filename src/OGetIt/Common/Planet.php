@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Common;
 
-class Planet extends Coordinates implements \JsonSerializable {
+class Planet extends Coordinates {
 
 	const	TYPE_PLANET = 1,
 			TYPE_MOON = 3;

@@ -24,7 +24,7 @@ use OGetIt\Common\Resources;
 use OGetIt\Common\Value;
 use OGetIt\Technology\TechnologyEconomy;
 
-class StateEconomy extends State implements \JsonSerializable {
+class StateEconomy extends State {
 	
 	/**
 	 * @var integer

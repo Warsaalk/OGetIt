@@ -25,7 +25,7 @@ use OGetIt\Common\Value;
 use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Common\Value\ChildLosses;
 
-class StateCombatWithLosses extends StateCombat implements \JsonSerializable {
+class StateCombatWithLosses extends StateCombat {
 	
 	use ChildLosses;
 	
