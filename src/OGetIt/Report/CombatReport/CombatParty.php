@@ -25,39 +25,39 @@ use OGetIt\Report\HarvestReport\HarvestReport;
 use OGetIt\Common\Value\ChildValueAndLosses;
 use OGetIt\Report\CombatReport\Fleet\CombatFleet;
 
-class CombatParty {
+class CombatParty implements \JsonSerializable {
 
 	use ChildValueAndLosses;
 	
 	/**
 	 * @var integer
 	 */
-	private $_count;
+	private $count;
 	
 	/**
 	 * @var integer
 	 */
-	private $_total_losses;
+	private $total_losses;
 
 	/**
 	 * @var integer
 	 */
-	private $_honourable;
+	private $honourable;
 
 	/**
 	 * @var integer
 	 */
-	private $_honourpoints;
+	private $honourpoints;
 	
 	/**
 	 * @var CombatPlayer[]
 	 */
-	private $_players;
+	private $players;
 	
 	/**
 	 * @var HarvestReport[]
 	 */
-	private $_harvestreports = array();
+	private $harvestreports = array();
 	
 	/**
 	 * @param integer $count
@@ -66,10 +66,10 @@ class CombatParty {
 	 */
 	public function __construct($count, $losses, $honourable, $honourpoints) {
 		
-		$this->_count = $count;
-		$this->_total_losses = $losses;
-		$this->_honourable = $honourable;
-		$this->_honourpoints = $honourpoints;
+		$this->count = $count;
+		$this->total_losses = $losses;
+		$this->honourable = $honourable;
+		$this->honourpoints = $honourpoints;
 		
 	}
 	
@@ -78,7 +78,7 @@ class CombatParty {
 	 */
 	public function setPlayers(array $players) {
 		
-		$this->_players = $players;
+		$this->players = $players;
 		
 	}
 
@@ -87,7 +87,7 @@ class CombatParty {
 	 */
 	public function getCount() {
 		
-		return $this->_count;
+		return $this->count;
 		
 	}
 	
@@ -96,7 +96,7 @@ class CombatParty {
 	 */
 	public function getTotalLosses() {
 		
-		return $this->_total_losses;
+		return $this->total_losses;
 		
 	}
 	
@@ -105,7 +105,7 @@ class CombatParty {
 	 */
 	public function getPlayers() {
 		
-		return $this->_players;
+		return $this->players;
 		
 	}
 	
@@ -115,7 +115,7 @@ class CombatParty {
 	 */
 	public function getPlayerByCombatIndex($combat_index) {
 		
-		foreach ($this->_players as $player) {
+		foreach ($this->players as $player) {
 			
 			if ($player->getFleetByCombatIndex($combat_index) !== null) return $player;
 			
@@ -131,7 +131,7 @@ class CombatParty {
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 		
-		foreach ($this->_players as $player) {
+		foreach ($this->players as $player) {
 				
 			if (($fleet = $player->getFleetByCombatIndex($combat_index)) !== null) return $fleet;
 				
@@ -145,7 +145,7 @@ class CombatParty {
 		
 		$players = array();
 		
-		foreach($this->_players as $id => $player) {
+		foreach($this->players as $id => $player) {
 			$players[$id] = clone $player;
 		}
 		
@@ -158,7 +158,7 @@ class CombatParty {
 	 */
 	public function addHarvestReport(HarvestReport $harvestreport) {
 		
-		$this->_harvestreports[] = $harvestreport;
+		$this->harvestreports[] = $harvestreport;
 		
 	}
 	
@@ -167,7 +167,7 @@ class CombatParty {
 	 */
 	public function getHarvestReports() {
 		
-		return $this->_harvestreports;
+		return $this->harvestreports;
 		
 	}
 	
@@ -176,7 +176,7 @@ class CombatParty {
 	 */
 	public function getValue() {
 	
-		return $this->getChildrenValue($this->_players);
+		return $this->getChildrenValue($this->players);
 	
 	}
 	
@@ -185,7 +185,7 @@ class CombatParty {
 	 */
 	public function getLosses() {
 		
-		return $this->getChildrenLosses($this->_players);
+		return $this->getChildrenLosses($this->players);
 		
 	}
 	
@@ -194,7 +194,7 @@ class CombatParty {
 	 */
 	public function getHonourable() {
 		
-		return $this->_honourable;
+		return $this->honourable;
 		
 	}
 	
@@ -203,8 +203,22 @@ class CombatParty {
 	 */
 	public function getHonourPoints() {
 		
-		return $this->_honourpoints;
+		return $this->honourpoints;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'count' => $this->count,
+			'total_losses' => $this->total_losses,
+			'honourable' => $this->honourable,
+			'honourpoints' => $this->honourpoints,
+			'players' => $this->players,
+			'harvestreports' => $this->harvestreports
+		);
 	}
 	
 }

@@ -36,7 +36,7 @@ class CombatFleet extends Fleet {
 	/**
 	 * @var integer
 	 */
-	private $_combat_index;
+	private $combat_index;
 	
 	/**
 	 * @param Planet $planet
@@ -45,7 +45,7 @@ class CombatFleet extends Fleet {
 	public function __construct(Planet $planet, $combat_index) {
 		
 		$this->setPlanet($planet);
-		$this->_combat_index = $combat_index;
+		$this->combat_index = $combat_index;
 		
 	}
 	
@@ -54,8 +54,18 @@ class CombatFleet extends Fleet {
 	 */
 	public function getCombatIndex() {
 		
-		return $this->_combat_index;
+		return $this->combat_index;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'planet' => $this->planet,
+			'combat_index' => $this->combat_index
+		), parent::jsonSerialize());
 	}
 	
 }

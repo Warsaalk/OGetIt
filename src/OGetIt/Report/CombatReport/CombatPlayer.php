@@ -33,22 +33,22 @@ class CombatPlayer extends Player {
 	/**
 	 * @var integer
 	 */
-	private $_armor;
+	private $armor;
 	
 	/**
 	 * @var integer
 	 */
-	private $_shield;
+	private $shield;
 	
 	/**
 	 * @var integer
 	 */
-	private $_weapon;
+	private $weapon;
 	
 	/**
 	 * @var CombatFleet[]
 	 */
-	private $_fleets = array();
+	private $fleets = array();
 	
 	/**
 	 * @param integer $armor
@@ -57,9 +57,9 @@ class CombatPlayer extends Player {
 	 */
 	public function setCombatTechnologies($armor, $shield, $weapon) {
 	
-		$this->_armor = $armor;
-		$this->_shield = $shield;
-		$this->_weapon = $weapon;
+		$this->armor = $armor;
+		$this->shield = $shield;
+		$this->weapon = $weapon;
 	
 	}
 	
@@ -69,7 +69,7 @@ class CombatPlayer extends Player {
 	public function addFleet(CombatFleet $fleet) {
 	
 		$fleet->setPlayer($this);
-		$this->_fleets[] = $fleet;
+		$this->fleets[] = $fleet;
 	
 	}
 	
@@ -78,9 +78,9 @@ class CombatPlayer extends Player {
 	 */
 	public function updateFleet(CombatFleet $updatedFleet) {
 	
-		foreach ($this->_fleets as $i => $fleet) {
+		foreach ($this->fleets as $i => $fleet) {
 			if ($fleet->getCombatIndex() === $updatedFleet->getCombatIndex()) {
-				$this->_fleets[$i] = $updatedFleet;
+				$this->fleets[$i] = $updatedFleet;
 				break;
 			}
 		}
@@ -93,7 +93,7 @@ class CombatPlayer extends Player {
 	 */
 	public function getFleetByCombatIndex($combat_index) {
 	
-		foreach ($this->_fleets as $fleet) {
+		foreach ($this->fleets as $fleet) {
 	
 			if ($fleet->getCombatIndex() === $combat_index) return $fleet;
 	
@@ -108,7 +108,7 @@ class CombatPlayer extends Player {
 	 */
 	public function getFleets() {
 	
-		return $this->_fleets;
+		return $this->fleets;
 	
 	}
 	
@@ -119,7 +119,7 @@ class CombatPlayer extends Player {
 	
 		$merged = new Fleet();
 	
-		foreach ($this->_fleets as $fleet) {
+		foreach ($this->fleets as $fleet) {
 			$merged->merge($fleet);
 		}
 	
@@ -132,7 +132,7 @@ class CombatPlayer extends Player {
 	 */
 	public function getArmor() {
 	
-		return $this->_armor;
+		return $this->armor;
 	
 	}
 	
@@ -141,7 +141,7 @@ class CombatPlayer extends Player {
 	 */
 	public function getShield() {
 	
-		return $this->_shield;
+		return $this->shield;
 	
 	}
 	
@@ -150,7 +150,7 @@ class CombatPlayer extends Player {
 	 */
 	public function getWeapon() {
 	
-		return $this->_weapon;
+		return $this->weapon;
 	
 	}
 	
@@ -158,13 +158,13 @@ class CombatPlayer extends Player {
 	
 		$fleets = array();
 	
-		foreach ($this->_fleets as $fleet) {
+		foreach ($this->fleets as $fleet) {
 			$clone = clone $fleet;
 			$clone->setPlayer($this);
 			$fleets[] = $clone;
 		}
 	
-		$this->_fleets = $fleets; //Clone the fleets
+		$this->fleets = $fleets; //Clone the fleets
 	
 	}
 	
@@ -173,7 +173,7 @@ class CombatPlayer extends Player {
 	 */
 	public function getValue() {
 	
-		return $this->getChildrenValue($this->_fleets);
+		return $this->getChildrenValue($this->fleets);
 	
 	}
 	
@@ -182,8 +182,21 @@ class CombatPlayer extends Player {
 	 */
 	public function getLosses() {
 		
-		return $this->getChildrenLosses($this->_fleets);
+		return $this->getChildrenLosses($this->fleets);
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'alliance' => $this->alliance,
+			'armor' => $this->armor,
+			'shield' => $this->shield,
+			'weapon' => $this->weapon,
+			'fleets' => $this->fleets
+		), parent::jsonSerialize());
 	}
 	
 }

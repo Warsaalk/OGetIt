@@ -19,7 +19,7 @@
  */
 namespace OGetIt\Report\CombatReport;
 
-class CombatMoon {
+class CombatMoon implements \JsonSerializable {
 
 	/**
 	 * @var integer
@@ -90,6 +90,18 @@ class CombatMoon {
 		
 		return $this->moon_exists;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'change' => $this->moon_chance,
+			'created' => $this->moon_created,
+			'size' => $this->moon_size,
+			'exists' => $this->moon_exists
+		);
 	}
 	
 	

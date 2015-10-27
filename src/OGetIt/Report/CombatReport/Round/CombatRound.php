@@ -25,27 +25,27 @@ use OGetIt\Common\Player;
 use OGetIt\Technology\TechnologyFactory;
 use OGetIt\Report\CombatReport\CombatPlayer;
 
-class CombatRound {
+class CombatRound implements \JsonSerializable {
 		
 	/**
 	 * @var integer
 	 */
-	private $_number;
+	private $number;
 	
 	/**
 	 * @var CombatRound_Stats
 	 */
-	private $_statistics;
+	private $statistics;
 	
 	/** 
 	 * @var CombatPlayer[]
 	 */
-	private $_attacker_fleet_details;
+	private $attacker_fleet_details;
 
 	/**
 	 * @var CombatPlayer[]
 	 */
-	private $_defender_fleet_details;
+	private $defender_fleet_details;
 
 	/**
 	 * @param integer $number
@@ -59,12 +59,12 @@ class CombatRound {
 	 */
 	public function __construct($number, $statistics, $attacker_ships, $attacker_ship_losses, $attacker_party, $defender_ships, $defender_ship_losses, $defender_party) {
 		
-		$this->_number = $number;
+		$this->number = $number;
 		
-		$this->_statistics = CombatRound_Stats::createInstance($statistics);
+		$this->statistics = CombatRound_Stats::createInstance($statistics);
 
-		$this->_attacker_fleet_details = $this->loadFleetDetails($attacker_ships, $attacker_ship_losses, $attacker_party);
-		$this->_defender_fleet_details = $this->loadFleetDetails($defender_ships, $defender_ship_losses, $defender_party);
+		$this->attacker_fleet_details = $this->loadFleetDetails($attacker_ships, $attacker_ship_losses, $attacker_party);
+		$this->defender_fleet_details = $this->loadFleetDetails($defender_ships, $defender_ship_losses, $defender_party);
 		
 	}
 	
@@ -144,7 +144,7 @@ class CombatRound {
 	 */
 	public function getNumber() {
 		
-		return $this->_number;
+		return $this->number;
 		
 	}
 	
@@ -153,7 +153,7 @@ class CombatRound {
 	 */
 	public function getStatistics() {
 		
-		return $this->_statistics;
+		return $this->statistics;
 		
 	}
 	
@@ -162,7 +162,7 @@ class CombatRound {
 	 */
 	public function getAttackersDetails() {
 		
-		return $this->_attacker_fleet_details;
+		return $this->attacker_fleet_details;
 		
 	}
 	
@@ -171,8 +171,20 @@ class CombatRound {
 	 */
 	public function getDefendersDetails() {
 		
-		return $this->_defender_fleet_details;
+		return $this->defender_fleet_details;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'number' => $this->number,
+			'statistics' => $this->statistics,
+			'attacker_fleet_details' => $this->attacker_fleet_details,
+			'defender_fleet_details' => $this->defender_fleet_details
+		);
 	}
 		
 }
