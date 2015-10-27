@@ -45,6 +45,20 @@ class OGameApi {
 	const TYPE_MISSILEREPORT = 'missile/report';
 	
 	/**
+	 * @var integer
+	 */
+	private static $connection_timeout = 0;
+	
+	/**
+	 * @param integer $seconds
+	 */
+	public static function setMaxConnectionTimeout($seconds) {
+		
+		self::$connection_timeout = $seconds;
+		
+	}
+	
+	/**
 	 * @param integer $error
 	 * @throws Exception
 	 */
@@ -61,7 +75,7 @@ class OGameApi {
 	 */
 	public static function getData($url, $username = false, $password = false) {
 		
-		$request = new HttpRequest($url);
+		$request = new HttpRequest($url, self::$connection_timeout);
 		
 		if ($username !== false && $password !== false) {
 			$request->useAuthentication($username, $password);
