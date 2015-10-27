@@ -53,11 +53,12 @@ class HttpRequest {
 	/**
 	 * @param string $url
 	 */
-	public function __construct($url) {
+	public function __construct($url, $connection_timeout = 0) {
 		
 		$this->_url = $url;
 		$this->_state = self::$STATE_OPEN;
 		$this->_resource = curl_init(); 
+		$this->setOption(CURLOPT_CONNECTTIMEOUT, $connection_timeout);
 		$this->setOption(CURLOPT_RETURNTRANSFER, true);
 		
 	}

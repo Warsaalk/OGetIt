@@ -69,6 +69,19 @@ class OGetIt {
 	}
 	
 	/**
+	 * Set the maximum amount of time (in seconds) OGetIt should wait for the OGame API to respond.
+	 * Getting a report will return a CurlException with code 28 if the request times out and a timeout if defined.
+	 * Else it'll return a CurlException with code 7.
+	 * 
+	 * @param integer $seconds
+	 */
+	public function setMaxConnectionTimeout($seconds) {
+		
+		OGameApi::setMaxConnectionTimeout($seconds);
+		
+	}
+	
+	/**
 	 * Use https to connect to the API
 	 */
 	public function useHttps() {
