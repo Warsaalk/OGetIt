@@ -19,14 +19,14 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 use OGetIt\Technology\Entity\Defence\RocketLauncher;
 use OGetIt\Technology\Entity\Defence\LightLaser;
 use OGetIt\Technology\Entity\Defence\HeavyLaser;
 use OGetIt\Technology\Entity\Defence\GaussCannon;
 use OGetIt\Technology\Entity\Defence\IonCannon;
 
-class Deathstar extends TechnologyCombat {
+class Deathstar extends TechnologyCombatFlyable {
 
 	const TYPE = 214;
 	
@@ -34,9 +34,11 @@ class Deathstar extends TechnologyCombat {
 	
 	const ARMOR = 9000000, SHIELD = 50000, WEAPON = 200000;
 	
+	const SPEED = 100, CARGO_CAPACITY = 1000000, FUEL_USAGE = 1;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

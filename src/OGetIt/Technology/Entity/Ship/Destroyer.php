@@ -19,10 +19,10 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 use OGetIt\Technology\Entity\Defence\LightLaser;
 
-class Destroyer extends TechnologyCombat {
+class Destroyer extends TechnologyCombatFlyable {
 
 	const TYPE = 213;
 	
@@ -30,9 +30,11 @@ class Destroyer extends TechnologyCombat {
 	
 	const ARMOR = 110000, SHIELD = 500, WEAPON = 2000;
 	
+	const SPEED = 5000, CARGO_CAPACITY = 2000, FUEL_USAGE = 1000;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

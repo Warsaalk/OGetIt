@@ -19,13 +19,13 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 use OGetIt\Technology\Entity\Defence\RocketLauncher;
 use OGetIt\Technology\Entity\Defence\LightLaser;
 use OGetIt\Technology\Entity\Defence\HeavyLaser;
 use OGetIt\Technology\Entity\Defence\IonCannon;
 
-class Bomber extends TechnologyCombat {
+class Bomber extends TechnologyCombatFlyable {
 
 	const TYPE = 211;
 	
@@ -33,9 +33,11 @@ class Bomber extends TechnologyCombat {
 	
 	const ARMOR = 75000, SHIELD = 500, WEAPON = 1000;
 	
+	const SPEED = 5000, CARGO_CAPACITY = 500, FUEL_USAGE = 1000;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

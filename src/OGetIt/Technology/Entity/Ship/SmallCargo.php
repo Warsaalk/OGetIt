@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 
-class SmallCargo extends TechnologyCombat {
+class SmallCargo extends TechnologyCombatFlyable {
 	
 	const TYPE = 202;
 	
@@ -29,9 +29,11 @@ class SmallCargo extends TechnologyCombat {
 	
 	const ARMOR = 4000, SHIELD = 10, WEAPON = 5;
 	
+	const SPEED = 10000, CARGO_CAPACITY = 5000, FUEL_USAGE = 20;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

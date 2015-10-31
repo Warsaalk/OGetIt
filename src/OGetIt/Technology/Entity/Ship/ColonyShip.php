@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 
-class ColonyShip extends TechnologyCombat {
+class ColonyShip extends TechnologyCombatFlyable {
 
 	const TYPE = 208;
 	
@@ -29,9 +29,11 @@ class ColonyShip extends TechnologyCombat {
 	
 	const ARMOR = 30000, SHIELD = 100, WEAPON = 50;
 	
+	const SPEED = 2500, CARGO_CAPACITY = 7500, FUEL_USAGE = 1000;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

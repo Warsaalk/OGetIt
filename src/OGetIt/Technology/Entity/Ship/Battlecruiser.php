@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 
-class Battlecruiser extends TechnologyCombat {
+class Battlecruiser extends TechnologyCombatFlyable {
 
 	const TYPE = 215;
 	
@@ -29,9 +29,11 @@ class Battlecruiser extends TechnologyCombat {
 	
 	const ARMOR = 70000, SHIELD = 400, WEAPON = 700;
 	
+	const SPEED = 10000, CARGO_CAPACITY = 750, FUEL_USAGE = 250;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 
-class SolarSatellite extends TechnologyCombat {
+class SolarSatellite extends TechnologyCombatFlyable {
 
 	const TYPE = 212;
 	
@@ -29,9 +29,11 @@ class SolarSatellite extends TechnologyCombat {
 	
 	const ARMOR = 2000, SHIELD = 1, WEAPON = 1;
 	
+	const SPEED = 0, CARGO_CAPACITY = 0, FUEL_USAGE = 0;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

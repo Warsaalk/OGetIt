@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 
-class Recycler extends TechnologyCombat {
+class Recycler extends TechnologyCombatFlyable {
 
 	const TYPE = 209;
 	
@@ -29,9 +29,11 @@ class Recycler extends TechnologyCombat {
 	
 	const ARMOR = 16000, SHIELD = 10, WEAPON = 1;
 	
+	const SPEED = 2000, CARGO_CAPACITY = 20000, FUEL_USAGE = 300;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

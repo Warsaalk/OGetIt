@@ -19,9 +19,9 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 
-class EspionageProbe extends TechnologyCombat {
+class EspionageProbe extends TechnologyCombatFlyable {
 
 	const TYPE = 210;
 	
@@ -29,9 +29,11 @@ class EspionageProbe extends TechnologyCombat {
 	
 	const ARMOR = 1000, SHIELD = 0.01, WEAPON = 0.01;
 	
+	const SPEED = 100000000, CARGO_CAPACITY = 0, FUEL_USAGE = 1;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	

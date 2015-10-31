@@ -19,10 +19,10 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
-use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\TechnologyCombatFlyable;
 use OGetIt\Technology\Entity\Defence\RocketLauncher;
 
-class Cruiser extends TechnologyCombat {
+class Cruiser extends TechnologyCombatFlyable {
 
 	const TYPE = 206;
 	
@@ -30,9 +30,11 @@ class Cruiser extends TechnologyCombat {
 	
 	const ARMOR = 27000, SHIELD = 50, WEAPON = 400;
 	
+	const SPEED = 15000, CARGO_CAPACITY = 800, FUEL_USAGE = 300;
+	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
 	
