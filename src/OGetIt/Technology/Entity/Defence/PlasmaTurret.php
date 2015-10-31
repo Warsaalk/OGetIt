@@ -35,4 +35,6 @@ class PlasmaTurret extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {}
+	
 }

@@ -20,6 +20,7 @@
 namespace OGetIt\Technology\Entity\Ship; 
 
 use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\Entity\Defence\RocketLauncher;
 
 class Cruiser extends TechnologyCombat {
 
@@ -32,6 +33,22 @@ class Cruiser extends TechnologyCombat {
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		
+	}
+	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Battlecruiser::TYPE => 4,
+				Deathstar::TYPE => 33
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5,
+				LightFighter::TYPE => 6,
+				RocketLauncher::TYPE => 10
+		);
 		
 	}
 	

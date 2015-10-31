@@ -35,4 +35,23 @@ class EspionageProbe extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Battlecruiser::TYPE => 5,
+				Destroyer::TYPE => 5,
+				Bomber::TYPE => 5,
+				Recycler::TYPE => 5,
+				ColonyShip::TYPE => 5,
+				Battleship::TYPE => 5,
+				Cruiser::TYPE => 5,
+				HeavyFighter::TYPE => 5,
+				LightFighter::TYPE => 5,
+				LargeCargo::TYPE => 5,
+				Deathstar::TYPE => 1250,
+				SmallCargo::TYPE => 5
+		);
+		
+	}
+	
 }

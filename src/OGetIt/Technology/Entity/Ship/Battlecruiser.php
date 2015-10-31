@@ -35,4 +35,23 @@ class Battlecruiser extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Destroyer::TYPE => 2,
+				Deathstar::TYPE => 15
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5,
+				SmallCargo::TYPE => 3,
+				LargeCargo::TYPE => 3,
+				HeavyFighter::TYPE => 4,
+				Cruiser::TYPE => 4,
+				Battleship::TYPE => 7
+		);
+		
+	}
+	
 }

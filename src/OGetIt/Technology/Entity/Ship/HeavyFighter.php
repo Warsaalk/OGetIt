@@ -35,4 +35,19 @@ class HeavyFighter extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Battlecruiser::TYPE => 4,
+				Deathstar::TYPE => 100
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5,
+				SmallCargo::TYPE => 3
+		);
+		
+	}
+	
 }

@@ -35,4 +35,6 @@ class AntiBallisticMissile extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {}
+	
 }

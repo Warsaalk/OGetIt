@@ -36,12 +36,27 @@ abstract class TechnologyCombat extends Technology {
 	 * @var integer
 	 */
 	private $WEAPON;
+
+	/**
+	 * @var array
+	 */
+	protected $rapidfire_from = array();
+	
+	/**
+	 * @var array
+	 */
+	protected $rapidfire_against = array();
 	
 	/**
 	 * @param integer $type
 	 * @param integer $metal
 	 * @param integer $crystal
 	 * @param integer $deuterium
+	 * @param integer $armor
+	 * @param integer $shield
+	 * @param integer $weapon
+	 * @param array $rapidFireFrom
+	 * @param array $rapidFireAgainst
 	 */
 	protected function __construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon) {
 		
@@ -50,6 +65,8 @@ abstract class TechnologyCombat extends Technology {
 		$this->ARMOR = $armor;
 		$this->SHIELD = $shield;
 		$this->WEAPON = $weapon;
+		
+		$this->setRapidFire();
 		
 	}
 
@@ -81,6 +98,41 @@ abstract class TechnologyCombat extends Technology {
 	}
 	
 	/**
+	 * @return void
+	 */
+	protected abstract function setRapidFire();
+
+	/**
+	 * @param integer $type (optional)
+	 * @return array|integer
+	 */
+	public function getRapidFireFrom($type = false) {
+		
+		if (is_int($type)) {
+			if (isset($this->rapidFireFrom[$type])) return $this->rapidFireFrom[$type];
+			return 0;
+		}
+		
+		return $this->rapidFireFrom;
+		
+	}
+	
+	/**
+	 * @param integer $type (optional)
+	 * @return array|integer
+	 */
+	public function getRapidFireAgainst($type = false) {
+		
+		if (is_int($type)) {
+			if (isset($this->rapidFireAgainst[$type])) return $this->rapidFireAgainst[$type]; 
+			return 0;
+		} 
+		
+		return $this->rapidFireAgainst;
+		
+	}
+	
+	/**
 	 * @param integer $count
 	 * @return Resources
 	 */
@@ -101,7 +153,9 @@ abstract class TechnologyCombat extends Technology {
 		return array_merge(array(
 			'armour' => $this->ARMOR,
 			'shield' => $this->SHIELD,
-			'weapon' => $this->WEAPON
+			'weapon' => $this->WEAPON,
+			'rapidfire_from' => $this->rapidfire_from,
+			'rapidfire_against' => $this->rapidfire_against
 		), parent::jsonSerialize());
 	}
 	

@@ -20,6 +20,9 @@
 namespace OGetIt\Technology\Entity\Defence; 
 
 use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\Entity\Ship\Destroyer;
+use OGetIt\Technology\Entity\Ship\Bomber;
+use OGetIt\Technology\Entity\Ship\Deathstar;
 
 class LightLaser extends TechnologyCombat {
 
@@ -32,6 +35,16 @@ class LightLaser extends TechnologyCombat {
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		
+	}
+	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Destroyer::TYPE => 10,
+				Bomber::TYPE => 20,
+				Deathstar::TYPE => 200
+		);
 		
 	}
 	

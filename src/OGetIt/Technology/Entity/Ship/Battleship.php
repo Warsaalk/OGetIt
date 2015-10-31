@@ -35,4 +35,18 @@ class Battleship extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Battlecruiser::TYPE => 7,
+				Deathstar::TYPE => 30
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5
+		);
+		
+	}
+	
 }

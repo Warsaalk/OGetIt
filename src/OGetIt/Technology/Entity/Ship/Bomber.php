@@ -20,6 +20,10 @@
 namespace OGetIt\Technology\Entity\Ship; 
 
 use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\Entity\Defence\RocketLauncher;
+use OGetIt\Technology\Entity\Defence\LightLaser;
+use OGetIt\Technology\Entity\Defence\HeavyLaser;
+use OGetIt\Technology\Entity\Defence\IonCannon;
 
 class Bomber extends TechnologyCombat {
 
@@ -32,6 +36,23 @@ class Bomber extends TechnologyCombat {
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		
+	}
+	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Deathstar::TYPE => 25
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5,
+				RocketLauncher::TYPE => 20,
+				LightLaser::TYPE => 20,
+				HeavyLaser::TYPE => 10,
+				IonCannon::TYPE => 10
+		);
 		
 	}
 	

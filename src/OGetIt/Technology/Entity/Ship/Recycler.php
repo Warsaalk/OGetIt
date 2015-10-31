@@ -35,4 +35,17 @@ class Recycler extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Deathstar::TYPE => 250
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5
+		);
+		
+	}
+	
 }

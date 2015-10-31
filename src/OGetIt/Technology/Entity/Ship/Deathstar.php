@@ -20,6 +20,11 @@
 namespace OGetIt\Technology\Entity\Ship; 
 
 use OGetIt\Technology\TechnologyCombat;
+use OGetIt\Technology\Entity\Defence\RocketLauncher;
+use OGetIt\Technology\Entity\Defence\LightLaser;
+use OGetIt\Technology\Entity\Defence\HeavyLaser;
+use OGetIt\Technology\Entity\Defence\GaussCannon;
+use OGetIt\Technology\Entity\Defence\IonCannon;
 
 class Deathstar extends TechnologyCombat {
 
@@ -32,6 +37,31 @@ class Deathstar extends TechnologyCombat {
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
+		
+	}
+	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_against = array(
+				SmallCargo::TYPE => 250,
+				LargeCargo::TYPE => 250,
+				LightFighter::TYPE => 200,
+				HeavyFighter::TYPE => 100,
+				Cruiser::TYPE => 33,
+				Battleship::TYPE => 30,
+				ColonyShip::TYPE => 250,
+				Recycler::TYPE => 250,
+				EspionageProbe::TYPE => 1250,
+				SolarSatellite::TYPE => 1250,
+				Bomber::TYPE => 25,
+				Destroyer::TYPE => 5,
+				RocketLauncher::TYPE => 200,
+				LightLaser::TYPE => 200,
+				HeavyLaser::TYPE => 100,
+				GaussCannon::TYPE => 50,
+				IonCannon::TYPE => 100,
+				Battlecruiser::TYPE => 15
+		);
 		
 	}
 	

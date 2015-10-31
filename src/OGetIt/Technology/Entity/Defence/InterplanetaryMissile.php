@@ -35,4 +35,6 @@ class InterplanetaryMissile extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {}
+	
 }

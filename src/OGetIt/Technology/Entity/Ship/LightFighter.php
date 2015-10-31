@@ -35,4 +35,18 @@ class LightFighter extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {
+		
+		$this->rapidfire_from = array(
+				Cruiser::TYPE => 6,
+				Deathstar::TYPE => 200
+		);
+		
+		$this->rapidfire_against = array(
+				EspionageProbe::TYPE => 5,
+				SolarSatellite::TYPE => 5
+		);
+		
+	}
+	
 }

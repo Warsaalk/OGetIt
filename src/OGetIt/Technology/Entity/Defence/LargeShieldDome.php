@@ -35,4 +35,6 @@ class LargeShieldDome extends TechnologyCombat {
 		
 	}
 	
+	protected function setRapidFire() {}
+	
 }
