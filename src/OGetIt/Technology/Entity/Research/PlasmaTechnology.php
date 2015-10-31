@@ -25,7 +25,7 @@ class PlasmaTechnology extends TechnologyEconomy {
 	
 	const TYPE = 122;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 2000, CRYSTAL = 4000, DEUTERIUM = 1000;
 	
 	public function __construct() {
 		

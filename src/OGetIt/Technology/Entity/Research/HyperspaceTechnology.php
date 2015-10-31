@@ -25,7 +25,7 @@ class HyperspaceTechnology extends TechnologyEconomy {
 	
 	const TYPE = 114;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 0, CRYSTAL = 4000, DEUTERIUM = 2000;
 	
 	public function __construct() {
 		

@@ -25,7 +25,7 @@ class HyperspaceDrive extends TechnologyEconomy {
 	
 	const TYPE = 118;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 10000, CRYSTAL = 20000, DEUTERIUM = 6000;
 	
 	public function __construct() {
 		

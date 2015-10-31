@@ -25,7 +25,7 @@ class Astrophysics extends TechnologyEconomy {
 	
 	const TYPE = 124;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 4000, CRYSTAL = 8000, DEUTERIUM = 4000;
 	
 	/**
 	 * @var integer

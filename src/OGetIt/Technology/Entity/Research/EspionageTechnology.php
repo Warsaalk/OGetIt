@@ -25,7 +25,7 @@ class EspionageTechnology extends TechnologyEconomy {
 	
 	const TYPE = 106;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 200, CRYSTAL = 1000, DEUTERIUM = 200;
 	
 	public function __construct() {
 		

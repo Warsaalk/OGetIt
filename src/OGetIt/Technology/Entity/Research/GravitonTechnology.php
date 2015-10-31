@@ -25,7 +25,7 @@ class GravitonTechnology extends TechnologyEconomy {
 	
 	const TYPE = 199;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0, ENERGY = 300000;
 	
 	/**
 	 * @var integer
@@ -34,7 +34,7 @@ class GravitonTechnology extends TechnologyEconomy {
 	
 	public function __construct() {
 		
-		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM);
+		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ENERGY);
 		
 	}
 	

@@ -25,7 +25,7 @@ class IntergalacticResearchNetwork extends TechnologyEconomy {
 	
 	const TYPE = 123;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 240000, CRYSTAL = 400000, DEUTERIUM = 160000;
 	
 	public function __construct() {
 		

@@ -25,7 +25,7 @@ class ShieldingTechnology extends TechnologyEconomy {
 	
 	const TYPE = 110;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 200, CRYSTAL = 600, DEUTERIUM = 0;
 	
 	public function __construct() {
 		
