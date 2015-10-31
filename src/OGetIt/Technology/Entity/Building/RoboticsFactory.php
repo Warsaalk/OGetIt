@@ -25,7 +25,7 @@ class RoboticsFactory extends TechnologyEconomy {
 	
 	const TYPE = 14;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 400, CRYSTAL = 120, DEUTERIUM = 200;
 	
 	public function __construct() {
 		

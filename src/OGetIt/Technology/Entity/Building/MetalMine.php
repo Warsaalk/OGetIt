@@ -25,7 +25,7 @@ class MetalMine extends TechnologyEconomy {
 	
 	const TYPE = 1;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 60, CRYSTAL = 15, DEUTERIUM = 0;
 	
 	/**
 	 * @var integer

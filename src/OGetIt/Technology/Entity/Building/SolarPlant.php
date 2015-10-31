@@ -25,7 +25,7 @@ class SolarPlant extends TechnologyEconomy {
 	
 	const TYPE = 4;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 75, CRYSTAL = 30, DEUTERIUM = 0;
 	
 	/**
 	 * @var integer

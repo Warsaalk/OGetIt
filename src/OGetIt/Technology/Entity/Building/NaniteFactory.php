@@ -25,7 +25,7 @@ class NaniteFactory extends TechnologyEconomy {
 	
 	const TYPE = 15;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 1000000, CRYSTAL = 500000, DEUTERIUM = 100000;
 	
 	public function __construct() {
 		

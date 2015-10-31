@@ -25,7 +25,7 @@ class FusionReactor extends TechnologyEconomy {
 	
 	const TYPE = 12;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 900, CRYSTAL = 360, DEUTERIUM = 180;
 	
 	/**
 	 * @var integer

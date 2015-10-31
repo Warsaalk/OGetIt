@@ -25,7 +25,7 @@ class Shipyard extends TechnologyEconomy {
 	
 	const TYPE = 21;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 400, CRYSTAL = 200, DEUTERIUM = 100;
 	
 	public function __construct() {
 		

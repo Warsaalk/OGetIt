@@ -25,7 +25,7 @@ class SeabedDeuteriumDen extends TechnologyEconomy {
 	
 	const TYPE = 27;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 2645, CRYSTAL = 2645, DEUTERIUM = 0;
 	
 	public function __construct() {
 		

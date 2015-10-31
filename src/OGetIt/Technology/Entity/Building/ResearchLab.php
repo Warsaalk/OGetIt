@@ -25,7 +25,7 @@ class ResearchLab extends TechnologyEconomy {
 	
 	const TYPE = 31;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 200, CRYSTAL = 400, DEUTERIUM = 200;
 	
 	public function __construct() {
 		

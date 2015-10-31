@@ -25,7 +25,7 @@ class DeuteriumSynthesizer extends TechnologyEconomy {
 	
 	const TYPE = 3;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 225, CRYSTAL = 75, DEUTERIUM = 0;
 	
 	/**
 	 * @var integer

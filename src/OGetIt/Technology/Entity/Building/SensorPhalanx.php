@@ -25,7 +25,7 @@ class SensorPhalanx extends TechnologyEconomy {
 	
 	const TYPE = 42;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 20000, CRYSTAL = 40000, DEUTERIUM = 20000;
 	
 	public function __construct() {
 		

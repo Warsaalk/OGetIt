@@ -25,7 +25,7 @@ class DeuteriumTank extends TechnologyEconomy {
 	
 	const TYPE = 24;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 1000, CRYSTAL = 1000, DEUTERIUM = 0;
 	
 	public function __construct() {
 		

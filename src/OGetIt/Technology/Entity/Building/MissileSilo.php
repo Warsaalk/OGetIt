@@ -25,7 +25,7 @@ class MissileSilo extends TechnologyEconomy {
 	
 	const TYPE = 44;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 20000, CRYSTAL = 20000, DEUTERIUM = 1000;
 	
 	public function __construct() {
 		

@@ -25,7 +25,7 @@ class CrystalMine extends TechnologyEconomy {
 	
 	const TYPE = 2;
 	
-	const METAL = 0, CRYSTAL = 0, DEUTERIUM = 0;
+	const METAL = 48, CRYSTAL = 24, DEUTERIUM = 0;
 	
 	/**
 	 * @var integer
