@@ -19,24 +19,23 @@
  */
 namespace OGetIt\Technology\State;
 
-use OGetIt\Common\Value;
 use OGetIt\Common\Value\ChildValue;
 
-abstract class State {
+abstract class State implements \JsonSerializable {
 	
 	use ChildValue;
 	
 	/**
 	 * @var TechnologyCombat
 	 */
-	private $_technology;
+	private $technology;
 	
 	/**
 	 * @param Technology $technology
 	 */
 	public function __construct($technology) {
 		
-		$this->_technology = $technology;
+		$this->technology = $technology;
 		
 	}
 
@@ -45,8 +44,17 @@ abstract class State {
 	 */
 	public function getTechnology() {
 		
-		return $this->_technology;
+		return $this->technology;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'technology' => $this->technology
+		);
 	}
 	
 }

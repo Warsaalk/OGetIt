@@ -173,4 +173,16 @@ class MissileReport extends Report {
 		
 	}
 	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'attacker' => $this->attacker,
+			'attacker_lost_missiles' => $this->attacker_lost_missiles,
+			'defender' => $this->defender,
+			'defender_lost_missiles' => $this->defender_lost_missiles
+		), parent::jsonSerialize());
+	}
+	
 }

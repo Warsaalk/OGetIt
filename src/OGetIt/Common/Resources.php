@@ -19,27 +19,27 @@
  */
 namespace OGetIt\Common;
 
-class Resources {
+class Resources implements \JsonSerializable {
 	
 	/**
 	 * @var integer
 	 */
-	private $_metal;
+	private $metal;
 
 	/**
 	 * @var integer
 	 */
-	private $_crystal;
+	private $crystal;
 
 	/**
 	 * @var integer
 	 */
-	private $_deuterium;
+	private $deuterium;
 
 	/**
 	 * @var integer
 	 */	
-	private $_energy;
+	private $energy;
 	
 	/**
 	 * @param integer $metal
@@ -48,10 +48,10 @@ class Resources {
 	 */
 	public function __construct($metal, $crystal, $deuterium, $energy = 0) {
 		
-		$this->_metal = (int)$metal;
-		$this->_crystal = (int)$crystal;
-		$this->_deuterium = (int)$deuterium;
-		$this->_energy = (int)$energy;
+		$this->metal = (int)$metal;
+		$this->crystal = (int)$crystal;
+		$this->deuterium = (int)$deuterium;
+		$this->energy = (int)$energy;
 		
 	}
 	
@@ -60,7 +60,7 @@ class Resources {
 	 */
 	public function getMetal() {
 		
-		return $this->_metal;
+		return $this->metal;
 		
 	}
 
@@ -69,7 +69,7 @@ class Resources {
 	 */
 	public function getCrystal() {
 		
-		return $this->_crystal;
+		return $this->crystal;
 		
 	}
 
@@ -78,7 +78,7 @@ class Resources {
 	 */
 	public function getDeuterium() {
 		
-		return $this->_deuterium;
+		return $this->deuterium;
 		
 	}
 	
@@ -87,7 +87,7 @@ class Resources {
 	 */
 	public function getEnergy() {
 		
-		return $this->_energy;
+		return $this->energy;
 		
 	}
 	
@@ -96,7 +96,7 @@ class Resources {
 	 */
 	public function getTotal() {
 		
-		return $this->_metal + $this->_crystal + $this->_deuterium;
+		return $this->metal + $this->crystal + $this->deuterium;
 		
 	}
 	
@@ -106,10 +106,10 @@ class Resources {
 	 */
 	public function subtract(Resources $resources) {
 		
-		$this->_metal -= $resources->getMetal();
-		$this->_crystal -= $resources->getCrystal();
-		$this->_deuterium -= $resources->getDeuterium();
-		$this->_energy -= $resources->getEnergy();
+		$this->metal -= $resources->getMetal();
+		$this->crystal -= $resources->getCrystal();
+		$this->deuterium -= $resources->getDeuterium();
+		$this->energy -= $resources->getEnergy();
 		
 		return $this;
 		
@@ -121,10 +121,10 @@ class Resources {
 	 */
 	public function add(Resources $resources) {
 		
-		$this->_metal += $resources->getMetal();
-		$this->_crystal += $resources->getCrystal();
-		$this->_deuterium += $resources->getDeuterium();
-		$this->_energy += $resources->getEnergy();
+		$this->metal += $resources->getMetal();
+		$this->crystal += $resources->getCrystal();
+		$this->deuterium += $resources->getDeuterium();
+		$this->energy += $resources->getEnergy();
 		
 		return $this;
 		
@@ -136,13 +136,25 @@ class Resources {
 	 */
 	public function multiply($number) {
 		
-		$this->_metal *= $number;
-		$this->_crystal *= $number;
-		$this->_deuterium *= $number;
-		$this->_energy *= $number;
+		$this->metal *= $number;
+		$this->crystal *= $number;
+		$this->deuterium *= $number;
+		$this->energy *= $number;
 		
 		return $this;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'metal'	=> $this->metal,
+			'crystal' => $this->crystal,
+			'deuterium' => $this->deuterium,
+			'energy' => $this->energy
+		);
 	}
 	
 }

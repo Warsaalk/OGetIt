@@ -58,4 +58,13 @@ abstract class TechnologyEconomy extends Technology {
 		
 	}
 	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'power_base' => $this->power_base
+		), parent::jsonSerialize());
+	}
+	
 }

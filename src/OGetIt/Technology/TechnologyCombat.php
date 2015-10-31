@@ -94,4 +94,15 @@ abstract class TechnologyCombat extends Technology {
 		
 	}
 	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'armour' => $this->ARMOR,
+			'shield' => $this->SHIELD,
+			'weapon' => $this->WEAPON
+		), parent::jsonSerialize());
+	}
+	
 }

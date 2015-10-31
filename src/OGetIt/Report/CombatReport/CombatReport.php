@@ -39,72 +39,72 @@ class CombatReport extends Report {
 	/**
 	 * @var Planet
 	 */
-	private $_planet;
+	private $planet;
 	
 	/**
 	 * @var integer
 	 */
-	private $_loot_percentage;
+	private $loot_percentage;
 	
 	/**
 	 * @var integer
 	 */
-	private $_combat_rounds_count;
+	private $combat_rounds_count;
 	
 	/**
 	 * @var boolean
 	 */
-	private $_combat_honourable;
+	private $combat_honourable;
 	
 	/**
 	 * @var Resources
 	 */
-	private $_loot;
+	private $loot;
 
 	/**
 	 * @var DebrisField
 	 */
-	private $_debris_field;
+	private $debris_field;
 	
 	/**
 	 * @var string
 	 */
-	private $_winner;
+	private $winner;
 	
 	/**
 	 * @var CombatParty
 	 */
-	private $_attacker_party;
+	private $attacker_party;
 
 	/**
 	 * @var CombatParty
 	 */
-	private $_defender_party;
+	private $defender_party;
 	
 	/**
 	 * @var CombatRound[]
 	 */
-	private $_combat_rounds;
+	private $combat_rounds;
 	
 	/**
 	 * @var CombatReport[]
 	 */
-	private $_raids = array();
+	private $raids = array();
 	
 	/**
 	 * @var CombatReport_Calculator
 	 */
-	private $_combatreport_calculator;
+	private $combatreport_calculator;
 	
 	/**
 	 * @var integer
 	 */
-	private $_player_id_count = 0;
+	private $player_id_count = 0;
 	
 	/**
 	 * @var CombatMoon
 	 */
-	private $_combat_moon;
+	private $combat_moon;
 	
 	/**
 	 * @param string $api_data
@@ -184,21 +184,21 @@ class CombatReport extends Report {
 		
 		parent::__construct($id, $time, $timestamp);
 		
-		$this->_loot_percentage = $loot_percentage;
-		$this->_combat_rounds_count = $combat_rounds;
-		$this->_combat_honourable = $combat_honourable;
-		$this->_winner = $winner;
-		$this->_planet = new Planet($planet_type, $coordinates);
+		$this->loot_percentage = $loot_percentage;
+		$this->combat_rounds_count = $combat_rounds;
+		$this->combat_honourable = $combat_honourable;
+		$this->winner = $winner;
+		$this->planet = new Planet($planet_type, $coordinates);
 		
-		$this->_attacker_party = new CombatParty($attacker_count, $attacker_losses, $attacker_honourable, $attacker_honourpoints);
-		$this->_defender_party = new CombatParty($defender_count, $defender_losses, $defender_honourable, $defender_honourpoints);
+		$this->attacker_party = new CombatParty($attacker_count, $attacker_losses, $attacker_honourable, $attacker_honourpoints);
+		$this->defender_party = new CombatParty($defender_count, $defender_losses, $defender_honourable, $defender_honourpoints);
 		
-		$this->_loot = new Resources($loot_metal, $loot_crystal, $loot_deuterium);
-		$this->_debris_field = new DebrisField($coordinates, $debris_metal, $debris_crystal);
+		$this->loot = new Resources($loot_metal, $loot_crystal, $loot_deuterium);
+		$this->debris_field = new DebrisField($coordinates, $debris_metal, $debris_crystal);
 		
-		$this->_combatreport_calculator = new CombatReport_Calculator($this);
+		$this->combatreport_calculator = new CombatReport_Calculator($this);
 		
-		$this->_combat_moon = new CombatMoon($moon_chance, $moon_created, $moon_exists, $moon_size);
+		$this->combat_moon = new CombatMoon($moon_chance, $moon_created, $moon_exists, $moon_size);
 		
 	}
 	
@@ -209,7 +209,7 @@ class CombatReport extends Report {
 		
 		$players = $this->loadParty($attackers);
 		
-		$this->_attacker_party->setPlayers($players);
+		$this->attacker_party->setPlayers($players);
 		
 	}
 	
@@ -220,7 +220,7 @@ class CombatReport extends Report {
 		
 		$players = $this->loadParty($defenders);
 		
-		$this->_defender_party->setPlayers($players);
+		$this->defender_party->setPlayers($players);
 		
 	}
 	
@@ -239,7 +239,7 @@ class CombatReport extends Report {
 
 			//Check if player already exists, if not create it & add it
 			if ($playerId === false) {
-				$playerId = $this->_player_id_count++;
+				$playerId = $this->player_id_count++;
 				$playerIdMapping[$rawPlayer] = $playerId;
 				$players[$playerId] = new CombatPlayer($rawPlayer, $playerId);
 				$players[$playerId]->setCombatTechnologies(
@@ -281,15 +281,15 @@ class CombatReport extends Report {
 		
 		foreach ($rawRounds as $rawRound) {
 			
-			$this->_combat_rounds[$rawRound['round_number']] = new CombatRound(
+			$this->combat_rounds[$rawRound['round_number']] = new CombatRound(
 				$rawRound['round_number'], 
 				$rawRound['statistics'],
 				$rawRound['attacker_ships'],
 				$rawRound['attacker_ship_losses'],
-				$this->_attacker_party,
+				$this->attacker_party,
 				$rawRound['defender_ships'],
 				$rawRound['defender_ship_losses'],
-				$this->_defender_party
+				$this->defender_party
 			);
 			
 		}		
@@ -301,7 +301,7 @@ class CombatReport extends Report {
 	 */
 	public function getPlanet() {
 		
-		return $this->_planet;
+		return $this->planet;
 		
 	}
 	
@@ -310,7 +310,7 @@ class CombatReport extends Report {
 	 */
 	public function isCombatHonourable() {
 		
-		return $this->_combat_honourable;
+		return $this->combat_honourable;
 		
 	}
 	
@@ -319,7 +319,7 @@ class CombatReport extends Report {
 	 */
 	public function getWinner() {
 		
-		return $this->_winner;
+		return $this->winner;
 		
 	}
 	
@@ -328,7 +328,7 @@ class CombatReport extends Report {
 	 */
 	public function getLootPercentage() {
 		
-		return $this->_loot_percentage;
+		return $this->loot_percentage;
 		
 	}
 	
@@ -337,7 +337,7 @@ class CombatReport extends Report {
 	 */
 	public function getLoot() {
 		
-		return $this->_loot;
+		return $this->loot;
 		
 	}
 	
@@ -346,7 +346,7 @@ class CombatReport extends Report {
 	 */
 	public function getDebrisField() {
 		
-		return $this->_debris_field;
+		return $this->debris_field;
 		
 	}
 
@@ -355,7 +355,7 @@ class CombatReport extends Report {
 	 */
 	public function getAttackerParty() {
 		
-		return $this->_attacker_party;
+		return $this->attacker_party;
 		
 	}
 	
@@ -364,7 +364,7 @@ class CombatReport extends Report {
 	 */
 	public function getDefenderParty() {
 		
-		return $this->_defender_party;
+		return $this->defender_party;
 		
 	}
 	
@@ -373,7 +373,7 @@ class CombatReport extends Report {
 	 */
 	public function getRoundCount() {
 		
-		return $this->_combat_rounds_count;
+		return $this->combat_rounds_count;
 		
 	}
 	
@@ -382,7 +382,7 @@ class CombatReport extends Report {
 	 */
 	public function getRounds() {
 		
-		return $this->_combat_rounds;
+		return $this->combat_rounds;
 		
 	}
 	
@@ -392,7 +392,7 @@ class CombatReport extends Report {
 	 */
 	public function getRound($number) {
 		
-		return isset($this->_combat_rounds[$number]) ? $this->_combat_rounds[$number] : null;
+		return isset($this->combat_rounds[$number]) ? $this->combat_rounds[$number] : null;
 		
 	}
 	
@@ -404,7 +404,7 @@ class CombatReport extends Report {
 		
 		if ($raid->getPlanet()->getCoordinates() !== $this->getPlanet()->getCoordinates()) return false;
 		
-		$this->_raids[] = $raid;
+		$this->raids[] = $raid;
 		
 		return true;
 		
@@ -415,7 +415,7 @@ class CombatReport extends Report {
 	 */
 	public function getRaids() {
 		
-		return $this->_raids;
+		return $this->raids;
 		
 	}
 	
@@ -424,7 +424,7 @@ class CombatReport extends Report {
 	 */
 	public function hasRaids() {
 		
-		return !empty($this->_raids);
+		return !empty($this->raids);
 		
 	}
 	
@@ -433,7 +433,7 @@ class CombatReport extends Report {
 	 */
 	public function getCalculator() {
 		
-		return $this->_combatreport_calculator;
+		return $this->combatreport_calculator;
 		
 	}
 	
@@ -442,8 +442,29 @@ class CombatReport extends Report {
 	 */
 	public function getCombatMoon() {
 		
-		return $this->_combat_moon;
+		return $this->combat_moon;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'planet' => $this->planet,
+			'loot_percentage' => $this->loot_percentage,
+			'combat_rounds_count' => $this->combat_rounds_count,
+			'combat_honourable' => $this->combat_honourable,
+			'loot' => $this->loot,
+			'debris_field' => $this->debris_field,
+			'winner' => $this->winner,
+			'attacker_party' => $this->attacker_party,
+			'defender_party' => $this->defender_party,
+			'combat_rounds' => $this->combat_rounds,
+			'raids' => $this->raids,
+			'player_id_count' => $this->player_id_count,
+			'combat_moon' => $this->combat_moon,
+		), parent::jsonSerialize());
 	}
 	
 }

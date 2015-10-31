@@ -19,27 +19,27 @@
  */
 namespace OGetIt\Common;
 
-class Coordinates {
+class Coordinates implements \JsonSerializable {
 	
 	/**
 	 * @var string
 	 */
-	private $_coordinates;
+	private $coordinates;
 	
 	/**
 	 * @var integer
 	 */
-	private $_galaxy;
+	private $galaxy;
 
 	/**
 	 * @var integer
 	 */
-	private $_system;
+	private $system;
 
 	/**
 	 * @var integer
 	 */
-	private $_position;
+	private $position;
 	
 	/**
 	 * @param string $type
@@ -47,13 +47,13 @@ class Coordinates {
 	 */
 	public function __construct($coordinates) {
 		
-		$this->_coordinates = $coordinates;
+		$this->coordinates = $coordinates;
 		
 		$coordinatesObject = self::parseCoordinates($coordinates);
 		
-		$this->_galaxy = $coordinatesObject->galaxy;
-		$this->_system = $coordinatesObject->system;
-		$this->_position = $coordinatesObject->position;
+		$this->galaxy = $coordinatesObject->galaxy;
+		$this->system = $coordinatesObject->system;
+		$this->position = $coordinatesObject->position;
 		
 	}
 	
@@ -78,7 +78,7 @@ class Coordinates {
 	 */
 	public function getCoordinates() {
 		
-		return $this->_coordinates;
+		return $this->coordinates;
 		
 	}
 
@@ -87,7 +87,7 @@ class Coordinates {
 	 */
 	public function getGalaxy() {
 		
-		return $this->_galaxy;
+		return $this->galaxy;
 		
 	}
 
@@ -96,7 +96,7 @@ class Coordinates {
 	 */
 	public function getSystem() {
 		
-		return $this->_system;
+		return $this->system;
 		
 	}
 
@@ -105,8 +105,20 @@ class Coordinates {
 	 */
 	public function getPosition() {
 		
-		return $this->_position;
+		return $this->position;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'coordinates' => $this->coordinates,
+			'galaxy' => $this->galaxy,
+			'system' => $this->system,
+			'position' => $this->position
+		);
 	}
 	
 }

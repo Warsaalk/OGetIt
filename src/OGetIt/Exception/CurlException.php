@@ -21,7 +21,7 @@ namespace OGetIt\Exception;
 
 class CurlException extends \Exception {
 	
-	private $_prefix = 'cURL error: ';
+	private $prefix = 'cURL error: ';
 	
 	/**
 	 * @param string $message
@@ -30,7 +30,7 @@ class CurlException extends \Exception {
 	 */
 	public function __construct($message = "Unknown exception", $code = 0, Exception $previous = null) {
 		
-		parent::__construct($this->_prefix . $message, $code, $previous);
+		parent::__construct($this->prefix . $message, $code, $previous);
 		
 	}
 	

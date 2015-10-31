@@ -27,12 +27,12 @@ class Planet extends Coordinates {
 	/**
 	 * @var integer
 	 */
-	private $_type;
+	private $type;
 	
 	/**
 	 * @var string
 	 */
-	private $_name;
+	private $name;
 	/**
 	 * @param string $type
 	 * @param string $coordinates
@@ -41,8 +41,8 @@ class Planet extends Coordinates {
 		
 		parent::__construct($coordinates);
 		
-		$this->_type = $type;
-		$this->_name = $name;
+		$this->type = $type;
+		$this->name = $name;
 		
 	}
 	
@@ -51,7 +51,7 @@ class Planet extends Coordinates {
 	 */
 	public function getType() {
 		
-		return $this->_type;
+		return $this->type;
 		
 	}
 	
@@ -60,8 +60,18 @@ class Planet extends Coordinates {
 	 */
 	public function getName() {
 		
-		return $this->_name;
+		return $this->name;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'type' => $this->type,
+			'name' => $this->name
+		), parent::jsonSerialize());
 	}
 	
 }

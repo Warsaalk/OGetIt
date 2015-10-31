@@ -31,34 +31,34 @@ class SpiedPlayer extends ReportPlayer {
 	/**
 	 * @var Resources
 	 */
-	private $_resources;
+	private $resources;
 	
 	/**
 	 * @var StateEconomy[]
 	 */
-	private $_buildings = array();
+	private $buildings = array();
 	
 	/**
 	 * @var StateEconomy[]
 	 */
-	private $_research = array();
+	private $research = array();
 
 	/**
 	 * @var StateCombat[]
 	 */
-	private $_ships = array();
+	private $ships = array();
 	
 	/**
 	 * @var StateCombat[]
 	 */
-	private $_defence = array();
+	private $defence = array();
 	
 	/**
 	 * @param Resources $resources
 	 */
 	public function setResources(Resources $resources) {
 		
-		$this->_resources = $resources;
+		$this->resources = $resources;
 		
 	}
 	
@@ -67,7 +67,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function getResources() {
 		
-		return $this->_resources;
+		return $this->resources;
 		
 	}
 	
@@ -76,7 +76,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function addBuilding(StateEconomy $entityState) {
 		
-		$this->_buildings[$entityState->getTechnology()->getType()] = $entityState;
+		$this->buildings[$entityState->getTechnology()->getType()] = $entityState;
 		
 	}
 	
@@ -85,7 +85,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function getBuildings() {
 		
-		return $this->_buildings;
+		return $this->buildings;
 		
 	}
 	
@@ -94,7 +94,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function addResearch(StateEconomy $entityState) {
 		
-		$this->_research[$entityState->getTechnology()->getType()] = $entityState;
+		$this->research[$entityState->getTechnology()->getType()] = $entityState;
 		
 	}
 	
@@ -103,7 +103,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function getResearch() {
 		
-		return $this->_research;
+		return $this->research;
 		
 	}
 	
@@ -112,7 +112,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function addShip(StateCombat $entityState) {
 		
-		$this->_ships[$entityState->getTechnology()->getType()] = $entityState;
+		$this->ships[$entityState->getTechnology()->getType()] = $entityState;
 		
 	}
 	
@@ -121,7 +121,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function getShips() {
 		
-		return $this->_ships;
+		return $this->ships;
 		
 	}
 	
@@ -130,7 +130,7 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function addDefence(StateCombat $entityState) {
 		
-		$this->_defence[$entityState->getTechnology()->getType()] = $entityState;
+		$this->defence[$entityState->getTechnology()->getType()] = $entityState;
 		
 	}
 	
@@ -139,8 +139,21 @@ class SpiedPlayer extends ReportPlayer {
 	 */
 	public function getDefence() {
 		
-		return $this->_defence;
+		return $this->defence;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'resources' => $this->resources,
+			'buildings' => $this->buildings,
+			'research' => $this->research,
+			'ships' => $this->ships,
+			'defence' => $this->defence
+		), parent::jsonSerialize());
 	}
 	
 }

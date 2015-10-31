@@ -21,17 +21,17 @@ namespace OGetIt\Technology;
 
 use OGetIt\Common\Resources;
 
-abstract class Technology {
+abstract class Technology implements \JsonSerializable {
 	
 	/**
 	 * @var integer
 	 */
-	private $_type;
+	private $type;
 	
 	/**
 	 * @var Resources
 	 */
-	private $_resources;
+	private $resources;
 	
 	/**
 	 * @param integer $type
@@ -41,8 +41,8 @@ abstract class Technology {
 	 */
 	protected function __construct($type, $metal, $crystal, $deuterium, $energy = 0) {
 		
-		$this->_type = $type;
-		$this->_resources = new Resources($metal, $crystal, $deuterium, $energy);
+		$this->type = $type;
+		$this->resources = new Resources($metal, $crystal, $deuterium, $energy);
 		
 	}
 	
@@ -51,7 +51,7 @@ abstract class Technology {
 	 */
 	public function getType() {
 		
-		return $this->_type;
+		return $this->type;
 		
 	}
 	
@@ -60,7 +60,7 @@ abstract class Technology {
 	 */
 	public function getResources() {
 		
-		return $this->_resources;
+		return $this->resources;
 		
 	}
 	
@@ -68,5 +68,15 @@ abstract class Technology {
 	 * @return Resources
 	 */
 	abstract public function getCosts();
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'type' => $this->type,
+			'resources' => $this->resources
+		);
+	}
 	
 }

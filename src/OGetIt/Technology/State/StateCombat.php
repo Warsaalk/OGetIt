@@ -29,7 +29,7 @@ class StateCombat extends State {
 	/**
 	 * @var integer
 	 */
-	private $_count;
+	private $count;
 	
 	/**
 	 * @param TechnologyCombat $technology
@@ -39,7 +39,7 @@ class StateCombat extends State {
 		
 		parent::__construct($technology);
 		
-		$this->_count = $count;
+		$this->count = $count;
 		
 	}
 	
@@ -48,7 +48,7 @@ class StateCombat extends State {
 	 */
 	public function getCount() {
 		
-		return $this->_count;
+		return $this->count;
 		
 	}
 	
@@ -57,7 +57,7 @@ class StateCombat extends State {
 	 */
 	public function addCount($count) {
 		
-		$this->_count += $count;
+		$this->count += $count;
 		
 	}
 	
@@ -66,8 +66,17 @@ class StateCombat extends State {
 	 */
 	public function getValue() {
 				
-		return $this->getTechnology()->getCosts($this->_count);
+		return $this->getTechnology()->getCosts($this->count);
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'count' => $this->count
+		), parent::jsonSerialize());
 	}
 	
 }

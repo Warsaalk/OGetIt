@@ -19,37 +19,37 @@
  */
 namespace OGetIt\Report\CombatReport\Round;
 
-class CombatRound_Stats {
+class CombatRound_Stats implements \JsonSerializable {
 		
 	/**
 	 * @var integer
 	 */
-	private $_attacker_hits;
+	private $attacker_hits;
 
 	/**
 	 * @var integer
 	 */
-	private $_attacker_absorbed;	
+	private $attacker_absorbed;	
 	
 	/**
 	 * @var integer
 	 */
-	private $_attacker_fullstrength;	
+	private $attacker_fullstrength;	
 	
 	/**
 	 * @var integer
 	 */
-	private $_defender_hits;	
+	private $defender_hits;	
 	
 	/**
 	 * @var integer
 	 */
-	private $_defender_absorbed;	
+	private $defender_absorbed;	
 	
 	/**
 	 * @var integer
 	 */
-	private $_defender_fullstrength;
+	private $defender_fullstrength;
 
 	/**
 	 * @param array $data
@@ -80,13 +80,13 @@ class CombatRound_Stats {
 	 */
 	public function __construct($attacker_hits, $attacker_absorbed, $attacker_fullstrength, $defender_hits, $defender_absorbed, $defender_absorbed, $defender_fullstrength) {
 		
-		$this->_attacker_hits = $attacker_hits;
-		$this->_attacker_absorbed = $attacker_absorbed;
-		$this->_attacker_fullstrength = $attacker_fullstrength;
+		$this->attacker_hits = $attacker_hits;
+		$this->attacker_absorbed = $attacker_absorbed;
+		$this->attacker_fullstrength = $attacker_fullstrength;
 		
-		$this->_defender_hits = $defender_hits;
-		$this->_defender_absorbed = $defender_absorbed;
-		$this->_defender_fullstrength = $defender_fullstrength;
+		$this->defender_hits = $defender_hits;
+		$this->defender_absorbed = $defender_absorbed;
+		$this->defender_fullstrength = $defender_fullstrength;
 
 	}
 
@@ -95,7 +95,7 @@ class CombatRound_Stats {
 	 */
 	public function getAttackerHits() {
 		
-		return $this->_attacker_hits;
+		return $this->attacker_hits;
 		
 	}
 
@@ -104,7 +104,7 @@ class CombatRound_Stats {
 	 */
 	public function getAttackerAbsorbed() {
 		
-		return $this->_attacker_absorbed;
+		return $this->attacker_absorbed;
 		
 	}
 
@@ -113,7 +113,7 @@ class CombatRound_Stats {
 	 */
 	public function getAttackerFullStrength() {
 		
-		return $this->_attacker_fullstrength;
+		return $this->attacker_fullstrength;
 		
 	}
 
@@ -122,7 +122,7 @@ class CombatRound_Stats {
 	 */
 	public function getDefenderHits() {
 		
-		return $this->_defender_hits;
+		return $this->defender_hits;
 		
 	}
 
@@ -131,7 +131,7 @@ class CombatRound_Stats {
 	 */
 	public function getDefenderAbsorbed() {
 		
-		return $this->_defender_absorbed;
+		return $this->defender_absorbed;
 		
 	}
 	
@@ -140,8 +140,22 @@ class CombatRound_Stats {
 	 */
 	public function getDefenderFullStrength() {
 		
-		return $this->_defender_fullstrength;
+		return $this->defender_fullstrength;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'attacker_hits' => $this->attacker_hits,
+			'attacker_absorbed' => $this->attacker_absorbed,
+			'attacker_fullstrength' => $this->attacker_fullstrength,
+			'defender_hits' => $this->defender_hits,
+			'defender_absorbed' => $this->defender_absorbed,
+			'defender_fullstrength' => $this->defender_fullstrength,
+		);
 	}
 		
 }

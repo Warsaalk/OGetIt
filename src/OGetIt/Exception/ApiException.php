@@ -32,7 +32,7 @@ class ApiException extends \Exception {
 	/**
 	 * @var string
 	 */
-	private $_prefix = 'OGame API error: ';
+	private $prefix = 'OGame API error: ';
 	
 	/**
 	 * @param string $message
@@ -73,7 +73,7 @@ class ApiException extends \Exception {
 			
 		}
 		
-		parent::__construct($this->_prefix . $message, $code, $previous);
+		parent::__construct($this->prefix . $message, $code, $previous);
 		
 	}
 	

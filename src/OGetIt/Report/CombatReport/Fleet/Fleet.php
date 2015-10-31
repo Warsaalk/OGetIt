@@ -27,19 +27,19 @@ use OGetIt\Report\CombatReport\CombatPlayer;
 use OGetIt\Technology\State\StateCombatWithLosses;
 use OGetIt\Common\Value\ChildValueAndLosses;
 
-class Fleet {
+class Fleet implements \JsonSerializable {
 	
 	use ChildValueAndLosses;
 	
 	/**
 	 * @var CombatPlayer
 	 */
-	private $_player;
+	private $player;
 	
 	/**
 	 * @var StateCombatWithLosses[] 
 	 */
-	private $_state = array();
+	private $state = array();
 	
 	/**
 	 * @param Technology $technology
@@ -48,11 +48,11 @@ class Fleet {
 	 */
 	public function addTechnologyState($technology, $count, $lost = false) {
 		
-		if (isset($this->_state[$technology->getType()])) {
+		if (isset($this->state[$technology->getType()])) {
 			
-			$this->_state[$technology->getType()]->addCount($count);
+			$this->state[$technology->getType()]->addCount($count);
 			if ($lost !== false) {
-				$this->_state[$technology->getType()]->addLost($lost);
+				$this->state[$technology->getType()]->addLost($lost);
 			}
 			
 		} else {
@@ -63,7 +63,7 @@ class Fleet {
 				$lost
 			);
 			
-			$this->_state[$technology->getType()] = $techState;
+			$this->state[$technology->getType()] = $techState;
 			
 		}
 		
@@ -75,7 +75,7 @@ class Fleet {
 	 */
 	public function getTechnologyState($type) {
 		
-		return isset($this->_state[$type]) ? $this->_state[$type] : null;
+		return isset($this->state[$type]) ? $this->state[$type] : null;
 		
 	}
 	
@@ -84,7 +84,7 @@ class Fleet {
 	 */
 	public function getTechnologyStates() {
 		
-		return $this->_state;
+		return $this->state;
 		
 	}
 	
@@ -93,7 +93,7 @@ class Fleet {
 	 */
 	public function setPlayer(CombatPlayer $player) {
 		
-		$this->_player = $player;
+		$this->player = $player;
 		
 	}
 	
@@ -102,14 +102,14 @@ class Fleet {
 	 */
 	public function getPlayer() {
 		
-		return $this->_player;
+		return $this->player;
 		
 	}
 	
 
 	public function __clone() {
 	
-		$this->_state = array(); //Clear state
+		$this->state = array(); //Clear state
 	
 	}
 	
@@ -135,7 +135,7 @@ class Fleet {
 	 */
 	public function getValue() {
 	
-		return $this->getChildrenValue($this->_state);
+		return $this->getChildrenValue($this->state);
 	
 	}
 	
@@ -144,7 +144,7 @@ class Fleet {
 	 */
 	public function getLosses() {
 		
-		return $this->getChildrenLosses($this->_state);
+		return $this->getChildrenLosses($this->state);
 		
 	}
 	
@@ -156,7 +156,7 @@ class Fleet {
 		
 		$fleet = clone $other;
 		
-		foreach ($this->_state as $type => $techState) {
+		foreach ($this->state as $type => $techState) {
 			
 			$count = $other->getTechnologyState($type) !== null ? $other->getTechnologyState($type)->getCount() : 0;
 			$lost = $techState->getCount() - $count;
@@ -167,6 +167,16 @@ class Fleet {
 		
 		return $fleet;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			//Don't add player, this will create recursion
+			'state' => $this->state
+		);
 	}
 	
 }

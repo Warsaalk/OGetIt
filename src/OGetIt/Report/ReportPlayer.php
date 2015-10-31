@@ -28,4 +28,14 @@ class ReportPlayer extends Player {
 	use PlanetTrait;
 	use AllianceTrait;
 	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array_merge(array(
+			'planet' => $this->planet,
+			'alliance' => $this->alliance
+		), parent::jsonSerialize());
+	}
+	
 }

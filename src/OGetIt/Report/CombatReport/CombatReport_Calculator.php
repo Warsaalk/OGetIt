@@ -28,14 +28,14 @@ class CombatReport_Calculator {
 	/**
 	 * @var CombatReport
 	 */
-	private $_combatreport;
+	private $combatreport;
 	
 	/**
 	 * @param CombatReport $combatreport
 	 */
 	public function __construct(CombatReport $combatreport) {
 		
-		$this->_combatreport = $combatreport;
+		$this->combatreport = $combatreport;
 		
 	}
 	
@@ -47,7 +47,7 @@ class CombatReport_Calculator {
 	 */
 	public function getRoundDifference($startRound, $endRound) {
 		
-		return CombatResult_RoundDifference::calculate($this->_combatreport, $startRound, $endRound);
+		return CombatResult_RoundDifference::calculate($this->combatreport, $startRound, $endRound);
 		
 	}
 	
@@ -56,7 +56,7 @@ class CombatReport_Calculator {
 	 */
 	public function getFinalResult() {
 		
-		return $this->getRoundDifference(0, $this->_combatreport->getRoundCount());
+		return $this->getRoundDifference(0, $this->combatreport->getRoundCount());
 		
 	}
 	

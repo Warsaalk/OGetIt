@@ -19,17 +19,17 @@
  */
 namespace OGetIt\Common;
 
-class Player {
+class Player implements \JsonSerializable {
 	
 	/**
 	 * @var integer
 	 */
-	private $_id;
+	private $id;
 	
 	/**
 	 * @var string
 	 */
-	private $_name;
+	private $name;
 	
 	/**
 	 * @param string $name
@@ -37,8 +37,8 @@ class Player {
 	 */
 	public function __construct($name, $id = null) {
 		
-		$this->_name = $name;
-		$this->_id = $id;
+		$this->name = $name;
+		$this->id = $id;
 		
 	}
 	
@@ -47,7 +47,7 @@ class Player {
 	 */
 	public function getId() {
 		
-		return $this->_id;
+		return $this->id;
 		
 	}
 	
@@ -56,8 +56,18 @@ class Player {
 	 */
 	public function getName() {
 		
-		return $this->_name;
+		return $this->name;
 		
+	}
+	
+	/* (non-PHPdoc)
+	 * @see JsonSerializable::jsonSerialize()
+	 */
+	public function jsonSerialize() {
+		return array(
+			'id' => $this->id,
+			'name' => $this->name
+		);
 	}
 	
 }
