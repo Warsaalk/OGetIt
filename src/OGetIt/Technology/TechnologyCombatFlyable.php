@@ -55,11 +55,12 @@ abstract class TechnologyCombatFlyable extends TechnologyCombat {
 	}
 	
 	/**
+	 * @param integer $level
 	 * @return integer
 	 */
-	public function getSpeed() {
+	public function getSpeed($level = 0) {
 		
-		return $this->SPEED;
+		return $this->SPEED + $this->getAddedValue($this->SPEED, $level);
 		
 	}
 

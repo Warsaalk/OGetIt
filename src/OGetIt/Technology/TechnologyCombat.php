@@ -69,29 +69,43 @@ abstract class TechnologyCombat extends Technology {
 	}
 
 	/**
+	 * @param base $level
+	 * @param integer $level
 	 * @return integer
 	 */
-	public function getArmor() {
+	protected function getAddedValue($base, $level) {
 		
-		return $this->ARMOR;
+		return $base * 0.1 * $level;
 		
 	}
 
 	/**
+	 * @param integer $level
 	 * @return integer
 	 */
-	public function getShield() {
+	public function getArmor($level = 0) {
 		
-		return $this->SHIELD;
+		return $this->ARMOR + $this->getAddedValue($this->ARMOR, $level);
 		
 	}
 
 	/**
+	 * @param integer $level
 	 * @return integer
 	 */
-	public function getWeapon() {
+	public function getShield($level = 0) {
 		
-		return $this->WEAPON;
+		return $this->SHIELD + $this->getAddedValue($this->SHIELD, $level);
+		
+	}
+
+	/**
+	 * @param integer $level
+	 * @return integer
+	 */
+	public function getWeapon($level = 0) {
+		
+		return $this->WEAPON + $this->getAddedValue($this->WEAPON, $level);
 		
 	}
 
