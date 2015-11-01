@@ -31,24 +31,20 @@ class HeavyFighter extends TechnologyCombatFlyable {
 	
 	const SPEED = 10000, CARGO_CAPACITY = 100, FUEL_USAGE = 75;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Battlecruiser::TYPE => 4,
+			Deathstar::TYPE => 100
+	);
+		
+	public static $RAPIDFIRE_AGAINST = array(
+			EspionageProbe::TYPE => 5,
+			SolarSatellite::TYPE => 5,
+			SmallCargo::TYPE => 3
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Battlecruiser::TYPE => 4,
-				Deathstar::TYPE => 100
-		);
-		
-		$this->rapidfire_against = array(
-				EspionageProbe::TYPE => 5,
-				SolarSatellite::TYPE => 5,
-				SmallCargo::TYPE => 3
-		);
 		
 	}
 	

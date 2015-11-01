@@ -34,7 +34,5 @@ class SmallShieldDome extends TechnologyCombat {
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
 		
 	}
-	
-	protected function setRapidFire() {}
-	
+		
 }

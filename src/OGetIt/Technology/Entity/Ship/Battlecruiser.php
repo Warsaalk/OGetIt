@@ -31,28 +31,24 @@ class Battlecruiser extends TechnologyCombatFlyable {
 	
 	const SPEED = 10000, CARGO_CAPACITY = 750, FUEL_USAGE = 250;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Destroyer::TYPE => 2,
+			Deathstar::TYPE => 15
+	);
+		
+	public static $RAPIDFIRE_AGAINST = array(
+			EspionageProbe::TYPE => 5,
+			SolarSatellite::TYPE => 5,
+			SmallCargo::TYPE => 3,
+			LargeCargo::TYPE => 3,
+			HeavyFighter::TYPE => 4,
+			Cruiser::TYPE => 4,
+			Battleship::TYPE => 7
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Destroyer::TYPE => 2,
-				Deathstar::TYPE => 15
-		);
-		
-		$this->rapidfire_against = array(
-				EspionageProbe::TYPE => 5,
-				SolarSatellite::TYPE => 5,
-				SmallCargo::TYPE => 3,
-				LargeCargo::TYPE => 3,
-				HeavyFighter::TYPE => 4,
-				Cruiser::TYPE => 4,
-				Battleship::TYPE => 7
-		);
 		
 	}
 	

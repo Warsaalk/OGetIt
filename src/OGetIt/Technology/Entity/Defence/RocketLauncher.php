@@ -32,20 +32,16 @@ class RocketLauncher extends TechnologyCombat {
 	
 	const ARMOR = 2000, SHIELD = 20, WEAPON = 80;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Bomber::TYPE => 20,
+			Cruiser::TYPE => 10,
+			Deathstar::TYPE => 200
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
 				
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Bomber::TYPE => 20,
-				Cruiser::TYPE => 10,
-				Deathstar::TYPE => 200
-		);
-		
 	}
 	
 }

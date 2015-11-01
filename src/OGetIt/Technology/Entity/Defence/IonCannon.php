@@ -31,18 +31,14 @@ class IonCannon extends TechnologyCombat {
 	
 	const ARMOR = 8000, SHIELD = 500, WEAPON = 150;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Bomber::TYPE => 10,
+			Deathstar::TYPE => 100
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Bomber::TYPE => 10,
-				Deathstar::TYPE => 100
-		);
 		
 	}
 	

@@ -30,17 +30,13 @@ class GaussCannon extends TechnologyCombat {
 	
 	const ARMOR = 35000, SHIELD = 200, WEAPON = 1100;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Deathstar::TYPE => 50
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Deathstar::TYPE => 50
-		);
 		
 	}
 	

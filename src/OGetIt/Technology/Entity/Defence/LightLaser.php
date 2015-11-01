@@ -32,19 +32,15 @@ class LightLaser extends TechnologyCombat {
 	
 	const ARMOR = 2000, SHIELD = 25, WEAPON = 100;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Destroyer::TYPE => 10,
+			Bomber::TYPE => 20,
+			Deathstar::TYPE => 200
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Destroyer::TYPE => 10,
-				Bomber::TYPE => 20,
-				Deathstar::TYPE => 200
-		);
 		
 	}
 	

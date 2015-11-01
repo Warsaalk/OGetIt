@@ -40,12 +40,12 @@ abstract class TechnologyCombat extends Technology {
 	/**
 	 * @var array
 	 */
-	protected $rapidfire_from = array();
+	public static $RAPIDFIRE_FROM = array();
 	
 	/**
 	 * @var array
 	 */
-	protected $rapidfire_against = array();
+	public static $RAPIDFIRE_AGAINST = array();
 	
 	/**
 	 * @param integer $type
@@ -65,9 +65,7 @@ abstract class TechnologyCombat extends Technology {
 		$this->ARMOR = $armor;
 		$this->SHIELD = $shield;
 		$this->WEAPON = $weapon;
-		
-		$this->setRapidFire();
-		
+				
 	}
 
 	/**
@@ -96,24 +94,19 @@ abstract class TechnologyCombat extends Technology {
 		return $this->WEAPON;
 		
 	}
-	
-	/**
-	 * @return void
-	 */
-	protected abstract function setRapidFire();
 
 	/**
 	 * @param integer $type (optional)
 	 * @return array|integer
 	 */
-	public function getRapidFireFrom($type = false) {
+	public static function getRapidFireFrom($type = false) {
 		
 		if (is_int($type)) {
-			if (isset($this->rapidFireFrom[$type])) return $this->rapidFireFrom[$type];
+			if (isset(static::$RAPIDFIRE_FROM[$type])) return static::$RAPIDFIRE_FROM[$type];
 			return 0;
 		}
 		
-		return $this->rapidFireFrom;
+		return static::$RAPIDFIRE_FROM;
 		
 	}
 	
@@ -121,14 +114,14 @@ abstract class TechnologyCombat extends Technology {
 	 * @param integer $type (optional)
 	 * @return array|integer
 	 */
-	public function getRapidFireAgainst($type = false) {
+	public static function getRapidFireAgainst($type = false) {
 		
 		if (is_int($type)) {
-			if (isset($this->rapidFireAgainst[$type])) return $this->rapidFireAgainst[$type]; 
+			if (isset(static::$RAPIDFIRE_AGAINST[$type])) return static::$RAPIDFIRE_AGAINST[$type]; 
 			return 0;
 		} 
 		
-		return $this->rapidFireAgainst;
+		return static::$RAPIDFIRE_AGAINST;
 		
 	}
 	
@@ -154,8 +147,8 @@ abstract class TechnologyCombat extends Technology {
 			'armour' => $this->ARMOR,
 			'shield' => $this->SHIELD,
 			'weapon' => $this->WEAPON,
-			'rapidfire_from' => $this->rapidfire_from,
-			'rapidfire_against' => $this->rapidfire_against
+			'rapidfire_from' => static::$RAPIDFIRE_FROM,
+			'rapidfire_against' => static::$RAPIDFIRE_AGAINST
 		), parent::jsonSerialize());
 	}
 	

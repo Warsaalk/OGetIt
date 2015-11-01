@@ -32,24 +32,20 @@ class Destroyer extends TechnologyCombatFlyable {
 	
 	const SPEED = 5000, CARGO_CAPACITY = 2000, FUEL_USAGE = 1000;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Deathstar::TYPE => 5
+	);
+		
+	public static $RAPIDFIRE_AGAINST = array(
+			EspionageProbe::TYPE => 5,
+			SolarSatellite::TYPE => 5,
+			LightLaser::TYPE => 10,
+			Battlecruiser::TYPE => 2
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Deathstar::TYPE => 5
-		);
-		
-		$this->rapidfire_against = array(
-				EspionageProbe::TYPE => 5,
-				SolarSatellite::TYPE => 5,
-				LightLaser::TYPE => 10,
-				Battlecruiser::TYPE => 2
-		);
 		
 	}
 	

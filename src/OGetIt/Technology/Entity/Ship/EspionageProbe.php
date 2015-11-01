@@ -31,28 +31,24 @@ class EspionageProbe extends TechnologyCombatFlyable {
 	
 	const SPEED = 100000000, CARGO_CAPACITY = 0, FUEL_USAGE = 1;
 	
+	public static $RAPIDFIRE_FROM = array(
+			Battlecruiser::TYPE => 5,
+			Destroyer::TYPE => 5,
+			Bomber::TYPE => 5,
+			Recycler::TYPE => 5,
+			ColonyShip::TYPE => 5,
+			Battleship::TYPE => 5,
+			Cruiser::TYPE => 5,
+			HeavyFighter::TYPE => 5,
+			LightFighter::TYPE => 5,
+			LargeCargo::TYPE => 5,
+			Deathstar::TYPE => 1250,
+			SmallCargo::TYPE => 5
+	);
+	
 	public function __construct() {
 		
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
-	}
-	
-	protected function setRapidFire() {
-		
-		$this->rapidfire_from = array(
-				Battlecruiser::TYPE => 5,
-				Destroyer::TYPE => 5,
-				Bomber::TYPE => 5,
-				Recycler::TYPE => 5,
-				ColonyShip::TYPE => 5,
-				Battleship::TYPE => 5,
-				Cruiser::TYPE => 5,
-				HeavyFighter::TYPE => 5,
-				LightFighter::TYPE => 5,
-				LargeCargo::TYPE => 5,
-				Deathstar::TYPE => 1250,
-				SmallCargo::TYPE => 5
-		);
 		
 	}
 	

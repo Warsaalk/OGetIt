@@ -36,7 +36,5 @@ class AntiBallisticMissile extends TechnologyCombat {
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
 		
 	}
-	
-	protected function setRapidFire() {}
-	
+		
 }
