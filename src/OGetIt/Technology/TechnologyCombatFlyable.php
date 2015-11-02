@@ -20,9 +20,21 @@
 namespace OGetIt\Technology;
 
 use OGetIt\Common\Resources;
+use OGetIt\Technology\Entity\Research\CombustionDrive;
+use OGetIt\Technology\Entity\Research\ImpulseDrive;
+use OGetIt\Technology\Entity\Research\HyperspaceDrive;
 
 abstract class TechnologyCombatFlyable extends TechnologyCombat {
 
+	/**
+	 * @var array
+	 */
+	private $drivesSpeedPercentage = array(
+		CombustionDrive::TYPE => 0.1,	
+		ImpulseDrive::TYPE => 0.2,
+		HyperspaceDrive::TYPE => 0.3
+	);
+	
 	/**
 	 * @var integer
 	 */
@@ -56,11 +68,16 @@ abstract class TechnologyCombatFlyable extends TechnologyCombat {
 	
 	/**
 	 * @param integer $level
+	 * @param integer $drive (optional) Type of drive
 	 * @return integer
 	 */
-	public function getSpeed($level = 0) {
+	public function getSpeed($level = 0, $drive = CombustionDrive::TYPE) {
 		
-		return $this->SPEED + $this->getAddedValue($this->SPEED, $level);
+		if ($drive !== CombustionDrive::TYPE && $drive !== ImpulseDrive::TYPE && $drive !== HyperspaceDrive::TYPE) {
+			$drive = CombustionDrive::TYPE;
+		}
+		
+		return $this->SPEED + $this->getAddedValue($this->SPEED, $level, $this->drivesSpeedPercentage[$drive]);
 		
 	}
 
