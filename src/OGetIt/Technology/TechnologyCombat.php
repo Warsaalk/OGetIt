@@ -71,11 +71,12 @@ abstract class TechnologyCombat extends Technology {
 	/**
 	 * @param base $level
 	 * @param integer $level
+	 * @param integer $percentage (optional) Format: 10% -> 0.1, 20% -> 0.2
 	 * @return integer
 	 */
-	protected function getAddedValue($base, $level) {
+	protected function getAddedValue($base, $level, $percentage = 0.1) {
 		
-		return $base * 0.1 * $level;
+		return $base * $percentage * $level;
 		
 	}
 
