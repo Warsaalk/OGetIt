@@ -21,7 +21,7 @@ namespace OGetIt\Technology\Entity\Defence;
 
 use OGetIt\Technology\TechnologyCombatFlyable;
 
-class AntiBallisticMissile extends TechnologyCombat {
+class AntiBallisticMissile extends TechnologyCombatFlyable {
 
 	const TYPE = 502;
 	
