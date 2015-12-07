@@ -24,6 +24,7 @@ use OGetIt\Report\CombatReport\CombatReport;
 use OGetIt\Report\HarvestReport\HarvestReport;
 use OGetIt\Report\SpyReport\SpyReport;
 use OGetIt\Report\MissileReport\MissileReport;
+use OGetIt\XML\ServerData\ServerData;
 
 class OGetIt { 
 	
@@ -221,6 +222,50 @@ class OGetIt {
 	public function getMissileReportFromJSON($json) {
 		
 		return $this->getReport(OGameApi::TYPE_MISSILEREPORT, json_decode($json));
+		
+	}
+	
+	private function getApiXML($type, array $get = array(), $username = false, $password = false) {
+		
+		$url = OGameApiXML::constructUrl($type, $this, $get);
+		
+		return OGameApiXML::getData($url, $username, $password); 
+		
+	}
+	
+	/**
+	 * @param string $type
+	 * @param array $data
+	 * @return 
+	 */
+	private function getXML($type, $data) {
+
+		if ($data !== false) {
+			
+			switch ($type) {
+				case OGameApiXML::TYPE_SERVERDATA:
+					return ServerData::loadXMLData($data);
+				
+				default;
+			}
+		
+		}
+		
+		return false;
+		
+	}	
+	
+	/**
+	 * @param string $username
+	 * @param string $password
+	 * @return ServerData
+	 */
+	public function getServerData($username = false, $password = false) {
+		
+		$type = OGameApiXML::TYPE_SERVERDATA;
+		$data = $this->getApiXML($type, array(), $username, $password);
+				
+		return $this->getXML($type, $data);
 		
 	}
 	
