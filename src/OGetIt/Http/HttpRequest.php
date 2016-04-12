@@ -60,7 +60,11 @@ class HttpRequest {
 		$this->resource = curl_init(); 
 		$this->setOption(CURLOPT_CONNECTTIMEOUT, $connection_timeout);
 		$this->setOption(CURLOPT_RETURNTRANSFER, true);
-		
+
+		if (preg_match('/^https/', $url) === 1) {
+			$this->ignoreSSLVerification();
+		}
+
 	}
 	
 	/**
@@ -95,6 +99,13 @@ class HttpRequest {
 		
 		return curl_setopt($this->resource, $option, $value);
 		
+	}
+
+	public function ignoreSSLVerification() {
+
+		$this->setOption(CURLOPT_SSL_VERIFYHOST, 0);
+		$this->setOption(CURLOPT_SSL_VERIFYPEER, 0);
+
 	}
 	
 	/**
