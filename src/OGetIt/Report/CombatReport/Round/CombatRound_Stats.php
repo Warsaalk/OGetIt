@@ -78,7 +78,7 @@ class CombatRound_Stats implements \JsonSerializable {
 	 * @param integer $defender_absorbed
 	 * @param integer $defender_fullstrength
 	 */
-	public function __construct($attacker_hits, $attacker_absorbed, $attacker_fullstrength, $defender_hits, $defender_absorbed, $defender_absorbed, $defender_fullstrength) {
+	public function __construct($attacker_hits, $attacker_absorbed, $attacker_fullstrength, $defender_hits, $defender_absorbed, $defender_fullstrength) {
 		
 		$this->attacker_hits = $attacker_hits;
 		$this->attacker_absorbed = $attacker_absorbed;
