@@ -27,6 +27,26 @@ abstract class TechnologyEconomy extends Technology {
 	 * @var integer
 	 */
 	protected $power_base = 2;
+
+	/**
+	 * @var integer
+	 */
+	protected $power_base_metal;
+
+	/**
+	 * @var integer
+	 */
+	protected $power_base_crystal;
+
+	/**
+	 * @var integer
+	 */
+	protected $power_base_deuterium;
+
+	/**
+	 * @var integer
+	 */
+	protected $power_base_energy;
 	
 	/**
 	 * @param integer $type
@@ -38,7 +58,12 @@ abstract class TechnologyEconomy extends Technology {
 	protected function __construct($type, $metal, $crystal, $deuterium, $energy = 0) {
 		
 		parent::__construct($type, $metal, $crystal, $deuterium, $energy);
-	
+
+		if (is_null($this->power_base_metal)) 		$this->power_base_metal = $this->power_base;
+		if (is_null($this->power_base_crystal)) 	$this->power_base_crystal = $this->power_base;
+		if (is_null($this->power_base_deuterium)) 	$this->power_base_deuterium = $this->power_base;
+		if (is_null($this->power_base_energy)) 		$this->power_base_energy = $this->power_base;
+
 	}
 	
 	/**
@@ -46,14 +71,14 @@ abstract class TechnologyEconomy extends Technology {
 	 * @return Resources
 	 */
 	public function getCosts($level = 1) {
-		
-		$base = pow($this->power_base, $level);
-		
+
+		$level--;
+
 		return new Resources(
-			$this->getResources()->getMetal() * $base,
-			$this->getResources()->getCrystal() * $base,
-			$this->getResources()->getDeuterium() * $base,
-			$this->getResources()->getEnergy() * $base
+			$this->getResources()->getMetal() * pow($this->power_base_metal, $level),
+			$this->getResources()->getCrystal() * pow($this->power_base_crystal, $level),
+			$this->getResources()->getDeuterium() * pow($this->power_base_deuterium, $level),
+			$this->getResources()->getEnergy() * pow($this->power_base_energy, $level)
 		);
 		
 	}
