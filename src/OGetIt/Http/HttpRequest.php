@@ -60,10 +60,8 @@ class HttpRequest {
 		$this->resource = curl_init(); 
 		$this->setOption(CURLOPT_CONNECTTIMEOUT, $connection_timeout);
 		$this->setOption(CURLOPT_RETURNTRANSFER, true);
-
-		if (preg_match('/^https/', $url) === 1) {
-			$this->ignoreSSLVerification();
-		}
+		$this->setOption(CURLOPT_FOLLOWLOCATION, true);
+		$this->ignoreSSLVerification();
 
 	}
 	
