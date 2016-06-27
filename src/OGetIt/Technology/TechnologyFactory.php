@@ -19,6 +19,7 @@
  */
 namespace OGetIt\Technology;
 
+use OGetIt\Technology\Entity\Building\SpaceDock;
 use OGetIt\Technology\Entity\Defence\InterplanetaryMissile;
 use OGetIt\Technology\Entity\Defence\AntiBallisticMissile;
 use OGetIt\Technology\Entity\Defence\LargeShieldDome;
@@ -110,6 +111,7 @@ class TechnologyFactory {
 			case 31: $technology = new ResearchLab(); break;
 			case 33: $technology = new Terraformer(); break;
 			case 34: $technology = new AllianceDepot(); break;
+			case 36: $technology = new SpaceDock(); break;
 			case 41: $technology = new LunarBase(); break;
 			case 42: $technology = new SensorPhalanx(); break;
 			case 43: $technology = new JumpGate(); break;
