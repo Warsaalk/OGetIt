@@ -42,6 +42,11 @@ class ServerData extends OGameXML {
 	 * @var string
 	 */
 	private $timezone;
+
+	/**
+	 * @var string
+	 */
+	private $timezoneOffset;
 	
 	/**
 	 * @var string
@@ -92,6 +97,11 @@ class ServerData extends OGameXML {
 	 * @var float
 	 */
 	private $debrisFactor;
+
+	/**
+	 * @var float
+	 */
+	private $debrisFactorDef;
 	
 	/**
 	 * @var float
@@ -127,7 +137,27 @@ class ServerData extends OGameXML {
 	 * @var integer
 	 */
 	private $donutSystem;
-	
+
+	/**
+	 * @var integer
+	 */
+	private $wfEnabled;
+
+	/**
+	 * @var integer
+	 */
+	private $wfMinimumRessLost;
+
+	/**
+	 * @var integer
+	 */
+	private $wfMinimumLossPercentage;
+
+	/**
+	 * @var integer
+	 */
+	private $wfBasicPercentageRepairable;
+
 	/**
 	 * @param \SimpleXMLElement $data
 	 * @return \OGetIt\XML\ServerData\ServerData
@@ -139,6 +169,7 @@ class ServerData extends OGameXML {
 			$data->number->__toString(),
 			$data->language->__toString(),
 			$data->timezone->__toString(),
+			$data->timezoneOffset->__toString(),
 			$data->domain->__toString(),
 			$data->version->__toString(),
 			$data->speed->__toString(),
@@ -149,13 +180,18 @@ class ServerData extends OGameXML {
 			$data->rapidFire->__toString(),
 			$data->defToTF->__toString(),
 			$data->debrisFactor->__toString(),
+			$data->debrisFactorDef->__toString(),
 			$data->repairFactor->__toString(),
 			$data->newbieProtectionLimit->__toString(),
 			$data->newbieProtectionHigh->__toString(),
 			$data->topScore->__toString(),
 			$data->bonusFields->__toString(),
 			$data->donutGalaxy->__toString(),
-			$data->donutSystem->__toString()
+			$data->donutSystem->__toString(),
+			$data->wfEnabled->__toString(),
+			$data->wfMinimumRessLost->__toString(),
+			$data->wfMinimumLossPercentage->__toString(),
+			$data->wfBasicPercentageRepairable->__toString()
 		);
 		
 	}
@@ -165,6 +201,7 @@ class ServerData extends OGameXML {
 	 * @param integer $number
 	 * @param string $language
 	 * @param string $timezone
+	 * @param string $timezoneOffset
 	 * @param string $domain
 	 * @param string $version
 	 * @param integer $speed
@@ -175,6 +212,7 @@ class ServerData extends OGameXML {
 	 * @param integer $rapidFire
 	 * @param integer $defToTF
 	 * @param float $debrisFactor
+	 * @param float $debrisFactorDef
 	 * @param float $repairFactor
 	 * @param integer $newbieProtectionLimit
 	 * @param integer $newbieProtectionHigh
@@ -182,13 +220,18 @@ class ServerData extends OGameXML {
 	 * @param integer $bonusFields
 	 * @param integer $donutGalaxy
 	 * @param integer $donutSystem
+	 * @param integer $wfEnabled
+	 * @param integer $wfMinimumRessLost
+	 * @param integer $wfMinimumLossPercentage
+	 * @param integer $wfBasicPercentageRepairable
 	 */
-	public function __construct($name, $number, $language, $timezone, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem) {
+	public function __construct($name, $number, $language, $timezone, $timezoneOffset, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $debrisFactorDef, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem, $wfEnabled, $wfMinimumRessLost, $wfMinimumLossPercentage, $wfBasicPercentageRepairable) {
 		
 		$this->name = $name;
 		$this->number = $number;
 		$this->language = $language;
 		$this->timezone = $timezone;
+		$this->timezoneOffset = $timezoneOffset;
 		$this->domain = $domain;
 		$this->version = $version;
 		$this->speed = $speed;
@@ -199,6 +242,7 @@ class ServerData extends OGameXML {
 		$this->rapidFire = $rapidFire;
 		$this->defToTF = $defToTF;
 		$this->debrisFactor = $debrisFactor;
+		$this->debrisFactorDef = $debrisFactorDef;
 		$this->repairFactor = $repairFactor;
 		$this->newbieProtectionLimit = $newbieProtectionLimit;
 		$this->newbieProtectionHigh = $newbieProtectionHigh;
@@ -206,6 +250,10 @@ class ServerData extends OGameXML {
 		$this->bonusFields = $bonusFields;
 		$this->donutGalaxy = $donutGalaxy;
 		$this->donutSystem = $donutSystem;
+		$this->wfEnabled = $wfEnabled;
+		$this->wfMinimumRessLost = $wfMinimumRessLost;
+		$this->wfMinimumLossPercentage = $wfMinimumLossPercentage;
+		$this->wfBasicPercentageRepairable = $wfBasicPercentageRepairable;
 		
 	}
 
@@ -224,7 +272,7 @@ class ServerData extends OGameXML {
 	public function getNumber() { 
 		
 		return $this->number; 
-	
+
 	}
 	
 	/**
@@ -334,6 +382,15 @@ class ServerData extends OGameXML {
 		return $this->debrisFactor; 
 	
 	}
+
+	/**
+	 * @return float
+	 */
+	public function getDebrisFactorDef() {
+
+		return $this->debrisFactorDef;
+
+	}
 	
 	/**
 	 * @return float
@@ -397,6 +454,38 @@ class ServerData extends OGameXML {
 		return $this->donutSystem; 
 	
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getWfEnabled()
+	{
+		return $this->wfEnabled;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getWfBasicPercentageRepairable()
+	{
+		return $this->wfBasicPercentageRepairable;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getWfMinimumLossPercentage()
+	{
+		return $this->wfMinimumLossPercentage;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getWfMinimumRessLost()
+	{
+		return $this->wfMinimumRessLost;
+	}
 	
 	/* (non-PHPdoc)
 	 * @see JsonSerializable::jsonSerialize()
@@ -407,6 +496,7 @@ class ServerData extends OGameXML {
 			'number' => $this->number,
 			'language' => $this->language,
 			'timezone' => $this->timezone,
+			'timezone_offset' => $this->timezoneOffset,
 			'domain' => $this->domain,
 			'version' => $this->version,
 			'speed' => $this->speed,
@@ -417,13 +507,18 @@ class ServerData extends OGameXML {
 			'rapid_fire' => $this->rapidFire,
 			'def_to_tF' => $this->defToTF,
 			'debris_factor' => $this->debrisFactor,
+			'debris_factor_def' => $this->debrisFactorDef,
 			'repair_factor' => $this->repairFactor,
 			'newbie_protection_limit' => $this->newbieProtectionLimit,
 			'newbie_protection_high' => $this->newbieProtectionHigh,
 			'top_score' => $this->topScore,
 			'bonus_fields' => $this->bonusFields,
 			'donut_galaxy' => $this->donutGalaxy,
-			'donut_system' => $this->donutSystem
+			'donut_system' => $this->donutSystem,
+			'wf_enabled' => $this->wfEnabled,
+			'wf_min_res_lost' => $this->wfMinimumRessLost,
+			'wf_min_loss_percent' => $this->wfMinimumLossPercentage,
+			'wf_basic_percent_repairable' => $this->wfBasicPercentageRepairable
 		);
 	}
 	
