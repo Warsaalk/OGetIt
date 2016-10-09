@@ -159,6 +159,11 @@ class ServerData extends OGameXML {
 	private $wfBasicPercentageRepairable;
 
 	/**
+	 * @var float
+	 */
+	private $globalDeuteriumSaveFactor;
+
+	/**
 	 * @param \SimpleXMLElement $data
 	 * @return \OGetIt\XML\ServerData\ServerData
 	 */
@@ -191,7 +196,8 @@ class ServerData extends OGameXML {
 			$data->wfEnabled->__toString(),
 			$data->wfMinimumRessLost->__toString(),
 			$data->wfMinimumLossPercentage->__toString(),
-			$data->wfBasicPercentageRepairable->__toString()
+			$data->wfBasicPercentageRepairable->__toString(),
+			$data->globalDeuteriumSaveFactor->__toString()
 		);
 		
 	}
@@ -224,8 +230,9 @@ class ServerData extends OGameXML {
 	 * @param integer $wfMinimumRessLost
 	 * @param integer $wfMinimumLossPercentage
 	 * @param integer $wfBasicPercentageRepairable
+	 * @param float $globalDeuteriumSaveFactor
 	 */
-	public function __construct($name, $number, $language, $timezone, $timezoneOffset, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $debrisFactorDef, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem, $wfEnabled, $wfMinimumRessLost, $wfMinimumLossPercentage, $wfBasicPercentageRepairable) {
+	public function __construct($name, $number, $language, $timezone, $timezoneOffset, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $debrisFactorDef, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem, $wfEnabled, $wfMinimumRessLost, $wfMinimumLossPercentage, $wfBasicPercentageRepairable, $globalDeuteriumSaveFactor) {
 		
 		$this->name = $name;
 		$this->number = $number;
@@ -254,6 +261,7 @@ class ServerData extends OGameXML {
 		$this->wfMinimumRessLost = $wfMinimumRessLost;
 		$this->wfMinimumLossPercentage = $wfMinimumLossPercentage;
 		$this->wfBasicPercentageRepairable = $wfBasicPercentageRepairable;
+		$this->globalDeuteriumSaveFactor = $globalDeuteriumSaveFactor;
 		
 	}
 
@@ -486,6 +494,14 @@ class ServerData extends OGameXML {
 	{
 		return $this->wfMinimumRessLost;
 	}
+
+	/**
+	 * @return float
+	 */
+	public function getGlobalDeuteriumSaveFactor()
+	{
+		return $this->globalDeuteriumSaveFactor;
+	}
 	
 	/* (non-PHPdoc)
 	 * @see JsonSerializable::jsonSerialize()
@@ -518,7 +534,8 @@ class ServerData extends OGameXML {
 			'wf_enabled' => $this->wfEnabled,
 			'wf_min_res_lost' => $this->wfMinimumRessLost,
 			'wf_min_loss_percent' => $this->wfMinimumLossPercentage,
-			'wf_basic_percent_repairable' => $this->wfBasicPercentageRepairable
+			'wf_basic_percent_repairable' => $this->wfBasicPercentageRepairable,
+			'global_deuterium_save_factor' => $this->globalDeuteriumSaveFactor
 		);
 	}
 	
