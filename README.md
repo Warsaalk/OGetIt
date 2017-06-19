@@ -14,6 +14,7 @@ It handles everything from connecting with the API, parsing the API to advanced 
 ## How to use?
 
 	include('autoload.php'); //Or via Composer
+	use OGetIt\OGetIt;
 	$ogetit = new OGetIt($uni, $lang, $apikey);
 	
 	//Get Combat report
