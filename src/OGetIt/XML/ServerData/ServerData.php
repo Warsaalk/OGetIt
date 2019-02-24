@@ -541,6 +541,46 @@ class ServerData extends OGameXML {
 	{
 		return $this->globalDeuteriumSaveFactor;
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getBashlimit()
+	{
+		return $this->bashlimit;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getProbeCargo()
+	{
+		return $this->probeCargo;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getResearchDurationDivisor()
+	{
+		return $this->researchDurationDivisor;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getDarkMatterNewAcount()
+	{
+		return $this->darkMatterNewAcount;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCargoHyperspaceTechMultiplier()
+	{
+		return $this->cargoHyperspaceTechMultiplier;
+	}
 	
 	/* (non-PHPdoc)
 	 * @see JsonSerializable::jsonSerialize()
@@ -574,7 +614,12 @@ class ServerData extends OGameXML {
 			'wf_min_res_lost' => $this->wfMinimumRessLost,
 			'wf_min_loss_percent' => $this->wfMinimumLossPercentage,
 			'wf_basic_percent_repairable' => $this->wfBasicPercentageRepairable,
-			'global_deuterium_save_factor' => $this->globalDeuteriumSaveFactor
+			'global_deuterium_save_factor' => $this->globalDeuteriumSaveFactor,
+			'bash_limit' => $this->bashlimit,
+			'probe_cargo' => $this->probeCargo,
+			'research_duration_divisor' => $this->researchDurationDivisor,
+			'dark_matter_new_acount' => $this->darkMatterNewAcount,
+			'cargo_hyperspace_tech_multiplier' => $this->cargoHyperspaceTechMultiplier
 		);
 	}
 	
