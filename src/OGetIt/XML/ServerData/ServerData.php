@@ -164,6 +164,31 @@ class ServerData extends OGameXML {
 	private $globalDeuteriumSaveFactor;
 
 	/**
+	 * @var integer
+	 */
+	private $bashlimit;
+
+	/**
+	 * @var integer
+	 */
+	private $probeCargo;
+
+	/**
+	 * @var integer
+	 */
+	private $researchDurationDivisor;
+
+	/**
+	 * @var integer
+	 */
+	private $darkMatterNewAcount;
+
+	/**
+	 * @var integer
+	 */
+	private $cargoHyperspaceTechMultiplier;
+
+	/**
 	 * @param \SimpleXMLElement $data
 	 * @return \OGetIt\XML\ServerData\ServerData
 	 */
@@ -197,11 +222,16 @@ class ServerData extends OGameXML {
 			$data->wfMinimumRessLost->__toString(),
 			$data->wfMinimumLossPercentage->__toString(),
 			$data->wfBasicPercentageRepairable->__toString(),
-			$data->globalDeuteriumSaveFactor->__toString()
+			$data->globalDeuteriumSaveFactor->__toString(),
+			$data->bashlimit->__toString(),
+			$data->probeCargo->__toString(),
+			$data->researchDurationDivisor->__toString(),
+			$data->darkMatterNewAcount->__toString(),
+			$data->cargoHyperspaceTechMultiplier->__toString()
 		);
 		
 	}
-	
+
 	/**
 	 * @param string $name
 	 * @param integer $number
@@ -231,9 +261,14 @@ class ServerData extends OGameXML {
 	 * @param integer $wfMinimumLossPercentage
 	 * @param integer $wfBasicPercentageRepairable
 	 * @param float $globalDeuteriumSaveFactor
+	 * @param integer $bashlimit
+	 * @param integer $probeCargo
+	 * @param integer $researchDurationDivisor
+	 * @param integer $darkMatterNewAcount
+	 * @param integer $cargoHyperspaceTechMultiplier
 	 */
-	public function __construct($name, $number, $language, $timezone, $timezoneOffset, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $debrisFactorDef, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem, $wfEnabled, $wfMinimumRessLost, $wfMinimumLossPercentage, $wfBasicPercentageRepairable, $globalDeuteriumSaveFactor) {
-		
+	public function __construct($name, $number, $language, $timezone, $timezoneOffset, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $debrisFactorDef, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem, $wfEnabled, $wfMinimumRessLost, $wfMinimumLossPercentage, $wfBasicPercentageRepairable, $globalDeuteriumSaveFactor, $bashlimit, $probeCargo, $researchDurationDivisor, $darkMatterNewAcount, $cargoHyperspaceTechMultiplier)
+	{
 		$this->name = $name;
 		$this->number = $number;
 		$this->language = $language;
@@ -262,7 +297,11 @@ class ServerData extends OGameXML {
 		$this->wfMinimumLossPercentage = $wfMinimumLossPercentage;
 		$this->wfBasicPercentageRepairable = $wfBasicPercentageRepairable;
 		$this->globalDeuteriumSaveFactor = $globalDeuteriumSaveFactor;
-		
+		$this->bashlimit = $bashlimit;
+		$this->probeCargo = $probeCargo;
+		$this->researchDurationDivisor = $researchDurationDivisor;
+		$this->darkMatterNewAcount = $darkMatterNewAcount;
+		$this->cargoHyperspaceTechMultiplier = $cargoHyperspaceTechMultiplier;
 	}
 
 	/**
