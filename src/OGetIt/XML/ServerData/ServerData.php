@@ -21,8 +21,8 @@ namespace OGetIt\XML\ServerData;
 
 use OGetIt\XML\OGameXML;
 
-class ServerData extends OGameXML {
-	
+class ServerData extends OGameXML
+{
 	/**
 	 * @var string
 	 */
@@ -189,11 +189,146 @@ class ServerData extends OGameXML {
 	private $cargoHyperspaceTechMultiplier;
 
 	/**
+	 * @var integer
+	 */
+	private $marketplaceEnabled;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceBasicTradeRatioMetal;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceBasicTradeRatioCrystal;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceBasicTradeRatioDeuterium;
+
+	/**
+	 * @var float
+	 */
+	private $marketplacePriceRangeLower;
+
+	/**
+	 * @var float
+	 */
+	private $marketplacePriceRangeUpper;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceTaxNormalUser;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceTaxAdmiral;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceTaxCancelOffer;
+
+	/**
+	 * @var float
+	 */
+	private $marketplaceTaxNotSold;
+
+	/**
+	 * @var integer
+	 */
+	private $marketplaceOfferTimeout;
+
+	/**
+	 * @var integer
+	 */
+	private $characterClassesEnabled;
+
+	/**
+	 * @var float
+	 */
+	private $minerBonusResourceProduction;
+
+	/**
+	 * @var float
+	 */
+	private $minerBonusFasterTradingShips;
+
+	/**
+	 * @var float
+	 */
+	private $minerBonusIncreasedCargoCapacityForTradingShips;
+
+	/**
+	 * @var integer
+	 */
+	private $minerBonusAdditionalFleetSlots;
+
+	/**
+	 * @var float
+	 */
+	private $resourceBuggyProductionBoost;
+
+	/**
+	 * @var float
+	 */
+	private $resourceBuggyMaxProductionBoost;
+
+	/**
+	 * @var float
+	 */
+	private $resourceBuggyEnergyConsumptionPerUnit;
+
+	/**
+	 * @var float
+	 */
+	private $warriorBonusFasterCombatShips;
+
+	/**
+	 * @var float
+	 */
+	private $warriorBonusFasterRecyclers;
+
+	/**
+	 * @var float
+	 */
+	private $warriorBonusRecyclerFuelConsumption;
+
+	/**
+	 * @var float
+	 */
+	private $combatDebrisFieldLimit;
+
+	/**
+	 * @var float
+	 */
+	private $explorerBonusIncreasedResearchSpeed;
+
+	/**
+	 * @var float
+	 */
+	private $explorerBonusIncreasedExpeditionOutcome;
+
+	/**
+	 * @var float
+	 */
+	private $explorerBonusLargerPlanets;
+
+	/**
+	 * @var float
+	 */
+	private $explorerUnitItemsPerDay;
+
+	/**
 	 * @param \SimpleXMLElement $data
 	 * @return \OGetIt\XML\ServerData\ServerData
 	 */
-	public static function loadXMLData(\SimpleXMLElement $data) {
-				
+	public static function loadXMLData(\SimpleXMLElement $data)
+	{
 		return new self(
 			$data->name->__toString()?: NULL,
 			$data->number->__toString(),
@@ -227,9 +362,35 @@ class ServerData extends OGameXML {
 			$data->probeCargo->__toString(),
 			$data->researchDurationDivisor->__toString(),
 			$data->darkMatterNewAcount->__toString(),
-			$data->cargoHyperspaceTechMultiplier->__toString()
+			$data->cargoHyperspaceTechMultiplier->__toString(),
+			$data->marketplaceEnabled->__toString(),
+			$data->marketplaceBasicTradeRatioMetal->__toString(),
+			$data->marketplaceBasicTradeRatioCrystal->__toString(),
+			$data->marketplaceBasicTradeRatioDeuterium->__toString(),
+			$data->marketplacePriceRangeLower->__toString(),
+			$data->marketplacePriceRangeUpper->__toString(),
+			$data->marketplaceTaxNormalUser->__toString(),
+			$data->marketplaceTaxAdmiral->__toString(),
+			$data->marketplaceTaxCancelOffer->__toString(),
+			$data->marketplaceTaxNotSold->__toString(),
+			$data->marketplaceOfferTimeout->__toString(),
+			$data->characterClassesEnabled->__toString(),
+			$data->minerBonusResourceProduction->__toString(),
+			$data->minerBonusFasterTradingShips->__toString(),
+			$data->minerBonusIncreasedCargoCapacityForTradingShips->__toString(),
+			$data->minerBonusAdditionalFleetSlots->__toString(),
+			$data->resourceBuggyProductionBoost->__toString(),
+			$data->resourceBuggyMaxProductionBoost->__toString(),
+			$data->resourceBuggyEnergyConsumptionPerUnit->__toString(),
+			$data->warriorBonusFasterCombatShips->__toString(),
+			$data->warriorBonusFasterRecyclers->__toString(),
+			$data->warriorBonusRecyclerFuelConsumption->__toString(),
+			$data->combatDebrisFieldLimit->__toString(),
+			$data->explorerBonusIncreasedResearchSpeed->__toString(),
+			$data->explorerBonusIncreasedExpeditionOutcome->__toString(),
+			$data->explorerBonusLargerPlanets->__toString(),
+			$data->explorerUnitItemsPerDay->__toString()
 		);
-		
 	}
 
 	/**
@@ -266,8 +427,96 @@ class ServerData extends OGameXML {
 	 * @param integer $researchDurationDivisor
 	 * @param integer $darkMatterNewAcount
 	 * @param integer $cargoHyperspaceTechMultiplier
+	 * @param integer $marketplaceEnabled,
+	 * @param float $marketplaceBasicTradeRatioMetal,
+	 * @param float $marketplaceBasicTradeRatioCrystal,
+	 * @param float $marketplaceBasicTradeRatioDeuterium,
+	 * @param float $marketplacePriceRangeLower,
+	 * @param float $marketplacePriceRangeUpper,
+	 * @param float $marketplaceTaxNormalUser,
+	 * @param float $marketplaceTaxAdmiral,
+	 * @param float $marketplaceTaxCancelOffer,
+	 * @param float $marketplaceTaxNotSold,
+	 * @param integer $marketplaceOfferTimeout,
+	 * @param integer $characterClassesEnabled,
+	 * @param float $minerBonusResourceProduction,
+	 * @param float $minerBonusFasterTradingShips,
+	 * @param float $minerBonusIncreasedCargoCapacityForTradingShips,
+	 * @param integer $minerBonusAdditionalFleetSlots,
+	 * @param float $resourceBuggyProductionBoost,
+	 * @param float $resourceBuggyMaxProductionBoost,
+	 * @param float $resourceBuggyEnergyConsumptionPerUnit,
+	 * @param float $warriorBonusFasterCombatShips,
+	 * @param float $warriorBonusFasterRecyclers,
+	 * @param float $warriorBonusRecyclerFuelConsumption,
+	 * @param float $combatDebrisFieldLimit,
+	 * @param float $explorerBonusIncreasedResearchSpeed,
+	 * @param float $explorerBonusIncreasedExpeditionOutcome,
+	 * @param float $explorerBonusLargerPlanets,
+	 * @param float $explorerUnitItemsPerDay
 	 */
-	public function __construct($name, $number, $language, $timezone, $timezoneOffset, $domain, $version, $speed, $speedFleet, $galaxies, $systems, $acs, $rapidFire, $defToTF, $debrisFactor, $debrisFactorDef, $repairFactor, $newbieProtectionLimit, $newbieProtectionHigh, $topScore, $bonusFields, $donutGalaxy, $donutSystem, $wfEnabled, $wfMinimumRessLost, $wfMinimumLossPercentage, $wfBasicPercentageRepairable, $globalDeuteriumSaveFactor, $bashlimit, $probeCargo, $researchDurationDivisor, $darkMatterNewAcount, $cargoHyperspaceTechMultiplier)
+	public function __construct(
+		$name,
+		$number,
+		$language,
+		$timezone,
+		$timezoneOffset,
+		$domain,
+		$version,
+		$speed,
+		$speedFleet,
+		$galaxies,
+		$systems,
+		$acs,
+		$rapidFire,
+		$defToTF,
+		$debrisFactor,
+		$debrisFactorDef,
+		$repairFactor,
+		$newbieProtectionLimit,
+		$newbieProtectionHigh,
+		$topScore,
+		$bonusFields,
+		$donutGalaxy,
+		$donutSystem,
+		$wfEnabled,
+		$wfMinimumRessLost,
+		$wfMinimumLossPercentage,
+		$wfBasicPercentageRepairable,
+		$globalDeuteriumSaveFactor,
+		$bashlimit,
+		$probeCargo,
+		$researchDurationDivisor,
+		$darkMatterNewAcount,
+		$cargoHyperspaceTechMultiplier,
+		$marketplaceEnabled,
+		$marketplaceBasicTradeRatioMetal,
+		$marketplaceBasicTradeRatioCrystal,
+		$marketplaceBasicTradeRatioDeuterium,
+		$marketplacePriceRangeLower,
+		$marketplacePriceRangeUpper,
+		$marketplaceTaxNormalUser,
+		$marketplaceTaxAdmiral,
+		$marketplaceTaxCancelOffer,
+		$marketplaceTaxNotSold,
+		$marketplaceOfferTimeout,
+		$characterClassesEnabled,
+		$minerBonusResourceProduction,
+		$minerBonusFasterTradingShips,
+		$minerBonusIncreasedCargoCapacityForTradingShips,
+		$minerBonusAdditionalFleetSlots,
+		$resourceBuggyProductionBoost,
+		$resourceBuggyMaxProductionBoost,
+		$resourceBuggyEnergyConsumptionPerUnit,
+		$warriorBonusFasterCombatShips,
+		$warriorBonusFasterRecyclers,
+		$warriorBonusRecyclerFuelConsumption,
+		$combatDebrisFieldLimit,
+		$explorerBonusIncreasedResearchSpeed,
+		$explorerBonusIncreasedExpeditionOutcome,
+		$explorerBonusLargerPlanets,
+		$explorerUnitItemsPerDay
+	)
 	{
 		$this->name = $name;
 		$this->number = $number;
@@ -302,6 +551,33 @@ class ServerData extends OGameXML {
 		$this->researchDurationDivisor = $researchDurationDivisor;
 		$this->darkMatterNewAcount = $darkMatterNewAcount;
 		$this->cargoHyperspaceTechMultiplier = $cargoHyperspaceTechMultiplier;
+		$this->marketplaceEnabled = $marketplaceEnabled;
+		$this->marketplaceBasicTradeRatioMetal = $marketplaceBasicTradeRatioMetal;
+		$this->marketplaceBasicTradeRatioCrystal = $marketplaceBasicTradeRatioCrystal;
+		$this->marketplaceBasicTradeRatioDeuterium = $marketplaceBasicTradeRatioDeuterium;
+		$this->marketplacePriceRangeLower = $marketplacePriceRangeLower;
+		$this->marketplacePriceRangeUpper = $marketplacePriceRangeUpper;
+		$this->marketplaceTaxNormalUser = $marketplaceTaxNormalUser;
+		$this->marketplaceTaxAdmiral = $marketplaceTaxAdmiral;
+		$this->marketplaceTaxCancelOffer = $marketplaceTaxCancelOffer;
+		$this->marketplaceTaxNotSold = $marketplaceTaxNotSold;
+		$this->marketplaceOfferTimeout = $marketplaceOfferTimeout;
+		$this->characterClassesEnabled = $characterClassesEnabled;
+		$this->minerBonusResourceProduction = $minerBonusResourceProduction;
+		$this->minerBonusFasterTradingShips = $minerBonusFasterTradingShips;
+		$this->minerBonusIncreasedCargoCapacityForTradingShips = $minerBonusIncreasedCargoCapacityForTradingShips;
+		$this->minerBonusAdditionalFleetSlots = $minerBonusAdditionalFleetSlots;
+		$this->resourceBuggyProductionBoost = $resourceBuggyProductionBoost;
+		$this->resourceBuggyMaxProductionBoost = $resourceBuggyMaxProductionBoost;
+		$this->resourceBuggyEnergyConsumptionPerUnit = $resourceBuggyEnergyConsumptionPerUnit;
+		$this->warriorBonusFasterCombatShips = $warriorBonusFasterCombatShips;
+		$this->warriorBonusFasterRecyclers = $warriorBonusFasterRecyclers;
+		$this->warriorBonusRecyclerFuelConsumption = $warriorBonusRecyclerFuelConsumption;
+		$this->combatDebrisFieldLimit = $combatDebrisFieldLimit;
+		$this->explorerBonusIncreasedResearchSpeed = $explorerBonusIncreasedResearchSpeed;
+		$this->explorerBonusIncreasedExpeditionOutcome = $explorerBonusIncreasedExpeditionOutcome;
+		$this->explorerBonusLargerPlanets = $explorerBonusLargerPlanets;
+		$this->explorerUnitItemsPerDay = $explorerUnitItemsPerDay;
 	}
 
 	/**
@@ -581,12 +857,229 @@ class ServerData extends OGameXML {
 	{
 		return $this->cargoHyperspaceTechMultiplier;
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getMarketplaceEnabled()
+	{
+		return $this->marketplaceEnabled;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceBasicTradeRatioMetal()
+	{
+		return $this->marketplaceBasicTradeRatioMetal;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceBasicTradeRatioCrystal()
+	{
+		return $this->marketplaceBasicTradeRatioCrystal;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceBasicTradeRatioDeuterium()
+	{
+		return $this->marketplaceBasicTradeRatioDeuterium;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplacePriceRangeLower()
+	{
+		return $this->marketplacePriceRangeLower;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplacePriceRangeUpper()
+	{
+		return $this->marketplacePriceRangeUpper;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceTaxNormalUser()
+	{
+		return $this->marketplaceTaxNormalUser;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceTaxAdmiral()
+	{
+		return $this->marketplaceTaxAdmiral;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceTaxCancelOffer()
+	{
+		return $this->marketplaceTaxCancelOffer;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMarketplaceTaxNotSold()
+	{
+		return $this->marketplaceTaxNotSold;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getMarketplaceOfferTimeout()
+	{
+		return $this->marketplaceOfferTimeout;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCharacterClassesEnabled()
+	{
+		return $this->characterClassesEnabled;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMinerBonusResourceProduction()
+	{
+		return $this->minerBonusResourceProduction;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMinerBonusFasterTradingShips()
+	{
+		return $this->minerBonusFasterTradingShips;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getMinerBonusIncreasedCargoCapacityForTradingShips()
+	{
+		return $this->minerBonusIncreasedCargoCapacityForTradingShips;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getMinerBonusAdditionalFleetSlots()
+	{
+		return $this->minerBonusAdditionalFleetSlots;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getResourceBuggyProductionBoost()
+	{
+		return $this->resourceBuggyProductionBoost;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getResourceBuggyMaxProductionBoost()
+	{
+		return $this->resourceBuggyMaxProductionBoost;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getResourceBuggyEnergyConsumptionPerUnit()
+	{
+		return $this->resourceBuggyEnergyConsumptionPerUnit;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getWarriorBonusFasterCombatShips()
+	{
+		return $this->warriorBonusFasterCombatShips;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getWarriorBonusFasterRecyclers()
+	{
+		return $this->warriorBonusFasterRecyclers;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getWarriorBonusRecyclerFuelConsumption()
+	{
+		return $this->warriorBonusRecyclerFuelConsumption;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getCombatDebrisFieldLimit()
+	{
+		return $this->combatDebrisFieldLimit;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getExplorerBonusIncreasedResearchSpeed()
+	{
+		return $this->explorerBonusIncreasedResearchSpeed;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getExplorerBonusIncreasedExpeditionOutcome()
+	{
+		return $this->explorerBonusIncreasedExpeditionOutcome;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getExplorerBonusLargerPlanets()
+	{
+		return $this->explorerBonusLargerPlanets;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getExplorerUnitItemsPerDay()
+	{
+		return $this->explorerUnitItemsPerDay;
+	}
 	
 	/* (non-PHPdoc)
 	 * @see JsonSerializable::jsonSerialize()
 	 */
-	public function jsonSerialize() {
-		return array(
+	public function jsonSerialize()
+	{
+		return [
 			'name' => $this->name,
 			'number' => $this->number,
 			'language' => $this->language,
@@ -619,8 +1112,34 @@ class ServerData extends OGameXML {
 			'probe_cargo' => $this->probeCargo,
 			'research_duration_divisor' => $this->researchDurationDivisor,
 			'dark_matter_new_acount' => $this->darkMatterNewAcount,
-			'cargo_hyperspace_tech_multiplier' => $this->cargoHyperspaceTechMultiplier
-		);
+			'cargo_hyperspace_tech_multiplier' => $this->cargoHyperspaceTechMultiplier,
+			'marketplaceEnabled' => $this->marketplaceEnabled,
+			'marketplaceBasicTradeRatioMetal' => $this->marketplaceBasicTradeRatioMetal,
+			'marketplaceBasicTradeRatioCrystal' => $this->marketplaceBasicTradeRatioCrystal,
+			'marketplaceBasicTradeRatioDeuterium' => $this->marketplaceBasicTradeRatioDeuterium,
+			'marketplacePriceRangeLower' => $this->marketplacePriceRangeLower,
+			'marketplacePriceRangeUpper' => $this->marketplacePriceRangeUpper,
+			'marketplaceTaxNormalUser' => $this->marketplaceTaxNormalUser,
+			'marketplaceTaxAdmiral' => $this->marketplaceTaxAdmiral,
+			'marketplaceTaxCancelOffer' => $this->marketplaceTaxCancelOffer,
+			'marketplaceTaxNotSold' => $this->marketplaceTaxNotSold,
+			'marketplaceOfferTimeout' => $this->marketplaceOfferTimeout,
+			'characterClassesEnabled' => $this->characterClassesEnabled,
+			'minerBonusResourceProduction' => $this->minerBonusResourceProduction,
+			'minerBonusFasterTradingShips' => $this->minerBonusFasterTradingShips,
+			'minerBonusIncreasedCargoCapacityForTradingShips' => $this->minerBonusIncreasedCargoCapacityForTradingShips,
+			'minerBonusAdditionalFleetSlots' => $this->minerBonusAdditionalFleetSlots,
+			'resourceBuggyProductionBoost' => $this->resourceBuggyProductionBoost,
+			'resourceBuggyMaxProductionBoost' => $this->resourceBuggyMaxProductionBoost,
+			'resourceBuggyEnergyConsumptionPerUnit' => $this->resourceBuggyEnergyConsumptionPerUnit,
+			'warriorBonusFasterCombatShips' => $this->warriorBonusFasterCombatShips,
+			'warriorBonusFasterRecyclers' => $this->warriorBonusFasterRecyclers,
+			'warriorBonusRecyclerFuelConsumption' => $this->warriorBonusRecyclerFuelConsumption,
+			'combatDebrisFieldLimit' => $this->combatDebrisFieldLimit,
+			'explorerBonusIncreasedResearchSpeed' => $this->explorerBonusIncreasedResearchSpeed,
+			'explorerBonusIncreasedExpeditionOutcome' => $this->explorerBonusIncreasedExpeditionOutcome,
+			'explorerBonusLargerPlanets' => $this->explorerBonusLargerPlanets,
+			'explorerUnitItemsPerDay' => $this->explorerUnitItemsPerDay
+		];
 	}
-	
 }
