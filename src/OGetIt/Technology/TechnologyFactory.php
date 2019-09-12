@@ -31,8 +31,11 @@ use OGetIt\Technology\Entity\Defence\HeavyLaser;
 use OGetIt\Technology\Entity\Defence\LightLaser;
 use OGetIt\Technology\Entity\Defence\RocketLauncher;
 use OGetIt\Technology\Entity\Ship\Battlecruiser;
+use OGetIt\Technology\Entity\Ship\Crawler;
 use OGetIt\Technology\Entity\Ship\Deathstar;
 use OGetIt\Technology\Entity\Ship\Destroyer;
+use OGetIt\Technology\Entity\Ship\Pathfinder;
+use OGetIt\Technology\Entity\Ship\Reaper;
 use OGetIt\Technology\Entity\Ship\SolarSatellite;
 use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\Entity\Ship\EspionageProbe;
@@ -148,6 +151,9 @@ class TechnologyFactory {
 			case 213: $technology = new Destroyer(); break;
 			case 214: $technology = new Deathstar(); break;
 			case 215: $technology = new Battlecruiser(); break;
+			case 217: $technology = new Crawler(); break;
+			case 218: $technology = new Reaper(); break;
+			case 219: $technology = new Pathfinder(); break;
 			
 			//Defence
 			case 401: $technology = new RocketLauncher(); break;
