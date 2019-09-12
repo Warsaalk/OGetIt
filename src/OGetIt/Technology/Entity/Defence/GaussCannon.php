@@ -19,25 +19,25 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
+use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Technology\Entity\Ship\Deathstar;
 
-class GaussCannon extends TechnologyCombat {
-
+class GaussCannon extends TechnologyCombat
+{
 	const TYPE = 404;
 	
 	const METAL = 20000, CRYSTAL = 15000, DEUTERIUM = 2000;
 	
 	const ARMOR = 35000, SHIELD = 200, WEAPON = 1100;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Deathstar::TYPE => 50
-	);
+	public static $RAPIDFIRE_FROM = [
+		Bomber::TYPE => 5,
+		Deathstar::TYPE => 50
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
 	}
-	
 }

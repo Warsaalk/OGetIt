@@ -24,24 +24,22 @@ use OGetIt\Technology\Entity\Ship\Destroyer;
 use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\Entity\Ship\Deathstar;
 
-class LightLaser extends TechnologyCombat {
-
+class LightLaser extends TechnologyCombat
+{
 	const TYPE = 402;
 	
 	const METAL = 1500, CRYSTAL = 500, DEUTERIUM = 0;
 	
 	const ARMOR = 2000, SHIELD = 25, WEAPON = 100;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Destroyer::TYPE => 10,
-			Bomber::TYPE => 20,
-			Deathstar::TYPE => 200
-	);
+	public static $RAPIDFIRE_FROM = [
+		Destroyer::TYPE => 10,
+		Bomber::TYPE => 20,
+		Deathstar::TYPE => 200
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
 	}
-	
 }

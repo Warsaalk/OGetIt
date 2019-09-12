@@ -26,8 +26,8 @@ use OGetIt\Technology\Entity\Defence\HeavyLaser;
 use OGetIt\Technology\Entity\Defence\GaussCannon;
 use OGetIt\Technology\Entity\Defence\IonCannon;
 
-class Deathstar extends TechnologyCombatFlyable {
-
+class Deathstar extends TechnologyCombatFlyable
+{
 	const TYPE = 214;
 	
 	const METAL = 5000000, CRYSTAL = 4000000, DEUTERIUM = 1000000;
@@ -36,31 +36,32 @@ class Deathstar extends TechnologyCombatFlyable {
 	
 	const SPEED = 100, CARGO_CAPACITY = 1000000, FUEL_USAGE = 1;
 	
-	public static $RAPIDFIRE_AGAINST = array(
-			SmallCargo::TYPE => 250,
-			LargeCargo::TYPE => 250,
-			LightFighter::TYPE => 200,
-			HeavyFighter::TYPE => 100,
-			Cruiser::TYPE => 33,
-			Battleship::TYPE => 30,
-			ColonyShip::TYPE => 250,
-			Recycler::TYPE => 250,
-			EspionageProbe::TYPE => 1250,
-			SolarSatellite::TYPE => 1250,
-			Bomber::TYPE => 25,
-			Destroyer::TYPE => 5,
-			RocketLauncher::TYPE => 200,
-			LightLaser::TYPE => 200,
-			HeavyLaser::TYPE => 100,
-			GaussCannon::TYPE => 50,
-			IonCannon::TYPE => 100,
-			Battlecruiser::TYPE => 15
-	);
+	public static $RAPIDFIRE_AGAINST = [
+		EspionageProbe::TYPE => 1250,
+		SolarSatellite::TYPE => 1250,
+		LightFighter::TYPE => 200,
+		HeavyFighter::TYPE => 100,
+		Cruiser::TYPE => 33,
+		Battleship::TYPE => 30,
+		Bomber::TYPE => 25,
+		Destroyer::TYPE => 5,
+		SmallCargo::TYPE => 250,
+		LargeCargo::TYPE => 250,
+		ColonyShip::TYPE => 250,
+		Recycler::TYPE => 250,
+		RocketLauncher::TYPE => 200,
+		LightLaser::TYPE => 200,
+		HeavyLaser::TYPE => 100,
+		IonCannon::TYPE => 100,
+		GaussCannon::TYPE => 50,
+		Battlecruiser::TYPE => 15,
+		Pathfinder::TYPE => 30,
+		Reaper::TYPE => 10,
+		Crawler::TYPE => 1250
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
 	}
-	
 }

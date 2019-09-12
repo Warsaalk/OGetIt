@@ -19,39 +19,43 @@
  */
 namespace OGetIt\Technology\Entity\Ship; 
 
+use OGetIt\Technology\Entity\Defence\GaussCannon;
+use OGetIt\Technology\Entity\Defence\PlasmaTurret;
 use OGetIt\Technology\TechnologyCombatFlyable;
 use OGetIt\Technology\Entity\Defence\RocketLauncher;
 use OGetIt\Technology\Entity\Defence\LightLaser;
 use OGetIt\Technology\Entity\Defence\HeavyLaser;
 use OGetIt\Technology\Entity\Defence\IonCannon;
 
-class Bomber extends TechnologyCombatFlyable {
-
+class Bomber extends TechnologyCombatFlyable
+{
 	const TYPE = 211;
 	
 	const METAL = 50000, CRYSTAL = 25000, DEUTERIUM = 15000;
 	
 	const ARMOR = 75000, SHIELD = 500, WEAPON = 1000;
 	
-	const SPEED = 5000, CARGO_CAPACITY = 500, FUEL_USAGE = 1000;
+	const SPEED = 5000, CARGO_CAPACITY = 500, FUEL_USAGE = 700;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Deathstar::TYPE => 25
-	);
+	public static $RAPIDFIRE_FROM = [
+		Deathstar::TYPE => 25,
+		Reaper::TYPE => 4
+	];
 		
-	public static $RAPIDFIRE_AGAINST = array(
-			EspionageProbe::TYPE => 5,
-			SolarSatellite::TYPE => 5,
-			RocketLauncher::TYPE => 20,
-			LightLaser::TYPE => 20,
-			HeavyLaser::TYPE => 10,
-			IonCannon::TYPE => 10
-	);
+	public static $RAPIDFIRE_AGAINST = [
+		EspionageProbe::TYPE => 5,
+		SolarSatellite::TYPE => 5,
+		Crawler::TYPE => 5,
+		RocketLauncher::TYPE => 20,
+		LightLaser::TYPE => 20,
+		HeavyLaser::TYPE => 10,
+		IonCannon::TYPE => 10,
+		GaussCannon::TYPE => 5,
+		PlasmaTurret::TYPE => 5
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
 	}
-	
 }

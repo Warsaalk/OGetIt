@@ -19,6 +19,7 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
+use OGetIt\Technology\Entity\Ship\Reaper;
 use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\Entity\Ship\Deathstar;
@@ -32,8 +33,12 @@ class IonCannon extends TechnologyCombat
 	const ARMOR = 8000, SHIELD = 150, WEAPON = 500;
 	
 	public static $RAPIDFIRE_FROM = [
-			Bomber::TYPE => 10,
-			Deathstar::TYPE => 100
+		Bomber::TYPE => 10,
+		Deathstar::TYPE => 100
+	];
+
+	public static $RAPIDFIRE_AGAINST = [
+		Reaper::TYPE => 2
 	];
 	
 	public function __construct()

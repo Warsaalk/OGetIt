@@ -19,20 +19,23 @@
  */
 namespace OGetIt\Technology\Entity\Defence; 
 
+use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\TechnologyCombat;
 
-class PlasmaTurret extends TechnologyCombat {
-
+class PlasmaTurret extends TechnologyCombat
+{
 	const TYPE = 406;
 	
 	const METAL = 50000, CRYSTAL = 50000, DEUTERIUM = 30000;
 	
 	const ARMOR = 100000, SHIELD = 300, WEAPON = 3000;
-	
-	public function __construct() {
-		
+
+	public static $RAPIDFIRE_FROM = [
+		Bomber::TYPE => 5
+	];
+
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
 	}
-		
 }

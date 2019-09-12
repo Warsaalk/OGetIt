@@ -21,8 +21,8 @@ namespace OGetIt\Technology\Entity\Defence;
 
 use OGetIt\Technology\TechnologyCombatFlyable;
 
-class AntiBallisticMissile extends TechnologyCombatFlyable {
-
+class AntiBallisticMissile extends TechnologyCombatFlyable
+{
 	const TYPE = 502;
 	
 	const METAL = 8000, CRYSTAL = 0, DEUTERIUM = 2000;
@@ -31,10 +31,8 @@ class AntiBallisticMissile extends TechnologyCombatFlyable {
 	
 	const SPEED = 0, CARGO_CAPACITY = 0, FUEL_USAGE = 0;
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
 	}
-		
 }

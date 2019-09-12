@@ -21,8 +21,8 @@ namespace OGetIt\Technology\Entity\Ship;
 
 use OGetIt\Technology\TechnologyCombatFlyable;
 
-class Battleship extends TechnologyCombatFlyable {
-
+class Battleship extends TechnologyCombatFlyable
+{
 	const TYPE = 207;
 	
 	const METAL = 45000, CRYSTAL = 15000, DEUTERIUM = 0;
@@ -31,20 +31,21 @@ class Battleship extends TechnologyCombatFlyable {
 	
 	const SPEED = 10000, CARGO_CAPACITY = 1500, FUEL_USAGE = 500;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Battlecruiser::TYPE => 7,
-			Deathstar::TYPE => 30
-	);
+	public static $RAPIDFIRE_FROM = [
+		Battlecruiser::TYPE => 7,
+		Deathstar::TYPE => 30,
+		Reaper::TYPE => 7
+	];
 		
-	public static $RAPIDFIRE_AGAINST = array(
-			EspionageProbe::TYPE => 5,
-			SolarSatellite::TYPE => 5
-	);
+	public static $RAPIDFIRE_AGAINST = [
+		EspionageProbe::TYPE => 5,
+		SolarSatellite::TYPE => 5,
+		Crawler::TYPE => 5,
+		Pathfinder::TYPE => 5
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
 	}
-	
 }

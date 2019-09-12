@@ -21,18 +21,16 @@ namespace OGetIt\Technology\Entity\Defence;
 
 use OGetIt\Technology\TechnologyCombat;
 
-class SmallShieldDome extends TechnologyCombat {
-
+class SmallShieldDome extends TechnologyCombat
+{
 	const TYPE = 407;
 	
 	const METAL = 10000, CRYSTAL = 10000, DEUTERIUM = 0;
 	
 	const ARMOR = 20000, SHIELD = 2000, WEAPON = 1;
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
 	}
-		
 }

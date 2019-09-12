@@ -22,8 +22,8 @@ namespace OGetIt\Technology\Entity\Ship;
 use OGetIt\Technology\TechnologyCombatFlyable;
 use OGetIt\Technology\Entity\Defence\LightLaser;
 
-class Destroyer extends TechnologyCombatFlyable {
-
+class Destroyer extends TechnologyCombatFlyable
+{
 	const TYPE = 213;
 	
 	const METAL = 60000, CRYSTAL = 50000, DEUTERIUM = 15000;
@@ -32,21 +32,21 @@ class Destroyer extends TechnologyCombatFlyable {
 	
 	const SPEED = 5000, CARGO_CAPACITY = 2000, FUEL_USAGE = 1000;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Deathstar::TYPE => 5
-	);
+	public static $RAPIDFIRE_FROM = [
+		Deathstar::TYPE => 5,
+		Reaper::TYPE => 3
+	];
 		
-	public static $RAPIDFIRE_AGAINST = array(
-			EspionageProbe::TYPE => 5,
-			SolarSatellite::TYPE => 5,
-			LightLaser::TYPE => 10,
-			Battlecruiser::TYPE => 2
-	);
+	public static $RAPIDFIRE_AGAINST = [
+		EspionageProbe::TYPE => 5,
+		SolarSatellite::TYPE => 5,
+		Crawler::TYPE => 5,
+		LightLaser::TYPE => 10,
+		Battlecruiser::TYPE => 2
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
 	}
-	
 }

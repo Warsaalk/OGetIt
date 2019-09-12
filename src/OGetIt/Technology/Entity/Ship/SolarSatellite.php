@@ -21,8 +21,8 @@ namespace OGetIt\Technology\Entity\Ship;
 
 use OGetIt\Technology\TechnologyCombatFlyable;
 
-class SolarSatellite extends TechnologyCombatFlyable {
-
+class SolarSatellite extends TechnologyCombatFlyable
+{
 	const TYPE = 212;
 	
 	const METAL = 0, CRYSTAL = 2000, DEUTERIUM = 500;
@@ -31,25 +31,25 @@ class SolarSatellite extends TechnologyCombatFlyable {
 	
 	const SPEED = 0, CARGO_CAPACITY = 0, FUEL_USAGE = 0;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Battlecruiser::TYPE => 5,
-			Destroyer::TYPE => 5,
-			Bomber::TYPE => 5,
-			Recycler::TYPE => 5,
-			ColonyShip::TYPE => 5,
-			Battleship::TYPE => 5,
-			Cruiser::TYPE => 5,
-			HeavyFighter::TYPE => 5,
-			LightFighter::TYPE => 5,
-			LargeCargo::TYPE => 5,
-			Deathstar::TYPE => 1250,
-			SmallCargo::TYPE => 5
-	);
+	public static $RAPIDFIRE_FROM = [
+		LightFighter::TYPE => 5,
+		HeavyFighter::TYPE => 5,
+		Cruiser::TYPE => 5,
+		Battleship::TYPE => 5,
+		Battlecruiser::TYPE => 5,
+		Bomber::TYPE => 5,
+		Destroyer::TYPE => 5,
+		Deathstar::TYPE => 1250,
+		Reaper::TYPE => 5,
+		Pathfinder::TYPE => 5,
+		SmallCargo::TYPE => 5,
+		LargeCargo::TYPE => 5,
+		ColonyShip::TYPE => 5,
+		Recycler::TYPE => 5
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON, self::SPEED, self::CARGO_CAPACITY, self::FUEL_USAGE);
-		
 	}
-	
 }

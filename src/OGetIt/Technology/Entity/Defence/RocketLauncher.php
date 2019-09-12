@@ -24,24 +24,22 @@ use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\Entity\Ship\Cruiser;
 use OGetIt\Technology\Entity\Ship\Deathstar;
 
-class RocketLauncher extends TechnologyCombat {
-
+class RocketLauncher extends TechnologyCombat
+{
 	const TYPE = 401;
 	
 	const METAL = 2000, CRYSTAL = 0, DEUTERIUM = 0;
 	
 	const ARMOR = 2000, SHIELD = 20, WEAPON = 80;
 	
-	public static $RAPIDFIRE_FROM = array(
-			Bomber::TYPE => 20,
-			Cruiser::TYPE => 10,
-			Deathstar::TYPE => 200
-	);
+	public static $RAPIDFIRE_FROM = [
+		Bomber::TYPE => 20,
+		Cruiser::TYPE => 10,
+		Deathstar::TYPE => 200
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-				
 	}
-	
 }
