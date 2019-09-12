@@ -46,7 +46,7 @@ abstract class TechnologyCombat extends Technology {
 	 * @var array
 	 */
 	public static $RAPIDFIRE_AGAINST = array();
-	
+
 	/**
 	 * @param integer $type
 	 * @param integer $metal
@@ -55,12 +55,11 @@ abstract class TechnologyCombat extends Technology {
 	 * @param integer $armor
 	 * @param integer $shield
 	 * @param integer $weapon
-	 * @param array $rapidFireFrom
-	 * @param array $rapidFireAgainst
+	 * @param integer $energy
 	 */
-	protected function __construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon) {
+	protected function __construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon, $energy = 0) {
 		
-		parent::__construct($type, $metal, $crystal, $deuterium);
+		parent::__construct($type, $metal, $crystal, $deuterium, $energy);
 		
 		$this->ARMOR = $armor;
 		$this->SHIELD = $shield;

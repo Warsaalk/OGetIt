@@ -38,6 +38,7 @@ abstract class Technology implements \JsonSerializable {
 	 * @param integer $metal
 	 * @param integer $crystal
 	 * @param integer $deuterium
+	 * @param integer $energy
 	 */
 	protected function __construct($type, $metal, $crystal, $deuterium, $energy = 0) {
 		

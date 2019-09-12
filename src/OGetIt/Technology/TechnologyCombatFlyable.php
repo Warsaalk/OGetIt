@@ -49,16 +49,24 @@ abstract class TechnologyCombatFlyable extends TechnologyCombat {
 	 * @var integer
 	 */	
 	private $FUEL_USAGE;
-	
+
 	/**
+	 * TechnologyCombatFlyable constructor.
 	 * @param integer $type
 	 * @param integer $metal
 	 * @param integer $crystal
 	 * @param integer $deuterium
+	 * @param integer $armor
+	 * @param integer $shield
+	 * @param integer $weapon
+	 * @param integer $speed
+	 * @param integer $cargo_capacity
+	 * @param integer $fuel_usage
+	 * @param integer $energy
 	 */
-	protected function __construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon, $speed, $cargo_capacity, $fuel_usage) {
+	protected function __construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon, $speed, $cargo_capacity, $fuel_usage, $energy = 0) {
 		
-		parent::__construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon);
+		parent::__construct($type, $metal, $crystal, $deuterium, $armor, $shield, $weapon, $energy);
 		
 		$this->SPEED = $speed;
 		$this->CARGO_CAPACITY = $cargo_capacity;
