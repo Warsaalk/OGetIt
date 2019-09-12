@@ -23,23 +23,21 @@ use OGetIt\Technology\TechnologyCombat;
 use OGetIt\Technology\Entity\Ship\Bomber;
 use OGetIt\Technology\Entity\Ship\Deathstar;
 
-class IonCannon extends TechnologyCombat {
-
+class IonCannon extends TechnologyCombat
+{
 	const TYPE = 405;
 	
-	const METAL = 2000, CRYSTAL = 6000, DEUTERIUM = 0;
+	const METAL = 5000, CRYSTAL = 3000, DEUTERIUM = 0;
 	
-	const ARMOR = 8000, SHIELD = 500, WEAPON = 150;
+	const ARMOR = 8000, SHIELD = 150, WEAPON = 500;
 	
-	public static $RAPIDFIRE_FROM = array(
+	public static $RAPIDFIRE_FROM = [
 			Bomber::TYPE => 10,
 			Deathstar::TYPE => 100
-	);
+	];
 	
-	public function __construct() {
-		
+	public function __construct()
+	{
 		parent::__construct(self::TYPE, self::METAL, self::CRYSTAL, self::DEUTERIUM, self::ARMOR, self::SHIELD, self::WEAPON);
-		
 	}
-	
 }
