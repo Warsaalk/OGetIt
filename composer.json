@@ -8,7 +8,10 @@
     "time": "2015-07-18",
 	"require": {
 		"php-64bit": ">=5.4.0",
-		"lib-curl": "*"
+		"lib-curl": "*",
+        "ext-simplexml": "*",
+        "ext-json": "*",
+        "ext-curl": "*"
 	},
     "autoload": {
         "psr-4": {"OGetIt\\": "src/OGetIt"}
