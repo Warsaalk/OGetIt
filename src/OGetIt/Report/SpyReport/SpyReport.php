@@ -80,12 +80,16 @@ class SpyReport extends Report {
 			$generic['sr_id'],
 			$generic['activity'],
 			$generic['attacker_name'],
+			$generic['attacker_user_id'],
+			$generic['attacker_character_class_id'],
 			$generic['attacker_planet_coordinates'],
 			$generic['attacker_planet_name'],
 			$generic['attacker_planet_type'],
 			$generic['attacker_alliance_name'],
 			$generic['attacker_alliance_tag'],
 			$generic['defender_name'],
+			$generic['defender_user_id'],
+			$generic['defender_character_class_id'],
 			$generic['defender_planet_coordinates'],
 			$generic['defender_planet_name'],
 			$generic['defender_planet_type'],
@@ -142,36 +146,45 @@ class SpyReport extends Report {
 		return $spyreport;
 	
 	}
-	
+
 	/**
-	 * @param string $id
-	 * @param integer $activity
-	 * @param string $attacker_name
-	 * @param string $attacker_planet_coordinates
-	 * @param string $attacker_planet_name
-	 * @param integer $attacker_planet_type
-	 * @param string $defender_name
-	 * @param string $defender_planet_coordinates
-	 * @param string $defender_planet_name
-	 * @param integer $defender_planet_type
-	 * @param string $event_time
-	 * @param integer $event_timestamp
-	 * @param integer $loot_percentage
-	 * @param integer $spy_fail_chance
-	 * @param integer $total_defense_count
-	 * @param integer $total_ship_count
+	 * SpyReport constructor.
+	 * @param $id
+	 * @param $activity
+	 * @param $attacker_name
+	 * @param $attacker_user_id
+	 * @param $attacker_character_class_id
+	 * @param $attacker_planet_coordinates
+	 * @param $attacker_planet_name
+	 * @param $attacker_planet_type
+	 * @param $attacker_alliance_name
+	 * @param $attacker_alliance_tag
+	 * @param $defender_name
+	 * @param $defender_user_id
+	 * @param $defender_character_class_id
+	 * @param $defender_planet_coordinates
+	 * @param $defender_planet_name
+	 * @param $defender_planet_type
+	 * @param $defender_alliance_name
+	 * @param $defender_alliance_tag
+	 * @param $time
+	 * @param $timestamp
+	 * @param $loot_percentage
+	 * @param $spy_fail_chance
+	 * @param $total_defense_count
+	 * @param $total_ship_count
 	 */
-	public function __construct($id, $activity, $attacker_name, $attacker_planet_coordinates, $attacker_planet_name, $attacker_planet_type, $attacker_alliance_name, $attacker_alliance_tag, $defender_name, $defender_planet_coordinates, $defender_planet_name, $defender_planet_type, $defender_alliance_name, $defender_alliance_tag, $time, $timestamp, $loot_percentage, $spy_fail_chance, $total_defense_count, $total_ship_count) {
+	public function __construct($id, $activity, $attacker_name, $attacker_user_id, $attacker_character_class_id, $attacker_planet_coordinates, $attacker_planet_name, $attacker_planet_type, $attacker_alliance_name, $attacker_alliance_tag, $defender_name, $defender_user_id, $defender_character_class_id, $defender_planet_coordinates, $defender_planet_name, $defender_planet_type, $defender_alliance_name, $defender_alliance_tag, $time, $timestamp, $loot_percentage, $spy_fail_chance, $total_defense_count, $total_ship_count) {
 		
 		parent::__construct($id, $time, $timestamp);
 
 		$this->activity = $activity;
 		
-		$this->attacker = new ReportPlayer($attacker_name);
+		$this->attacker = new ReportPlayer($attacker_name, $attacker_user_id, $attacker_character_class_id);
 		$this->attacker->setPlanet(new Planet($attacker_planet_type, $attacker_planet_coordinates, $attacker_planet_name));
 		$this->attacker->setAlliance(new Alliance($attacker_alliance_tag, $attacker_alliance_name));
 		
-		$this->defender = new SpiedPlayer($defender_name);
+		$this->defender = new SpiedPlayer($defender_name, $defender_user_id, $defender_character_class_id);
 		$this->defender->setPlanet(new Planet($defender_planet_type, $defender_planet_coordinates, $defender_planet_name));
 		$this->defender->setAlliance(new Alliance($defender_alliance_tag, $defender_alliance_name));
 		

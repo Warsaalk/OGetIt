@@ -19,8 +19,14 @@
  */
 namespace OGetIt\Common;
 
-class Player implements \JsonSerializable {
-	
+class Player implements \JsonSerializable
+{
+	const
+		CLASS_NONE = 0,
+		CLASS_COLLECTOR = 1,
+		CLASS_GENERAL = 2,
+		CLASS_DISCOVERER = 3;
+
 	/**
 	 * @var integer
 	 */
@@ -30,44 +36,57 @@ class Player implements \JsonSerializable {
 	 * @var string
 	 */
 	private $name;
+
+	/**
+	 * @var integer
+	 */
+	private $class;
 	
 	/**
 	 * @param string $name
 	 * @param integer $id
 	 */
-	public function __construct($name, $id = null) {
-		
+	public function __construct($name, $id = null, $class = self::CLASS_NONE)
+	{
 		$this->name = $name;
 		$this->id = $id;
-		
+		$this->class = $class;
 	}
 	
 	/**
 	 * @return integer
 	 */
-	public function getId() {
-		
+	public function getId()
+	{
 		return $this->id;
-		
 	}
 	
 	/**
 	 * @return string
 	 */
-	public function getName() {
-		
+	public function getName()
+	{
 		return $this->name;
-		
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getClass()
+	{
+		return $this->class;
 	}
 	
 	/* (non-PHPdoc)
 	 * @see JsonSerializable::jsonSerialize()
 	 */
-	public function jsonSerialize() {
-		return array(
+	public function jsonSerialize()
+	{
+		return [
 			'id' => $this->id,
-			'name' => $this->name
-		);
+			'name' => $this->name,
+			'class' => $this->class
+		];
 	}
 	
 }
