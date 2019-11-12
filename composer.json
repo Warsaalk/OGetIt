@@ -7,7 +7,7 @@
     "authors": [{"name": "Klaas Van Parys"}],
     "time": "2015-07-18",
 	"require": {
-		"php-64bit": ">=5.4.0",
+		"php-64bit": ">=7.0.0",
 		"lib-curl": "*",
         "ext-simplexml": "*",
         "ext-json": "*",
