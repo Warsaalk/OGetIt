@@ -97,6 +97,9 @@ class OGetIt {
 	}
 
 	/**
+	 * When calling this method you'll enable OGetIt to save the original report as a file with the api key as it's name.
+	 * The path must include a directory separator at the end.
+	 *
 	 * @param string $path
 	 */
 	public function saveOriginal ($path) {
@@ -334,7 +337,7 @@ class OGetIt {
 	private function saveOriginalReport ($api_key, $data) {
 
 		if ($this->originalSavePath && is_dir($this->originalSavePath)) {
-			file_put_contents("$api_key.json", json_encode($data));
+			file_put_contents($this->originalSavePath . "$api_key.json", json_encode($data));
 		}
 
 	}
