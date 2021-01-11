@@ -53,6 +53,11 @@ class OGetIt {
 	 * @var boolean
 	 */
 	private $https = false;
+
+	/**
+	 * @var string
+	 */
+	private $originalSavePath;
 	
 	/**
 	 * @param integer $universeID
@@ -89,6 +94,15 @@ class OGetIt {
 		
 		$this->https = true;
 		
+	}
+
+	/**
+	 * @param string $path
+	 */
+	public function saveOriginal ($path) {
+
+		$this->originalSavePath = $path;
+
 	}
 	
 	private function getApiData($type, $label, $key, $username = false, $password = false) {
@@ -141,7 +155,9 @@ class OGetIt {
 		
 		$type = OGameApi::TYPE_COMBATREPORT;
 		$data = $this->getApiData($type, 'cr_id', $cr_api_key, $username, $password);
-				
+
+		$this->saveOriginalReport($cr_api_key, $data);
+
 		return $this->getReport($type, $data);
 		
 	}
@@ -161,14 +177,16 @@ class OGetIt {
 	 * @return HarvestReport
 	 */
 	public function getHarvestReport($rr_api_key, $username = false, $password = false) {
-		
+
 		$type = OGameApi::TYPE_HARVESTREPORT;
 		$data = $this->getApiData($type, 'rr_id', $rr_api_key, $username, $password);
-		
+
+		$this->saveOriginalReport($rr_api_key, $data);
+
 		return $this->getReport($type, $data);
-		
+
 	}
-	
+
 	/**
 	 * @param string $json
 	 * @return HarvestReport
@@ -187,6 +205,8 @@ class OGetIt {
 		
 		$type = OGameApi::TYPE_SPYREPORT;
 		$data = $this->getApiData($type, 'sr_id', $sr_api_key, $username, $password);
+
+		$this->saveOriginalReport($sr_api_key, $data);
 				
 		return $this->getReport($type, $data);
 		
@@ -210,6 +230,8 @@ class OGetIt {
 		
 		$type = OGameApi::TYPE_MISSILEREPORT;
 		$data = $this->getApiData($type, 'mr_id', $mr_api_key, $username, $password);
+
+		$this->saveOriginalReport($mr_api_key, $data);
 				
 		return $this->getReport($type, $data);
 		
@@ -304,5 +326,16 @@ class OGetIt {
 		return $this->https;
 		
 	}
-		
+
+	/**
+	 * @param string $api_key
+	 * @param array $data
+	 */
+	private function saveOriginalReport ($api_key, $data) {
+
+		if ($this->originalSavePath && is_dir($this->originalSavePath)) {
+			file_put_contents("$api_key.json", json_encode($data));
+		}
+
+	}
 }
