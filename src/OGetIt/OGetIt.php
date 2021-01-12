@@ -337,7 +337,10 @@ class OGetIt {
 	private function saveOriginalReport ($api_key, $data, $type) {
 
 		if ($this->originalSavePath && is_dir($this->originalSavePath)) {
-			file_put_contents($this->originalSavePath . "$type-{$this->community}-{$this->universeID}-$api_key.json", json_encode($data));
+			$filePath = $this->originalSavePath . "$type-{$this->community}-{$this->universeID}-$api_key.json";
+			if (file_exists($filePath) !== true) {
+				file_put_contents($filePath, json_encode($data));
+			}
 		}
 
 	}
