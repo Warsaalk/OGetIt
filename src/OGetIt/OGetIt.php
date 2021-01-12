@@ -159,7 +159,7 @@ class OGetIt {
 		$type = OGameApi::TYPE_COMBATREPORT;
 		$data = $this->getApiData($type, 'cr_id', $cr_api_key, $username, $password);
 
-		$this->saveOriginalReport($cr_api_key, $data);
+		$this->saveOriginalReport($cr_api_key, $data, "cr");
 
 		return $this->getReport($type, $data);
 		
@@ -184,7 +184,7 @@ class OGetIt {
 		$type = OGameApi::TYPE_HARVESTREPORT;
 		$data = $this->getApiData($type, 'rr_id', $rr_api_key, $username, $password);
 
-		$this->saveOriginalReport($rr_api_key, $data);
+		$this->saveOriginalReport($rr_api_key, $data, "rr");
 
 		return $this->getReport($type, $data);
 
@@ -209,7 +209,7 @@ class OGetIt {
 		$type = OGameApi::TYPE_SPYREPORT;
 		$data = $this->getApiData($type, 'sr_id', $sr_api_key, $username, $password);
 
-		$this->saveOriginalReport($sr_api_key, $data);
+		$this->saveOriginalReport($sr_api_key, $data, "sr");
 				
 		return $this->getReport($type, $data);
 		
@@ -234,7 +234,7 @@ class OGetIt {
 		$type = OGameApi::TYPE_MISSILEREPORT;
 		$data = $this->getApiData($type, 'mr_id', $mr_api_key, $username, $password);
 
-		$this->saveOriginalReport($mr_api_key, $data);
+		$this->saveOriginalReport($mr_api_key, $data, "mr");
 				
 		return $this->getReport($type, $data);
 		
@@ -334,10 +334,10 @@ class OGetIt {
 	 * @param string $api_key
 	 * @param array $data
 	 */
-	private function saveOriginalReport ($api_key, $data) {
+	private function saveOriginalReport ($api_key, $data, $type) {
 
 		if ($this->originalSavePath && is_dir($this->originalSavePath)) {
-			file_put_contents($this->originalSavePath . "$api_key.json", json_encode($data));
+			file_put_contents($this->originalSavePath . "$type-{$this->community}-{$this->universeID}-$api_key.json", json_encode($data));
 		}
 
 	}
